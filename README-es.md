@@ -2,7 +2,7 @@
 
 [English](README.md) · **Español**
 
-**Skill** para agentes de código que convierte tu asistente en un tutor: planifica en pasos cortos, explica cada comando, revisa tu avance con herramientas de solo lectura y no termina la tarea por ti.
+**Skill** para agentes de código que convierte tu asistente en un tutor. Una *skill* es una carpeta de instrucciones que tu herramienta de IA lee cuando le sirven. Planifica en pasos cortos, explica cada comando, revisa tu avance con comandos de solo lectura y no termina la tarea por ti.
 
 Úsalo cuando quieras **aprender haciendo**—tareas, tutoriales, guías paso a paso o cuando digas «no lo hagas por mí».
 
@@ -15,7 +15,7 @@ TuTor ayuda a **docentes y estudiantes** a usar la IA como tutor, no como atajo.
 | Comportamiento | Detalle |
 |----------------|---------|
 | **Paso a paso** | Muestra un plan numerado al inicio y da **una** acción por turno (sin la solución completa). |
-| **Verificación** | Cuando dices que terminaste, el agente revisa con herramientas de solo lectura (`Read`, `ls`, `cat`, `git status`, `git diff`, las pruebas que corriste). |
+| **Verificación** | Cuando dices que terminaste, la herramienta revisa con comandos de solo lectura (`Read`, `ls`, `cat`, `git status`, `git diff`, las pruebas que corriste). |
 | **Control de herramientas** | Puede ver tu trabajo, pero **no** debe crear, editar ni ejecutar comandos que armen tu entregable por ti. |
 | **Comandos explicados** | Cada comando de terminal incluye desglose: para qué sirve, qué hace cada parte y cómo saber si salió bien. |
 
@@ -28,11 +28,11 @@ Más detalle en [`references/`](references/):
 
 **Repositorio:** [github.com/kevinnio/tutor](https://github.com/kevinnio/tutor)
 
-TuTor son `SKILL.md` y la carpeta `references/`. En el frontmatter, `name` debe ser `tutor`.
+TuTor es una carpeta con `SKILL.md` (las instrucciones) y `references/` (lecturas extra). Deja la carpeta con el nombre `tutor`. Algunas herramientas no cargan una skill si el nombre de la carpeta no coincide con el nombre dentro de `SKILL.md`.
 
 ### Con Skills CLI (recomendado)
 
-Usa la [Skills CLI](https://github.com/vercel-labs/skills) ([skills.sh](https://skills.sh)): detecta qué agentes tienes instalados y copia la skill donde corresponde.
+La [Skills CLI](https://github.com/vercel-labs/skills) ([skills.sh](https://skills.sh)) es un instalador pequeño: busca las herramientas de IA que tienes y copia la skill en la carpeta correcta de cada una, así no necesitas saber las rutas.
 
 **Global (todos tus proyectos)** — lo más práctico la primera vez:
 
@@ -46,37 +46,44 @@ npx skills add kevinnio/tutor -g -y
 npx skills add kevinnio/tutor -y
 ```
 
-**Agentes específicos** (sin el menú interactivo):
+**Elegir herramientas** (sin el menú):
 
 ```bash
-npx skills add kevinnio/tutor -g -a cursor -a claude-code -a opencode -y
+npx skills add kevinnio/tutor -g -a opencode -a github-copilot -a gemini-cli -y
 ```
 
 | Opción | Qué hace |
 |--------|----------|
 | `-g`, `--global` | Instalación global en tu usuario (`~/…/skills/`) |
 | (sin `-g`) | Solo en el proyecto donde estás |
-| `-a`, `--agent` | Uno o más agentes: `cursor`, `claude-code`, `opencode`, `codex`, `windsurf`, etc. |
+| `-a`, `--agent` | Para qué herramientas instalar: `opencode`, `github-copilot`, `gemini-cli`, `cursor`, `claude-code`, `codex`, etc. |
 | `-y`, `--yes` | Sin pedir confirmación |
 
-Antes de instalar: `npx skills add kevinnio/tutor --list`. Lista completa de agentes: [vercel-labs/skills](https://github.com/vercel-labs/skills#supported-agents).
+Antes de instalar: `npx skills add kevinnio/tutor --list`. Todas las herramientas compatibles: [vercel-labs/skills](https://github.com/vercel-labs/skills#supported-agents).
 
-Al terminar, abre una **sesión nueva** del agente.
+Al terminar, abre un **chat nuevo** (o vuelve a abrir la herramienta) para que vea la skill.
 
-### Uso según el agente
+### Con qué herramienta empezar
 
-- **Cursor** — Pide aprender algo (p. ej. «Enséñame a hacer un CLI de tareas, pero no lo escribas tú») o usa `/tutor` si lo tienes. [Cursor Agent Skills](https://cursor.com/docs/context/skills).
+Cualquiera de la lista sirve. Si es tu primera vez, **OpenCode** es libre y de código abierto, y puedes conectarlo a un modelo gratuito, incluso uno que corra en tu propia computadora. **GitHub Copilot** y **Gemini CLI** son gratis para estudiantes verificados ([Student Developer Pack](https://education.github.com/pack), [Google AI para estudiantes](https://gemini.google/students/)). Cursor y Claude Code requieren un plan de pago, salvo que tu escuela te lo dé.
+
+### Cómo usar TuTor en cada herramienta
+
+- **OpenCode** — Cuéntale qué quieres aprender; OpenCode carga la skill cuando le sirve. [OpenCode skills](https://opencode.ai/docs/skills/).
+- **GitHub Copilot** — En VS Code, escribe `/tutor` en el chat o cuéntale qué quieres aprender. [Copilot skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills).
+- **Gemini CLI** — Cuéntale qué quieres aprender; Gemini CLI carga la skill cuando le sirve. [Gemini CLI skills](https://geminicli.com/docs/cli/skills/).
+- **Cursor** — Pide aprender algo (p. ej. «Enséñame a hacer una app de tareas, pero no la escribas tú») o usa `/tutor` si lo tienes. [Cursor skills](https://cursor.com/docs/context/skills).
 - **Claude Code** — Ejecuta `/tutor` o cuéntale qué quieres aprender. [Claude Code skills](https://code.claude.com/docs/en/skills).
-- **OpenCode** — Describe qué quieres aprender; OpenCode carga las skills cuando hacen falta. [OpenCode Agent Skills](https://opencode.ai/docs/skills/).
 
-### Usar TuTor como agente
+### Opcional: TuTor como modo al que puedes cambiar
 
-Una skill se carga cuando el agente la necesita. Para tener TuTor como **agente seleccionable**, como Build o Plan, añade un archivo que fija las herramientas del agente a solo lectura y apunta a la skill.
+Normalmente la skill se carga sola cuando le sirve. Si prefieres elegir TuTor desde un menú, como eliges Plan o Build en OpenCode, añade un archivo extra. También impide que la herramienta edite tus archivos: TuTor solo puede leer.
 
-| Agente | Archivo | Se instala en | Uso |
-|--------|---------|---------------|-----|
-| [OpenCode](https://opencode.ai) | `agents/opencode/tutor.md` | `~/.config/opencode/agents/` | `Tab` para cambiar a **tutor** |
-| [Claude Code](https://code.claude.com) | `agents/claude/tutor.md` | `~/.claude/agents/` | `claude --agent tutor`, o `@tutor` en una sesión |
+| Herramienta | Archivo | Dónde ponerlo | Cómo cambiar |
+|-------------|---------|---------------|--------------|
+| [OpenCode](https://opencode.ai) | `agents/opencode/tutor.md` | `~/.config/opencode/agents/` | pulsa `Tab` y elige **tutor** |
+| [Claude Code](https://code.claude.com) | `agents/claude/tutor.md` | `~/.claude/agents/` | `claude --agent tutor`, o `@tutor` en un chat |
+| [GitHub Copilot](https://code.visualstudio.com/docs/agent-customization/custom-agents) (VS Code) | `agents/claude/tutor.md` | `~/.claude/agents/` | elige **tutor** en el menú de agentes |
 
 ```bash
 SKILL_DIR=~/.claude/skills/tutor   # donde esté instalada la skill tutor
@@ -86,21 +93,25 @@ ln -sf "$SKILL_DIR/agents/opencode/tutor.md" ~/.config/opencode/agents/tutor.md
 ln -sf "$SKILL_DIR/agents/claude/tutor.md"   ~/.claude/agents/tutor.md
 ```
 
-En macOS y Linux son enlaces simbólicos, así que `git pull` (o `npx skills update`) también actualiza los agentes. En Windows, Git Bash puede copiar el archivo en lugar de enlazarlo, así que repite los comandos tras actualizar.
+En macOS y Linux son atajos (enlaces simbólicos), así que actualizar TuTor (`npx skills update`) también actualiza el modo. En Windows, Git Bash puede copiar el archivo en lugar de enlazarlo, así que repite los comandos tras actualizar.
 
-Ambos archivos le dicen al agente que siga la skill `tutor`, así que instala la skill primero. Una skill solo puede pedirle al agente que no escriba; un agente hace que la herramienta bloquee `Write` y `Edit`.
+VS Code Copilot también lee la carpeta de Claude, así que un archivo sirve para Copilot y Claude Code.
 
-Los agentes no están estandarizados entre herramientas, así que cada archivo lleva su propio frontmatter. Cursor eliminó los modos personalizados en 2.1, así que allí la skill es la única opción.
+Instala la skill primero. Los dos archivos le dicen a la herramienta que la siga. Una skill solo puede pedirle que no edite tus archivos; estos archivos hacen que la herramienta se niegue.
+
+Cada herramienta espera su propio formato, por eso hay un archivo por herramienta. Cursor eliminó sus modos personalizados en 2.1, así que allí usas solo la skill.
 
 ### Instalación manual (git clone)
 
-Si no quieres usar la CLI, clona el repo en la carpeta de la skill. Las rutas cambian según el agente:
+Si prefieres no usar el instalador, clona este proyecto en la carpeta que lee tu herramienta. La carpeta depende de la herramienta:
 
-| Agente | Global | Este proyecto |
-|--------|--------|---------------|
+| Herramienta | Para todos tus proyectos | Solo este proyecto |
+|-------------|-------------------------|--------------------|
 | [Cursor](https://cursor.com) | `~/.cursor/skills/tutor` | `.cursor/skills/tutor` o `.agents/skills/tutor` |
 | [Claude Code](https://code.claude.com) | `~/.claude/skills/tutor` | `.claude/skills/tutor` |
 | [OpenCode](https://opencode.ai) | `~/.config/opencode/skills/tutor` | `.opencode/skills/tutor` |
+| [GitHub Copilot](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills) | `~/.copilot/skills/tutor` | `.github/skills/tutor` |
+| [Gemini CLI](https://geminicli.com/docs/cli/skills/) | `~/.gemini/skills/tutor` | `.gemini/skills/tutor` |
 
 ```bash
 REPO=https://github.com/kevinnio/tutor.git
@@ -110,7 +121,7 @@ mkdir -p "$(dirname "$TARGET")"
 git clone "$REPO" "$TARGET"
 ```
 
-No instales en `~/.cursor/skills-cursor/` (Cursor lo reserva). Si `TARGET` ya existe, bórralo o ve a [Actualizar](#actualizar).
+No instales dentro de `~/.cursor/skills-cursor/`. Cursor guarda ahí sus propias skills. Si `TARGET` ya existe, bórralo o ve a [Actualizar](#actualizar).
 
 ### Enlace simbólico (desarrollo local)
 
@@ -125,11 +136,11 @@ ln -sf "$SKILL_ROOT/references" "$TARGET/references"
 
 ### Instalar TuTor con TuTor
 
-Como ejercicio, deja que TuTor te guíe para instalarlo: tú ejecutas cada comando y el agente te orienta y revisa. Así ves cómo quedan las skills en disco y, cuando termine, ya puedes usarlo en tareas reales.
+Como ejercicio, deja que TuTor te guíe para instalarlo: tú ejecutas cada comando y la herramienta te orienta y revisa. Así ves cómo quedan las skills en disco y, cuando termine, ya puedes usarlo en tareas reales.
 
-Pega esto en un agente que pueda leer URLs (mejor en un chat nuevo):
+Pega esto en una herramienta de IA que pueda abrir enlaces (mejor en un chat nuevo):
 
-**Nota de confianza:** este prompt le pide a tu agente obtener instrucciones de internet (`raw.githubusercontent.com`), fijadas a la etiqueta de versión `v0.6` (inmutable). Solo hazlo si confías en la fuente: una skill que instalas puede influir en lo que tu agente haga en futuras sesiones. Si prefieres no descargar instrucciones remotas, sigue los pasos de instalación manual de arriba.
+**Nota de confianza:** este prompt le pide a tu herramienta de IA obtener instrucciones de internet (`raw.githubusercontent.com`), fijadas a la etiqueta de versión `v0.6` (inmutable). Solo hazlo si confías en la fuente: una skill que instalas puede influir en lo que tu herramienta de IA haga en futuras sesiones. Si prefieres no descargar instrucciones remotas, sigue los pasos de instalación manual de arriba.
 
 ```text
 TuTor, instálate conmigo: yo ejecuto cada comando y tú actúas como tutor.
@@ -141,7 +152,7 @@ Lee y aplica durante toda la sesión:
 Reglas de TuTor: un paso a la vez, desglosa los comandos, verifica cuando diga "listo".
 No instales por mí (no escribas archivos, no hagas git clone ni npx)—si pido "hazlo tú", rechaza.
 
-Primero pregúntame qué agente uso (Cursor, Claude Code, OpenCode, Codex, Windsurf, etc.)
+Primero pregúntame qué herramienta de IA uso (OpenCode, GitHub Copilot, Gemini CLI, Cursor, Claude Code, etc.)
 y si quiero instalación global o solo en este proyecto. Usa la ruta de skills correcta.
 
 Objetivo: tener la skill `tutor` en mi máquina.
@@ -194,14 +205,14 @@ Compárala con `metadata.version` en [SKILL.md](SKILL.md) en GitHub.
 
 ### Después de actualizar
 
-1. **Abre una sesión nueva** del agente.
+1. **Vuelve a abrir tu herramienta de IA** (o abre un chat nuevo) para que recargue la skill.
 2. **Confirma la versión** con el `grep` de arriba.
 3. Si no notas cambios, ejecuta `npx skills list` y actualiza en cada sitio (global y proyecto) donde aparezca `tutor`.
 
 ## Cómo usarlo
 
-1. **Instala** la skill (arriba) y abre tu proyecto en el agente.
-2. **Di qué quieres aprender** y que te guíe, no que lo haga por ti.
+1. **Instala** la skill (arriba) y abre tu proyecto en la herramienta.
+2. **Di qué quieres aprender** y que te acompañe, no que lo haga por ti.
 
 Ejemplos de mensajes:
 
@@ -215,17 +226,17 @@ Help me fix this failing test, but only give hints and commands—I run everythi
 
 3. **Sigue cada paso** que te indique y avisa cuando termines (p. ej. «listo», «done»).
 4. El tutor **revisa** antes de seguir. Si algo falla, te dice qué falta; no pasa al siguiente paso.
-5. Si el agente intenta hacerlo por ti, recuérdale: *«Sigue la skill tutor: solo verifica, yo ejecuto los comandos.»*
+5. Si la herramienta intenta hacerlo por ti, recuérdale: *«Sigue la skill tutor: solo verifica, yo ejecuto los comandos.»*
 
 ## Estructura del repositorio
 
 ```text
 tutor/
-├── SKILL.md              # Skill principal (obligatorio)
-├── references/           # Material de apoyo para el agente
+├── SKILL.md              # La skill (obligatorio)
+├── references/           # Lecturas extra que la herramienta carga cuando le sirven
 │   ├── example-flow.md
 │   └── tool-gate.md
-├── agents/               # Agentes (tool gate de solo lectura)
+├── agents/               # Modos opcionales (solo lectura)
 │   ├── opencode/tutor.md
 │   └── claude/tutor.md
 ├── README.md
@@ -235,7 +246,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-La versión va en el frontmatter de `SKILL.md` (`metadata.version`, hoy **0.6**). Cada release se etiqueta como `v<versión>` (p. ej. `v0.6`); fija la instalación a una etiqueta para que sea reproducible.
+La versión va en `SKILL.md`, en la línea `metadata.version` cerca del inicio (hoy **0.6**). Cada release se etiqueta como `v<versión>` (p. ej. `v0.6`); fija la instalación a una etiqueta para que sea reproducible.
 
 ## Contribuir
 

@@ -2,7 +2,7 @@
 
 **English** · [Español](README-es.md)
 
-An **agent skill** that turns your coding assistant into a learning tutor. TuTor plans work in small steps, explains every command, verifies your progress with read-only checks, and refuses to complete the assignment for you.
+An **agent skill** (a folder of instructions your AI tool loads when it's relevant) that turns it into a learning tutor. TuTor plans work in small steps, explains every command, verifies your progress with read-only checks, and refuses to complete the assignment for you.
 
 Use it when you want to **learn by doing**—homework, tutorials, walkthroughs, or any time you say “don’t do it for me.”
 
@@ -16,8 +16,8 @@ TuTor helps **teachers and students** use AI as a coach, not a cheat sheet. Toda
 | Behavior | Detail |
 |----------|--------|
 | **Step-by-step** | Outlines a numbered plan up front; gives **one** action per turn (no full solution). |
-| **Verification** | After you say you’re done, the agent checks with read-only tools (`Read`, `ls`, `cat`, `git status`, `git diff`, tests you ran). |
-| **Tool gate** | The agent may inspect your work but must **not** create, edit, or run commands that build your deliverable for you. |
+| **Verification** | After you say you’re done, the tool checks with read-only commands (`Read`, `ls`, `cat`, `git status`, `git diff`, tests you ran). |
+| **Tool gate** | The tool may inspect your work but must **not** create, edit, or run commands that build your deliverable for you. |
 | **Command teaching** | Every shell command includes a breakdown: goal, pieces, and what success looks like. |
 
 Optional deep dives live in [`references/`](references/):
@@ -29,11 +29,11 @@ Optional deep dives live in [`references/`](references/):
 
 **Repository:** [github.com/kevinnio/tutor](https://github.com/kevinnio/tutor)
 
-TuTor ships as `SKILL.md` plus `references/`. The frontmatter `name` must be `tutor`.
+TuTor is a folder with `SKILL.md` (the instructions) plus `references/` (extra reading). Keep the folder named `tutor`. Some tools refuse to load a skill if the folder name doesn't match the name inside `SKILL.md`.
 
 ### Install with Skills CLI (recommended)
 
-Use the [Skills CLI](https://github.com/vercel-labs/skills) ([skills.sh](https://skills.sh)) to install into your coding agents. It detects which tools you have and writes to the correct skill directories.
+The [Skills CLI](https://github.com/vercel-labs/skills) ([skills.sh](https://skills.sh)) is a small installer. It looks for the AI tools on your computer and puts the skill in the right folder for each, so you don't need to know the paths.
 
 **User-wide (all projects)** — recommended for your first install:
 
@@ -47,37 +47,44 @@ npx skills add kevinnio/tutor -g -y
 npx skills add kevinnio/tutor -y
 ```
 
-**Pick specific agents** (skip the interactive agent list):
+**Pick specific tools** (skip the menu):
 
 ```bash
-npx skills add kevinnio/tutor -g -a cursor -a claude-code -a opencode -y
+npx skills add kevinnio/tutor -g -a opencode -a github-copilot -a gemini-cli -y
 ```
 
 | Flag | Meaning |
 |------|---------|
 | `-g`, `--global` | User-wide install (`~/…/skills/`) |
 | (no `-g`) | Install into the current project only |
-| `-a`, `--agent` | Target agent(s), e.g. `cursor`, `claude-code`, `opencode`, `codex`, `windsurf` |
+| `-a`, `--agent` | Which tools to install for, e.g. `opencode`, `github-copilot`, `gemini-cli`, `cursor`, `claude-code`, `codex` |
 | `-y`, `--yes` | Non-interactive |
 
-Preview before installing: `npx skills add kevinnio/tutor --list`. Full agent list: [vercel-labs/skills](https://github.com/vercel-labs/skills#supported-agents).
+Preview before installing: `npx skills add kevinnio/tutor --list`. Every supported tool: [vercel-labs/skills](https://github.com/vercel-labs/skills#supported-agents).
 
-After installing, start a **new agent session**.
+After installing, start a **new chat** (or reopen the tool) so it notices the skill.
 
-### Per-agent usage
+### Which tool to start with
 
-- **Cursor** — Ask to learn something (e.g. “Teach me to build a todo CLI—don’t write it for me”) or use `/tutor` if available. [Cursor Agent Skills](https://cursor.com/docs/context/skills).
-- **Claude Code** — Run `/tutor` or describe a learning goal. [Claude Code skills](https://code.claude.com/docs/en/skills).
-- **OpenCode** — Describe a learning goal; OpenCode loads skills on demand. [OpenCode Agent Skills](https://opencode.ai/docs/skills/).
+Any of these works. If you're picking a first one, **OpenCode** is free and open source, and you can connect it to a free model, including one that runs on your own computer. **GitHub Copilot** and **Gemini CLI** are free for verified students ([Student Developer Pack](https://education.github.com/pack), [Google AI for students](https://gemini.google/students/)). Cursor and Claude Code need a paid plan unless your school provides one.
 
-### Run TuTor as an agent mode
+### How to use TuTor in each tool
 
-A skill loads when the agent needs it. To make TuTor **selectable**, like Build or Plan, add a wrapper that pins the agent's tools to read-only and points it at the skill.
+- **OpenCode** — Describe what you want to learn; OpenCode loads the skill when it's relevant. [OpenCode skills](https://opencode.ai/docs/skills/).
+- **GitHub Copilot** — In VS Code, type `/tutor` in the chat, or describe what you want to learn. [Copilot skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills).
+- **Gemini CLI** — Describe what you want to learn; Gemini CLI loads the skill when it's relevant. [Gemini CLI skills](https://geminicli.com/docs/cli/skills/).
+- **Cursor** — Ask to learn something (e.g. “Teach me to build a todo app—don’t write it for me”) or use `/tutor` if available. [Cursor skills](https://cursor.com/docs/context/skills).
+- **Claude Code** — Run `/tutor` or describe what you want to learn. [Claude Code skills](https://code.claude.com/docs/en/skills).
 
-| Agent | Wrapper | Install to | Use |
-|-------|---------|-----------|-----|
-| [OpenCode](https://opencode.ai) | `agents/opencode/tutor.md` | `~/.config/opencode/agents/` | `Tab` to switch to **tutor** |
-| [Claude Code](https://code.claude.com) | `agents/claude/tutor.md` | `~/.claude/agents/` | `claude --agent tutor`, or `@tutor` in a session |
+### Optional: make TuTor a mode you can switch to
+
+Normally the skill loads on its own when it's relevant. If you'd rather pick TuTor from a menu, the way you pick Plan or Build in OpenCode, add one small extra file. It also stops the tool from editing your files, so TuTor can only read.
+
+| Tool | File | Put it in | How to switch |
+|------|------|-----------|---------------|
+| [OpenCode](https://opencode.ai) | `agents/opencode/tutor.md` | `~/.config/opencode/agents/` | press `Tab` to switch to **tutor** |
+| [Claude Code](https://code.claude.com) | `agents/claude/tutor.md` | `~/.claude/agents/` | `claude --agent tutor`, or `@tutor` in a chat |
+| [GitHub Copilot](https://code.visualstudio.com/docs/agent-customization/custom-agents) (VS Code) | `agents/claude/tutor.md` | `~/.claude/agents/` | pick **tutor** in the agents menu |
 
 ```bash
 SKILL_DIR=~/.claude/skills/tutor   # wherever the tutor skill is installed
@@ -87,21 +94,25 @@ ln -sf "$SKILL_DIR/agents/opencode/tutor.md" ~/.config/opencode/agents/tutor.md
 ln -sf "$SKILL_DIR/agents/claude/tutor.md"   ~/.claude/agents/tutor.md
 ```
 
-On macOS and Linux those are symlinks, so `git pull` (or `npx skills update`) refreshes the wrappers too. Windows Git Bash may copy instead of linking, so re-run the commands after an upgrade.
+VS Code Copilot reads the Claude folder too, so one file covers Copilot and Claude Code.
 
-Both wrappers tell the agent to follow the `tutor` skill, so install the skill first. A skill can only ask the agent not to write; a wrapper makes the harness deny `Write` and `Edit`.
+On macOS and Linux these are shortcuts, so updating TuTor (`npx skills update`) updates the mode as well. On Windows, Git Bash may copy the file instead, so run the commands again after updating.
 
-Agents aren't standardized across harnesses, so each wrapper carries its own frontmatter. Cursor removed custom modes in 2.1, so there the skill is the only option.
+Install the skill first. Both files tell the tool to follow it. A skill can only ask the tool not to edit your files; these files make the tool refuse.
+
+Each tool expects its own format, which is why there is one file per tool. Cursor removed its custom modes in 2.1, so there you use the skill only.
 
 ### Manual install (git clone)
 
-If you prefer not to use the CLI, clone the repo into a skill folder. Paths vary by agent; common examples:
+If you'd rather not use the installer, clone this project into the folder your tool reads. The folder depends on the tool:
 
-| Agent | User-wide | This project |
-|-------|-----------|--------------|
+| Tool | For all your projects | Only this project |
+|------|----------------------|-------------------|
 | [Cursor](https://cursor.com) | `~/.cursor/skills/tutor` | `.cursor/skills/tutor` or `.agents/skills/tutor` |
 | [Claude Code](https://code.claude.com) | `~/.claude/skills/tutor` | `.claude/skills/tutor` |
 | [OpenCode](https://opencode.ai) | `~/.config/opencode/skills/tutor` | `.opencode/skills/tutor` |
+| [GitHub Copilot](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills) | `~/.copilot/skills/tutor` | `.github/skills/tutor` |
+| [Gemini CLI](https://geminicli.com/docs/cli/skills/) | `~/.gemini/skills/tutor` | `.gemini/skills/tutor` |
 
 ```bash
 REPO=https://github.com/kevinnio/tutor.git
@@ -111,7 +122,7 @@ mkdir -p "$(dirname "$TARGET")"
 git clone "$REPO" "$TARGET"
 ```
 
-Do not install under `~/.cursor/skills-cursor/` (reserved by Cursor). If `TARGET` already exists, remove it or use [Upgrade](#upgrade) instead of cloning again.
+Don't install inside `~/.cursor/skills-cursor/`. Cursor keeps its own skills there. If `TARGET` already exists, remove it or use [Upgrade](#upgrade) instead of cloning again.
 
 ### Symlink for local development
 
@@ -128,9 +139,9 @@ ln -sf "$SKILL_ROOT/references" "$TARGET/references"
 
 As a fun exercise, have TuTor install itself with you—you run every command; it coaches and checks your work. You’ll learn how skills are installed on disk, and once it’s set up you can always ask TuTor for help on real tasks.
 
-Paste this into a coding agent that can read URLs (new chat).
+Paste this into an AI tool that can open links (start a new chat).
 
-**Trust note:** this prompt asks your agent to fetch instructions from the internet (`raw.githubusercontent.com`), pinned to release tag `v0.6` (immutable). Only run it from a source you trust — a skill you install can influence what your agent does in future sessions. Prefer the manual install steps above if you don't want remote instructions fetched.
+**Trust note:** this prompt asks your AI tool to fetch instructions from the internet (`raw.githubusercontent.com`), pinned to release tag `v0.6` (immutable). Only run it from a source you trust — a skill you install can influence what your AI tool does in future sessions. Prefer the manual install steps above if you don't want remote instructions fetched.
 
 ```text
 TuTor, install yourself with me—I run every command; you tutor.
@@ -143,13 +154,13 @@ Read and follow for this entire session:
 Follow TuTor’s rules: one step at a time, command breakdowns, verify after I say "done".
 Never install for me (no writing skill files, no git clone, no npx on my behalf)—refuse "just do it."
 
-First, ask me which coding agent I use (e.g. Cursor, Claude Code, OpenCode, Codex, Windsurf)
-and whether I want a user-wide install or project-local. Use the correct skills path for that agent.
+First, ask me which AI tool I use (e.g. OpenCode, GitHub Copilot, Gemini CLI, Cursor, Claude Code)
+and whether I want a user-wide install or project-local. Use the correct skills path for that tool.
 
 Goal: `tutor` skill installed on my machine.
 Teach `npx skills add kevinnio/tutor -g -y` unless I want manual git clone.
 
-After I answer, give a short numbered plan for my agent and scope, then Step 1 and stop.
+After I answer, give a short numbered plan for my tool and scope, then Step 1 and stop.
 ```
 
 ## Upgrade
@@ -196,14 +207,14 @@ Compare with `metadata.version` in [SKILL.md](SKILL.md) on GitHub.
 
 ### After upgrading
 
-1. **Restart or start a new agent session** so the agent reloads the skill.
+1. **Reopen your AI tool** (or start a new chat) so it reloads the skill.
 2. **Confirm the version** with the `grep` command above.
 3. If behavior is unchanged, run `npx skills list` and update every scope (user-wide vs project) where `tutor` is installed.
 
 ## How to use
 
-1. **Install** the skill (see above) and open your project in the agent.
-2. **Say what you want to learn**, and that the agent should tutor—not implement—for you.
+1. **Install** the skill (see above) and open your project in the tool.
+2. **Say what you want to learn**, and that the tool should tutor you, not do the work for you.
 
 Example prompts:
 
@@ -217,17 +228,17 @@ Help me fix this failing test, but only give hints and commands—I run everythi
 
 3. **Do each step** the tutor assigns, then reply when done (e.g. “done”, “listo”).
 4. The tutor **verifies** before moving on. If something is wrong, it tells you what’s missing—no skipping ahead.
-5. If the agent tries to do your work, remind it: *“Follow the tutor skill—verify only, I run the commands.”*
+5. If the tool tries to do your work, remind it: *“Follow the tutor skill—verify only, I run the commands.”*
 
 ## Repository layout
 
 ```text
 tutor/
-├── SKILL.md              # Main skill (required)
-├── references/           # Optional deep reference for the agent
+├── SKILL.md              # The skill itself (required)
+├── references/           # Extra reading the tool loads on demand
 │   ├── example-flow.md
 │   └── tool-gate.md
-├── agents/               # Agent-mode wrappers (read-only tool gate)
+├── agents/               # Optional modes (read-only)
 │   ├── opencode/tutor.md
 │   └── claude/tutor.md
 ├── README.md
@@ -237,7 +248,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-Version is declared in `SKILL.md` frontmatter (`metadata.version`, currently **0.6**). Releases are tagged `v<version>` (e.g. `v0.6`); pin to a tag for a reproducible install.
+The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.6**). Releases are tagged `v<version>` (e.g. `v0.6`); pin to a tag for a reproducible install.
 
 ## Contribute
 

@@ -32,6 +32,16 @@ Instructions for AI coding agents working **on this repo** (not for end users le
 4. **No secrets** — never commit `.env`, tokens, or personal machine paths as examples.
 5. **Do not commit** `playground/`, `.cursor/`, `.opencode/`, `.agents/` (see `.gitignore`).
 
+## Write the READMEs for beginners
+
+The READMEs are read by students who may never have used an AI coding tool, an agent mode, or a skill. Assume none of that vocabulary:
+
+- Explain a term the first time it appears, in plain words. A *skill* is a folder of instructions the tool loads when it's relevant.
+- Say *AI tool* or the tool's name instead of *harness*; *mode* instead of *subagent*; *the folder it reads* instead of *frontmatter* where the exact key doesn't matter.
+- Keep commands, paths, flags, filenames, and product names literal — never translate or soften them.
+- Keep the technical version when it is the point of the step (a flag name, a file to edit), and add one sentence saying what it is for.
+- Sections that only make sense to people already in the ecosystem belong under an "advanced" or "local development" heading, not in the install path.
+
 ## Keep README and README-es in sync
 
 When you change something that affects how people **install, upgrade, use, or contribute** to TuTor, update **both** `README.md` and `README-es.md` in the same change.
