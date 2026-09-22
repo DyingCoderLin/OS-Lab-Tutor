@@ -10,6 +10,7 @@ Instructions for AI coding agents working **on this repo** (not for end users le
 |----------------|---------|
 | `SKILL.md` | **Source of truth** for tutor behavior. YAML frontmatter (`name`, `description`, `metadata.version`) must stay valid for Cursor, Claude Code, OpenCode, and `.agents/skills`. |
 | `references/` | Long examples and rules loaded on demand (e.g. `example-flow.md`, `tool-gate.md`). Keep `SKILL.md` lean; add detail here. |
+| `agents/` | Agent-mode wrappers (`opencode/tutor.md`, `claude/tutor.md`). Frontmatter pins the harness tools to read-only and points the agent at the skill. A new harness means one more file, no generator; keep the wrapper bodies identical. |
 | `README.md` | User-facing docs (English): install, upgrade, usage, contribute. |
 | `README-es.md` | Same content as `README.md` in Spanish. Must stay aligned with the English README. |
 | `AGENTS.md` | This file — repo conventions for agents. |

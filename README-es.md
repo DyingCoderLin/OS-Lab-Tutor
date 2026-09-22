@@ -69,6 +69,29 @@ Al terminar, abre una **sesión nueva** del agente.
 - **Claude Code** — Ejecuta `/tutor` o cuéntale qué quieres aprender. [Claude Code skills](https://code.claude.com/docs/en/skills).
 - **OpenCode** — Describe qué quieres aprender; OpenCode carga las skills cuando hacen falta. [OpenCode Agent Skills](https://opencode.ai/docs/skills/).
 
+### Usar TuTor como agente
+
+Una skill se carga cuando el agente la necesita. Para tener TuTor como **agente seleccionable**, como Build o Plan, añade un archivo que fija las herramientas del agente a solo lectura y apunta a la skill.
+
+| Agente | Archivo | Se instala en | Uso |
+|--------|---------|---------------|-----|
+| [OpenCode](https://opencode.ai) | `agents/opencode/tutor.md` | `~/.config/opencode/agents/` | `Tab` para cambiar a **tutor** |
+| [Claude Code](https://code.claude.com) | `agents/claude/tutor.md` | `~/.claude/agents/` | `claude --agent tutor`, o `@tutor` en una sesión |
+
+```bash
+SKILL_DIR=~/.claude/skills/tutor   # donde esté instalada la skill tutor
+
+mkdir -p ~/.config/opencode/agents ~/.claude/agents
+ln -sf "$SKILL_DIR/agents/opencode/tutor.md" ~/.config/opencode/agents/tutor.md
+ln -sf "$SKILL_DIR/agents/claude/tutor.md"   ~/.claude/agents/tutor.md
+```
+
+En macOS y Linux son enlaces simbólicos, así que `git pull` (o `npx skills update`) también actualiza los agentes. En Windows, Git Bash puede copiar el archivo en lugar de enlazarlo, así que repite los comandos tras actualizar.
+
+Ambos archivos le dicen al agente que siga la skill `tutor`, así que instala la skill primero. Una skill solo puede pedirle al agente que no escriba; un agente hace que la herramienta bloquee `Write` y `Edit`.
+
+Los agentes no están estandarizados entre herramientas, así que cada archivo lleva su propio frontmatter. Cursor eliminó los modos personalizados en 2.1, así que allí la skill es la única opción.
+
 ### Instalación manual (git clone)
 
 Si no quieres usar la CLI, clona el repo en la carpeta de la skill. Las rutas cambian según el agente:
@@ -202,6 +225,9 @@ tutor/
 ├── references/           # Material de apoyo para el agente
 │   ├── example-flow.md
 │   └── tool-gate.md
+├── agents/               # Agentes (tool gate de solo lectura)
+│   ├── opencode/tutor.md
+│   └── claude/tutor.md
 ├── README.md
 ├── README-es.md
 ├── AGENTS.md             # Guía para agentes que editan este repo

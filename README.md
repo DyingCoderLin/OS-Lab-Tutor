@@ -70,6 +70,29 @@ After installing, start a **new agent session**.
 - **Claude Code** — Run `/tutor` or describe a learning goal. [Claude Code skills](https://code.claude.com/docs/en/skills).
 - **OpenCode** — Describe a learning goal; OpenCode loads skills on demand. [OpenCode Agent Skills](https://opencode.ai/docs/skills/).
 
+### Run TuTor as an agent mode
+
+A skill loads when the agent needs it. To make TuTor **selectable**, like Build or Plan, add a wrapper that pins the agent's tools to read-only and points it at the skill.
+
+| Agent | Wrapper | Install to | Use |
+|-------|---------|-----------|-----|
+| [OpenCode](https://opencode.ai) | `agents/opencode/tutor.md` | `~/.config/opencode/agents/` | `Tab` to switch to **tutor** |
+| [Claude Code](https://code.claude.com) | `agents/claude/tutor.md` | `~/.claude/agents/` | `claude --agent tutor`, or `@tutor` in a session |
+
+```bash
+SKILL_DIR=~/.claude/skills/tutor   # wherever the tutor skill is installed
+
+mkdir -p ~/.config/opencode/agents ~/.claude/agents
+ln -sf "$SKILL_DIR/agents/opencode/tutor.md" ~/.config/opencode/agents/tutor.md
+ln -sf "$SKILL_DIR/agents/claude/tutor.md"   ~/.claude/agents/tutor.md
+```
+
+On macOS and Linux those are symlinks, so `git pull` (or `npx skills update`) refreshes the wrappers too. Windows Git Bash may copy instead of linking, so re-run the commands after an upgrade.
+
+Both wrappers tell the agent to follow the `tutor` skill, so install the skill first. A skill can only ask the agent not to write; a wrapper makes the harness deny `Write` and `Edit`.
+
+Agents aren't standardized across harnesses, so each wrapper carries its own frontmatter. Cursor removed custom modes in 2.1, so there the skill is the only option.
+
 ### Manual install (git clone)
 
 If you prefer not to use the CLI, clone the repo into a skill folder. Paths vary by agent; common examples:
@@ -204,6 +227,9 @@ tutor/
 ├── references/           # Optional deep reference for the agent
 │   ├── example-flow.md
 │   └── tool-gate.md
+├── agents/               # Agent-mode wrappers (read-only tool gate)
+│   ├── opencode/tutor.md
+│   └── claude/tutor.md
 ├── README.md
 ├── README-es.md
 ├── AGENTS.md             # Instructions for agents editing this repo
