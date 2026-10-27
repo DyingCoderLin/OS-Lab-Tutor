@@ -2,7 +2,7 @@
 
 [English](README.md) · **Español**
 
-**Skill** para agentes de código que convierte tu asistente en un tutor. Una *skill* es una carpeta de instrucciones que tu herramienta de IA lee cuando le sirven. Planifica en pasos cortos, explica cada comando, te ayuda a investigar tu propio trabajo y no termina la tarea por ti.
+**Skill** para agentes de código que convierte tu asistente en un tutor. Una *skill* es una carpeta de instrucciones que tu herramienta de IA lee cuando le sirven. Da un plan breve, indica la tarea actual de la guía y espera. Explica conceptos o depuración cuando lo pides, sin completar el trabajo por ti.
 
 Úsalo cuando quieras **aprender haciendo**—tareas, tutoriales, guías paso a paso o cuando digas «no lo hagas por mí».
 
@@ -14,13 +14,13 @@ TuTor ayuda a **docentes y estudiantes** a usar la IA como tutor, no como atajo.
 
 | Comportamiento | Detalle |
 |----------------|---------|
-| **Paso a paso** | Responde preguntas conceptuales directamente; propone **una** tarea de observación por turno, con secuencias breves de GDB explicadas cuando ayudan. |
+| **Ritmo original** | Plan breve con títulos, tarea oficial actual y destino en informe/código, y esperar. La pregunta 1 va antes del TODO 1. Explicaciones a petición, sin cuestionarios ni lecciones previas añadidas. |
 | **Tu documento de informe** | Crea tú un documento dedicado y comunica su ruta al tutor. Elige cualquier formato legible y organización; no se exige plantilla, títulos ni estructura. El tutor lo lee, pero no lo escribe por ti. |
 | **Etapas y destinos de Lab1** | El tutor identifica la guía actual e indica un destino por tarea: un tema en tu informe o un TODO concreto. La explicación escrita requerida es otra tarea para el informe. Los números de preguntas identifican temas, no títulos obligatorios. |
 | **Al terminar un TODO de Lab1** | Sin veredicto inmediato: ejecutas una prueba específica existente y aplicable; si no existe, continúas. La evaluación global se reserva para integración. Otros laboratorios conservan su propia política. |
 | **Pistas sin respuestas** | Sin soluciones de TODO, líneas defectuosas, causas, valores correctos ni recetas de corrección, tampoco en prosa. |
 | **Comentarios del informe** | El tutor señala directamente errores escritos y explica los conceptos correctos; tú revisas tu informe. Esto no permite revelar soluciones del código. |
-| **Guía de GDB** | Si te atascas, recibes etapas/funciones, puntos de parada, registros/memoria y comandos explicados. Tú ejecutas, localizas y corriges; el tutor no revela el defecto ni la corrección del código. |
+| **Guía de GDB** | Cuando pides ayuda de depuración, recibes etapas/funciones pertinentes, puntos de parada, registros/memoria y comandos explicados. Tú ejecutas, localizas y corriges; el tutor no revela el defecto ni la corrección del código. |
 | **Control de herramientas** | La lectura apoya tu pregunta; el tutor revisa el trabajo entregado, pero no edita archivos ni ejecuta compilaciones, programas, pruebas o depuradores. |
 | **Comandos explicados** | Cada comando sugerido explica su objetivo, argumentos y el tipo de datos que aporta; sin resultados esperados que revelen la solución. |
 
@@ -42,7 +42,7 @@ mantienen la política de prueba específica o continuación sin revelar defecto
 
 ## Instalación
 
-Este fork se basa en [TuTor](https://github.com/kevinnio/tutor). Sus reglas **0.7-dev** aún no están publicadas; la instalación remota solo las incluye después de publicarlas. En Codex, selecciona la skill explícitamente o usa `$tutor`; la activación automática está deshabilitada. Otras herramientas pueden seleccionarla de otra manera.
+Este fork se basa en [TuTor](https://github.com/kevinnio/tutor). Sus reglas **0.7.1-dev** aún no están publicadas; la instalación remota solo las incluye después de publicarlas. En Codex, selecciona la skill explícitamente o usa `$tutor`; la activación automática está deshabilitada. Otras herramientas pueden seleccionarla de otra manera.
 
 **Repositorio:** [github.com/DyingCoderLin/OS-Lab-Tutor](https://github.com/DyingCoderLin/OS-Lab-Tutor)
 
@@ -168,7 +168,7 @@ Lee y aplica durante toda la sesión:
 - SKILL.md: https://raw.githubusercontent.com/DyingCoderLin/OS-Lab-Tutor/master/SKILL.md
 - README, sección Instalación: https://raw.githubusercontent.com/DyingCoderLin/OS-Lab-Tutor/master/README.md
 
-Reglas de TuTor: un paso a la vez, desglosa los comandos; aplica la política del laboratorio. En Lab1, pídeme crear/designar un documento de informe y comunicar su ruta, acepta mi organización libre, indica el destino en informe/código y, tras "listo", propone una prueba específica existente o seguir avanzando, sin veredicto inmediato. Nunca reveles correcciones.
+Reglas de TuTor: plan breve, tarea actual de la guía y esperar; explica cuando lo pida, sin cuestionarios añadidos. Desglosa los comandos y aplica la política del laboratorio. En Lab1, pídeme crear/designar un documento de informe y comunicar su ruta, acepta mi organización libre, indica el destino en informe/código y, tras "listo", propone una prueba específica existente o seguir avanzando, sin veredicto inmediato. Nunca reveles correcciones.
 No instales por mí (no escribas archivos, no hagas git clone ni npx)—si pido "hazlo tú", rechaza.
 
 Primero pregúntame qué herramienta de IA uso (OpenCode, GitHub Copilot, Gemini CLI, Cursor, Claude Code, etc.)
@@ -202,7 +202,7 @@ Si es **submódulo**: `git submodule update --remote ruta/al/tutor`
 
 ### Fijar a una etiqueta de versión (instalación reproducible)
 
-Las reglas `0.7-dev` de este fork aún no tienen etiqueta de versión. La versión anterior `v0.6` no incluye estos cambios. Después de publicar una versión, usa su etiqueta real en `git clone --branch <release-tag>` y consulta la revisión con `git describe --tags --always`. No supongas que una versión de desarrollo tiene una etiqueta publicada.
+Las reglas `0.7.1-dev` de este fork aún no tienen etiqueta de versión. La versión anterior `v0.6` no incluye estos cambios. Después de publicar una versión, usa su etiqueta real en `git clone --branch <release-tag>` y consulta la revisión con `git describe --tags --always`. No supongas que una versión de desarrollo tiene una etiqueta publicada.
 
 ### Revisar la versión instalada
 
@@ -234,7 +234,7 @@ Enséñame a crear un API REST con Express. No hagas el código por mí.
 Help me investigate this failing test with GDB. Suggest useful stages, breakpoints, and registers with explained commands; do not reveal the faulty code or fix.
 ```
 
-3. **Sigue cada paso** que te indique y avisa cuando termines (p. ej. «listo», «done»).
+3. **Intenta tú la tarea actual de la guía.** Pide ayuda cuando la necesites y avisa al terminar. El tutor no añade preguntas previas para permitirte comenzar un TODO.
 4. **En Lab1, designa tu informe:** crea tú un documento dedicado (o usa uno que ya creaste) y comunica su ruta al tutor. Escribe como quieras, siempre que el tutor lo entienda. Las respuestas teóricas van allí; las tareas de código van en su TODO; la explicación requerida es otra tarea para el informe. El tutor puede señalar errores del informe y explicar conceptos inmediatamente, pero no identificar un defecto del código ni cómo corregirlo. Tras cada TODO, ejecuta una prueba específica real si está disponible; si no, continúa sin veredicto del tutor. La versión original de cinco TODO solo tiene `make grade` global. Otros laboratorios pueden conservar revisión del código.
 5. Si adelanta un veredicto o corrección en Lab1, recuérdale: *«Indica dónde registrar el resultado de esta etapa. Dame una prueba específica existente o déjame continuar si no existe. Yo investigaré los fallos observados con GDB.»*
 
@@ -259,7 +259,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-La versión va en `SKILL.md`, en la línea `metadata.version` cerca del inicio (hoy **0.7-dev**). Es una versión de desarrollo sin publicar; las etiquetas se crean por separado cuando se solicita publicar.
+La versión va en `SKILL.md`, en la línea `metadata.version` cerca del inicio (hoy **0.7.1-dev**). Es una versión de desarrollo sin publicar; las etiquetas se crean por separado cuando se solicita publicar.
 
 ## Contribuir
 

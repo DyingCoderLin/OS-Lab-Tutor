@@ -24,6 +24,15 @@ Instructions for AI coding agents working **on this repo** (not for end users le
 
 **Tool-gate declaration:** `SKILL.md` frontmatter uses only Agent Skills standard fields — the body defines the inspection-only boundary; `allowed-tools` (experimental in the spec) pre-approves read-only inspection tools; reviewing submitted TODOs is allowed, but revealing repairs is not. There is no standard field to *deny* tools, so the tool gate is prose-enforced via `SKILL.md` + `references/tool-gate.md` (the agent must refuse forbidden commands). Do not add platform-specific frontmatter keys (`disallowed-tools`, `context`, `agent`, etc.) — keep the skill cross-platform.
 
+## Preserve the upstream interaction rhythm
+
+Keep the entrypoint close to the upstream plan → current assignment → wait
+workflow. Lab1 tasks follow the handout, starting with thinking question 1 before
+exercise 2 / TODO 1 when not already completed. Brief task wording/source pointers
+are allowed; do not substitute model-created comprehension questions, mini-lessons,
+or prediction exercises for the assigned work. Concepts/GDB help are on demand.
+Keep this rule consistent in examples, wrappers, and both READMEs.
+
 ## Lab-specific completion policies
 
 Keep `SKILL.md`, references, optional agent wrappers, and both READMEs consistent.
@@ -108,7 +117,7 @@ Do not create commits unless the user explicitly requests them.
 ## Testing changes
 
 - Install the skill from this repo into one target path (e.g. `~/.cursor/skills/tutor` via clone or symlink).
-- Run a short “teach me X, don’t do it for me” session and confirm Lab1 stage/report/TODO destinations, focused-check-or-continue routing without immediate verdicts, conceptual hints without repairs, and student-run GDB guidance.
+- Run a short “teach me X, don’t do it for me” session and confirm the short plan/current-assignment/wait rhythm, thinking question 1 before TODO 1, no added comprehension gates, report/TODO feedback boundaries, and student-requested GDB guidance.
 - For doc-only changes, skim both READMEs for broken links and mismatched version numbers.
 - CI (`.github/workflows/security.yml`) runs on every PR: gitleaks gates on leaked secrets; SkillSpector uploads static findings to the Security tab as advisory. Treat a new HIGH/CRITICAL finding as a blocker even though the job stays green.
 

@@ -2,7 +2,7 @@
 
 **English** · [Español](README-es.md)
 
-An **agent skill** (a folder of instructions your AI tool loads when it's relevant) that turns it into a learning tutor. TuTor plans work in small steps, explains every command, helps you investigate your own work, and refuses to complete the assignment for you.
+An **agent skill** (a folder of instructions your AI tool loads when it's relevant) that turns it into a learning tutor. TuTor gives a brief plan, assigns the current handout task, and waits. It explains concepts or debugging when you ask, without completing the assignment for you.
 
 Use it when you want to **learn by doing**—homework, tutorials, walkthroughs, or any time you say “don’t do it for me.”
 
@@ -15,13 +15,13 @@ TuTor helps **teachers and students** use AI as a coach, not a cheat sheet. Toda
 
 | Behavior | Detail |
 |----------|--------|
-| **Step-by-step** | Answers conceptual questions directly; offers **one** manageable observation task at a time, including short explained GDB sequences when helpful. |
+| **Original tutor rhythm** | Brief title-only plan, then the current official assignment and report/code destination, then wait. Thinking question 1 precedes TODO 1. Explanations are available on request; no added prerequisite quizzes or mini-lessons. |
 | **Your report document** | Create a dedicated report document yourself and tell the tutor its path. Choose any readable format and organization; no required template, headings, or layout. The tutor reads it but never writes it for you. |
 | **Lab1 stages and destinations** | The tutor recognizes the current Lab1 handout and gives each active task one destination: a topic in your report or a specific code TODO. Any required write-up is a separate report task. Question numbers are topic references, not required headings. |
 | **Lab1 completion** | After each TODO, no immediate correctness verdict: you run an existing applicable focused check; if none exists, continue. Whole-lab grading is reserved for integration. Other labs retain their own review policy. |
 | **Hints without answers** | No TODO implementations, defective lines, root causes, correct values, or repair recipes, including in prose. |
 | **Report feedback** | The tutor directly identifies errors in written answers and explains the correct concepts; you revise your own report. This does not permit code answers through report review. |
-| **GDB coaching** | If stuck, get specific stages/functions, breakpoint candidates, registers/memory, and explained commands to observe. You run, locate, and repair the problem; the tutor never names the code defect or fix. |
+| **GDB coaching** | When you ask for debugging help, get relevant stages/functions, breakpoint candidates, registers/memory, and explained commands. You run, locate, and repair the problem; the tutor never names the code defect or fix. |
 | **Tool gate** | Read-only inspection supports your question; the tutor reviews submitted work but never edits files or runs builds, programs, tests, or debuggers. |
 | **Command teaching** | Every suggested command explains its goal, arguments, and the kind of evidence it yields; no solution-bearing expected output. |
 
@@ -43,7 +43,7 @@ feedback; code TODOs keep the check-or-continue and no-defect-disclosure policy.
 
 ## Install
 
-This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
+This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7.1-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
 
 **Repository:** [github.com/DyingCoderLin/OS-Lab-Tutor](https://github.com/DyingCoderLin/OS-Lab-Tutor)
 
@@ -170,7 +170,7 @@ Read and follow for this entire session:
 - SKILL.md: https://raw.githubusercontent.com/DyingCoderLin/OS-Lab-Tutor/master/SKILL.md
 - README Install section: https://raw.githubusercontent.com/DyingCoderLin/OS-Lab-Tutor/master/README.md
 
-Follow TuTor’s rules: one step at a time, command breakdowns, and the active lab's completion policy. For Lab1, ask me to create/designate a report document and share its path, accept my free-form layout, name each report/code destination, and route "done" to a student-run focused check or the next stage, without an immediate correctness verdict. Never reveal repairs.
+Follow TuTor’s rules: brief plan, current handout task, then wait; explain when I ask, without extra quizzes. Use command breakdowns and the active lab's completion policy. For Lab1, ask me to create/designate a report document and share its path, accept my free-form layout, name each report/code destination, and route "done" to a student-run focused check or the next stage, without an immediate correctness verdict. Never reveal repairs.
 Never install for me (no writing skill files, no git clone, no npx on my behalf)—refuse "just do it."
 
 First, ask me which AI tool I use (e.g. OpenCode, GitHub Copilot, Gemini CLI, Cursor, Claude Code)
@@ -204,7 +204,7 @@ For a **git submodule**: `git submodule update --remote path/to/tutor`
 
 ### Pin to a release tag (reproducible install)
 
-This fork's `0.7-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
+This fork's `0.7.1-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
 
 ### Check your installed version
 
@@ -236,7 +236,7 @@ Enséñame a crear un API REST con Express. No hagas el código por mí.
 Help me investigate this failing test with GDB. Suggest useful stages, breakpoints, and registers with explained commands; do not reveal the faulty code or fix.
 ```
 
-3. **Do each step** the tutor assigns, then reply when done (e.g. “done”, “listo”).
+3. **Attempt the current handout task yourself.** Ask for help when needed, then reply when done. The tutor does not insert extra questions before you may start a TODO.
 4. **In Lab1, designate your report:** create a dedicated document yourself (or use one you already created), then tell the tutor its path. Write however you like, as long as the tutor can understand it. Thinking answers go there; coding tasks go in the named TODO; any required implementation explanation is a separate report task. The tutor can immediately point out report errors and explain concepts, but cannot directly identify a code defect or repair. After each TODO, run a genuine focused check if one is available now; otherwise continue without a tutor verdict. The original five-TODO version has only integrated `make grade`, not isolated TODO tests. Other lab workflows can still use source-review feedback.
 5. If the tutor jumps to a Lab1 verdict or fix, remind it: *“Tell me where this stage's result belongs. Give me an existing focused check to run, or let me continue if there is none. I will investigate observed failures with GDB.”*
 
@@ -261,7 +261,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
+The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7.1-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
 
 ## Contribute
 

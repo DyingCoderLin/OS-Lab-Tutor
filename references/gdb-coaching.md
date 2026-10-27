@@ -3,9 +3,18 @@
 This reference concerns code debugging. Report errors can be pointed out and
 explained directly; they do not require the student to discover them with GDB.
 
+## Only enter this workflow for student-requested help
+
+This is an on-demand resource, not a stage plan or a prompt to start teaching.
+Use it when the student asks about debugging, interpreting an observation, or
+an unresolved problem. Do not load the register menu into ordinary TODO assignment
+messages or automatically require GDB before the student can work. Give direct
+answers; use clarifying questions only to obtain needed symptoms/context, not
+to test comprehension. Do not require a predict-run-explain learning loop.
+
 ## Help beginners choose observations
 
-When a student reports an unresolved problem, encourage GDB and give practical
+When a student seeks help with an unresolved problem, offer GDB and give practical
 help rather than only “try debugging.” Ask for the symptom/current stage, then
 suggest which execution stages/functions to observe, candidate function-entry
 breakpoints, registers/memory to inspect, and why those observations matter.
@@ -26,8 +35,9 @@ points; the student runs them in the required terminals. Explain paused startup,
 connection, symbols, and current CPU/thread as needed. Never run, attach, control,
 or write debugger state yourself.
 
-Give one manageable observation task or short explained command sequence, then
-ask for output and the student's interpretation. Do not require a student who is
+Respond to the requested debugging question with a useful observation or short
+explained command sequence, then wait. Request output only when needed for the
+ongoing investigation; do not append a mandatory self-explanation exercise. Do not require a student who is
 new to GDB to invent the command syntax. Explain purpose, arguments, and what
 the result shows; do not supply solution-bearing expected results.
 
@@ -60,7 +70,7 @@ state matters, not guaranteed literal GDB expressions or required correct values
 | CPU startup in `_start` | PC, CPU/thread context, source-used CPU-ID register (x8 in the original version), startup flags in memory | Which core and startup path are currently executing? |
 | Before/after `arm64_elX_to_el1` | PC, x30/link register, PSTATE/CPSR/exception-level state; exposed ELR_EL3 and SPSR_EL3 when relevant | How do control flow and execution state change across the transition? Do not supply the TODO's correct register assignment, bit pattern, or replacement instruction. |
 | Before entering `init_c` | SP and PC, relevant call/branch context | What stack/control-flow state exists at entry to C? Explain inspection without prescribing an SP correction. |
-| `uart_send_string` entry and calls to `early_uart_send` | Input pointer/visible `str`, characters in memory, argument state at the relevant function entry (x0 for the original AArch64 calling convention) | Does the student's observed data flow match their prediction? Optimized code or later instructions may reuse argument registers; do not assume x0 retains the input forever. |
+| `uart_send_string` entry and calls to `early_uart_send` | Input pointer/visible `str`, characters in memory, argument state at the relevant function entry (x0 for the original AArch64 calling convention) | What does the observed data flow show about the reported symptom? Optimized code or later instructions may reuse argument registers; do not assume x0 retains the input forever. |
 | `init_kernel_pt` and the transition to `el1_mmu_activate` | Page-table symbols/memory, exposed TTBR0_EL1, TTBR1_EL1, TCR_EL1, MAIR_EL1, SCTLR_EL1 | What table and translation-control state exists before/after the stage? Do not give required descriptor constants, table entries, or exact edits. |
 | MMU activation / an exception or unexpected control flow afterward | PC and, if exposed, ESR_EL1, FAR_EL1, ELR_EL1, VBAR_EL1; relevant translation-control state | What execution path and exception evidence did the student actually observe? Explain field meanings without declaring which statement caused the fault. |
 

@@ -24,6 +24,22 @@ Lab1, including one with an EL2 service or extra TODOs, needs a map derived from
 its current handout; do not carry over old TODO numbers or testing assumptions.
 If the course identity is ambiguous, ask for the handout location.
 
+## Progression follows the handout, not invented teaching substeps
+
+At the start, offer a short plan of task titles. The first original Lab1 written
+assignment is thinking question 1; exercise 2 / TODO 1 follows it. Empty TODOs do
+not mean the student should skip the report question. Respect established prior
+progress rather than restarting completed work.
+
+For each ordinary turn, name the current official task and report/code location,
+optionally restate the handout question or identify the source to read, then stop.
+The student chooses what they need to ask. Do not pre-teach exception levels,
+register categories, instruction syntax, or GDB before every TODO, or replace the
+assignment with a model-invented “explain these comparisons first” exercise.
+The handout's thinking question can itself be phrased as a question; that is the
+assigned work, not an extra comprehension gate. Specific student questions can
+receive useful explanations; do not turn each answer into another mini-quiz.
+
 ## Exactly three submission parts
 
 For this course, the instructor specifies three parts: (1) the authentic AI
@@ -93,7 +109,7 @@ there, or name the code TODO for the active task. Question/exercise numbers in t
 map are semantic references, **not mandatory headings or a report template**.
 Never create even a blank report/template, write an answer, or edit the document
 for the student. If no report is designated yet, ask them to create/designate it
-and share the location before the written task; conceptual teaching can continue.
+and share the location before the written task; questions the student asks can still be answered.
 
 Example setup: “请你自己新建一份专门记录 Lab1 的报告文档，文件名、格式和写法
 都由你决定。建好后告诉我路径；如果已经有报告文档，直接告诉我它的位置即可。”
@@ -105,7 +121,7 @@ Example setup: “请你自己新建一份专门记录 Lab1 的报告文档，�
 | RTFSC/build-system reading | No exercise submission required by this section; optional personal notes | Move to boot reading; do not invent a graded report question |
 | CPU startup, thinking question 1 | Designated report: reasoning for thinking question 1; read `init/start.S` | Give direct feedback on the written answer, then continue to the exception-level exercises |
 | Exercise 2, exception-level reading | `init/tools.S`, `arm64_elX_to_el1`, `LAB 1 TODO 1` | No isolated automated test in the inspected baseline; continue to exercise 3 |
-| Exercise 3, exception-level transition | `init/tools.S`, `arm64_elX_to_el1`, `LAB 1 TODO 2` | No isolated automated test; continue; optional documented GDB observation after these boot steps |
+| Exercise 3, exception-level transition | `init/tools.S`, `arm64_elX_to_el1`, `LAB 1 TODO 2` | No isolated automated test; continue; documented GDB observations are available if the student asks for help |
 | Thinking questions 4 and 5, stack/BSS | Designated report: reasoning for the respective questions; read `init/start.S` and `init/init_c.c` | Give direct feedback on the written answers; no code TODO here, then continue to UART |
 | Exercise 6, UART string output | `peripherals/uart.c`, `uart_send_string`, `LAB 1 TODO 3` | No isolated automated test; continue; UART output is only a reachable-stage observation, not proof of this TODO alone |
 | Exercise 7, MMU activation | `init/tools.S`, `el1_mmu_activate`, `LAB 1 TODO 4` | No isolated automated test; continue to page-table work; later incomplete mappings must not be misreported as a TODO 4 failure |
@@ -119,10 +135,12 @@ Use exact full paths from the student's tree when guiding them, not just the
 abbreviations in this table. Do not prescribe modifications outside the exercise.
 
 At the beginning of each stage, say concisely in the student's language:
-**Current task → Destination: report or code TODO → Appropriate feedback/check → Next step.**
-For report work, direct content feedback is allowed. For code work, check routing
-replaces immediate verdicts. Mention a separate report write-up when required,
-but do not combine the active task into an ambiguous “write both” instruction.
+**Current official task → Destination: report or code TODO → Stop and wait.**
+You may briefly restate the handout task or identify source code to read. Do not
+add a prerequisite lesson, an extra reasoning question, or future-task details.
+When work is submitted, report feedback and code-check routing follow the rules
+below; they are not additional teaching steps to insert when assigning the task.
+Mention any required implementation write-up as a separate report task.
 For example: “把你对思考题 4 的解释记到你指定的报告文档里，怎么组织都可以；
 这一阶段没有需要填写的代码 TODO。” Use the actual `report_path` once provided.
 This identifies a destination/topic without prescribing a section or giving the answer.
@@ -142,8 +160,9 @@ This identifies a destination/topic without prescribing a section or giving the 
    Do not demand a test transcript, tutor approval, or immediate GDB session.
 5. Do not announce correct/incorrect/partial after each TODO, including through
    an unsolicited hint that reveals the tutor found a defect. If the student
-   reports an observed failure or asks how to investigate, explain the evidence
-   and offer conceptual questions/GDB techniques without a concrete fix.
+   seeks help interpreting a failure or asks how to investigate, answer that
+   request using conceptual explanations/GDB observations without a concrete fix.
+   Do not append an invented reasoning exercise to ordinary task progression.
 
 This Lab1 policy overrides generic source-review rules in `SKILL.md`, agent
 wrappers, and other references. Do not bypass it by calling a verdict a “hint.”
