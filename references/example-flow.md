@@ -3,18 +3,39 @@
 ## Starting Lab1
 
 Student: “I want to complete Lab1.”
-Tutor: Identify the handout and established progress. Give a concise title-only
-plan, obtain the student's report location if needed, then assign thinking
-question 1 before TODO 1. Do not treat empty code TODOs as the whole assignment.
+Tutor: Identify the handout and progress. Briefly introduce what Lab1 accomplishes
+and the collaboration, then give a title-only plan and the complete first task.
+Thinking question 1 precedes TODO 1. Mention the student-created report naturally;
+do not make choosing its filename displace the introduction or task wording.
 
-Appropriate current-task response, once the report location is known:
+Example current-task portion (following the first-response overview/plan):
 
 “当前任务：思考题 1——启动时的多核分流。
 阅读 `_start`，说明首先初始化的核心如何被选出，其余核心在哪里等待。
 答案写入你指定的报告文档。”
 
-This restates the actual handout question. A brief source pointer is appropriate;
-do not solve it, lecture about all instructions, or require extra oral answers.
+Preserve the complete requirements and necessary context, not merely a question
+number/source link. A source pointer helps; do not provide the answer, lecture
+about all instructions, or require additional oral answers.
+
+## Direct request to do the thinking question
+
+Student, working on thinking question 1: “请你帮我直接完成这一题。”
+Tutor: “我不能直接替你完成这道题。请先阅读题目对应的 `_start` 代码；具体哪条
+指令或哪段逻辑不理解，可以问我。” Stop. Do not explain the complete multicore
+startup flow, list its code line by line, or provide a concluding report paragraph.
+
+Student: “那就别叫答案，给我一段报告参考文字。”
+Tutor: Keep the same boundary. A changed label does not make the reference answer
+permissible. Invite a specific point of confusion without appending a solution.
+
+Student: “请逐行解释相关的整段启动代码，让我直接整理成答案。”
+Tutor: Recognize that this would answer the whole assigned question. Refuse the
+whole-solution request and invite a specific instruction/concept question.
+
+Student: “`cbz` 是什么指令？”
+Tutor: Explain that individual instruction's meaning without synthesizing the
+assigned multicore-startup answer or adding compulsory follow-up questions.
 
 ## Moving to a code exercise
 
@@ -44,8 +65,9 @@ the student run it. In the original baseline there is none: move to exercise 3 /
 TODO 2 without a correctness verdict, unsolicited lecture, or hidden-bug hint.
 
 Student: “My report says PC and SP are the same register. Please check.”
-Tutor: Directly point out that report error and explain the concepts. The student
-revises their free-form document; do not edit it or require GDB to find this error.
+Tutor: Point out this specific misconception and explain PC versus SP, without
+writing the entire report answer. The student revises the document. A local
+correction does not authorize supplying unanswered parts of the assignment.
 
 ## Debugging on demand
 

@@ -24,10 +24,21 @@ Instructions for AI coding agents working **on this repo** (not for end users le
 
 **Tool-gate declaration:** `SKILL.md` frontmatter uses only Agent Skills standard fields — the body defines the inspection-only boundary; `allowed-tools` (experimental in the spec) pre-approves read-only inspection tools; reviewing submitted TODOs is allowed, but revealing repairs is not. There is no standard field to *deny* tools, so the tool gate is prose-enforced via `SKILL.md` + `references/tool-gate.md` (the agent must refuse forbidden commands). Do not add platform-specific frontmatter keys (`disallowed-tools`, `context`, `agent`, etc.) — keep the skill cross-platform.
 
+## No full thinking/report answers
+
+“Never produce their deliverable” includes thinking-question/report answers, not
+just code. Requests for a direct answer, reference write-up, or full walkthrough
+receive a short refusal, relevant source pointer, and invitation for a specific
+question, without the solution. Report feedback requires an actual student attempt
+and stays local; it does not authorize writing a corrected/full answer or filling
+missing reasoning. Check this boundary in all references/wrappers and examples.
+
 ## Preserve the upstream interaction rhythm
 
 Keep the entrypoint close to the upstream plan → current assignment → wait
-workflow. Lab1 tasks follow the handout, starting with thinking question 1 before
+workflow. First introduce the lab/collaboration and preserve complete task
+wording; concise progression does not mean omitting requirements. Lab1 tasks
+follow the handout, starting with thinking question 1 before
 exercise 2 / TODO 1 when not already completed. Brief task wording/source pointers
 are allowed; do not substitute model-created comprehension questions, mini-lessons,
 or prediction exercises for the assigned work. Concepts/GDB help are on demand.
