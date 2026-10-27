@@ -1,33 +1,51 @@
-# TuTor
+# OS Lab Tutor
 
 **English** · [Español](README-es.md)
 
-An **agent skill** (a folder of instructions your AI tool loads when it's relevant) that turns it into a learning tutor. TuTor plans work in small steps, explains every command, verifies your progress with read-only checks, and refuses to complete the assignment for you.
+An **agent skill** (a folder of instructions your AI tool loads when it's relevant) that turns it into a learning tutor. TuTor plans work in small steps, explains every command, helps you investigate your own work, and refuses to complete the assignment for you.
 
 Use it when you want to **learn by doing**—homework, tutorials, walkthroughs, or any time you say “don’t do it for me.”
 
 ## Objective
 
-TuTor helps **teachers and students** use AI as a coach, not a cheat sheet. Today’s coding assistants often hand over finished answers and skip the thinking, debugging, and trial-and-error where real learning happens. This skill redirects that power toward **learning by doing**: the learner writes the code and runs the commands; the agent plans steps, explains tools, and verifies progress—without doing the work for them. The aim is deeper understanding in class, in study groups, and on personal projects—not faster copy-paste.
+TuTor helps **teachers and students** use AI as a coach, not a cheat sheet. Today’s coding assistants often hand over finished answers and skip the thinking, debugging, and trial-and-error where real learning happens. This skill redirects that power toward **learning by doing**: the learner writes the code and runs the commands; the agent explains concepts and tools and identifies deliverable locations; for Lab1 it routes checks or continued progress while the student performs tests, debugging, and repairs—without doing the work for them. The aim is deeper understanding in class, in study groups, and on personal projects—not faster copy-paste.
 
 
 ## What it does
 
 | Behavior | Detail |
 |----------|--------|
-| **Step-by-step** | Outlines a numbered plan up front; gives **one** action per turn (no full solution). |
-| **Verification** | After you say you’re done, the tool checks with read-only commands (`Read`, `ls`, `cat`, `git status`, `git diff`, tests you ran). |
-| **Tool gate** | The tool may inspect your work but must **not** create, edit, or run commands that build your deliverable for you. |
-| **Command teaching** | Every shell command includes a breakdown: goal, pieces, and what success looks like. |
+| **Step-by-step** | Answers conceptual questions directly; offers **one** manageable observation task at a time, including short explained GDB sequences when helpful. |
+| **Your report document** | Create a dedicated report document yourself and tell the tutor its path. Choose any readable format and organization; no required template, headings, or layout. The tutor reads it but never writes it for you. |
+| **Lab1 stages and destinations** | The tutor recognizes the current Lab1 handout and gives each active task one destination: a topic in your report or a specific code TODO. Any required write-up is a separate report task. Question numbers are topic references, not required headings. |
+| **Lab1 completion** | After each TODO, no immediate correctness verdict: you run an existing applicable focused check; if none exists, continue. Whole-lab grading is reserved for integration. Other labs retain their own review policy. |
+| **Hints without answers** | No TODO implementations, defective lines, root causes, correct values, or repair recipes, including in prose. |
+| **Report feedback** | The tutor directly identifies errors in written answers and explains the correct concepts; you revise your own report. This does not permit code answers through report review. |
+| **GDB coaching** | If stuck, get specific stages/functions, breakpoint candidates, registers/memory, and explained commands to observe. You run, locate, and repair the problem; the tutor never names the code defect or fix. |
+| **Tool gate** | Read-only inspection supports your question; the tutor reviews submitted work but never edits files or runs builds, programs, tests, or debuggers. |
+| **Command teaching** | Every suggested command explains its goal, arguments, and the kind of evidence it yields; no solution-bearing expected output. |
 
 Optional deep dives live in [`references/`](references/):
 
-- [`references/example-flow.md`](references/example-flow.md) — greenfield app walkthrough
+- [`references/example-flow.md`](references/example-flow.md) — OS lab review and debugging without revealing repairs
 - [`references/tool-gate.md`](references/tool-gate.md) — which shell commands are allowed
+- [`references/gdb-coaching.md`](references/gdb-coaching.md) — student-led debugger investigation
+- [`references/lab1-guide.md`](references/lab1-guide.md) — ChCore Lab1 stage/report/TODO map and source-backed check inventory
+
+## Lab1 submissions
+
+Submit three parts: the authentic AI conversation record, your dedicated report
+document, and your modified Lab1 files containing the TODO implementations.
+Keep/export the real conversation using your tool's supported method. Stage tasks
+write to either the report or a code TODO; testing/debugging supports those tasks
+and does not add another mandatory submission. Report errors receive direct
+feedback; code TODOs keep the check-or-continue and no-defect-disclosure policy.
 
 ## Install
 
-**Repository:** [github.com/kevinnio/tutor](https://github.com/kevinnio/tutor)
+This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
+
+**Repository:** [github.com/DyingCoderLin/OS-Lab-Tutor](https://github.com/DyingCoderLin/OS-Lab-Tutor)
 
 TuTor is a folder with `SKILL.md` (the instructions) plus `references/` (extra reading). Keep the folder named `tutor`. Some tools refuse to load a skill if the folder name doesn't match the name inside `SKILL.md`.
 
@@ -38,19 +56,19 @@ The [Skills CLI](https://github.com/vercel-labs/skills) ([skills.sh](https://ski
 **User-wide (all projects)** — recommended for your first install:
 
 ```bash
-npx skills add kevinnio/tutor -g -y
+npx skills add DyingCoderLin/OS-Lab-Tutor -g -y
 ```
 
 **This project only** (share with a class or team via git):
 
 ```bash
-npx skills add kevinnio/tutor -y
+npx skills add DyingCoderLin/OS-Lab-Tutor -y
 ```
 
 **Pick specific tools** (skip the menu):
 
 ```bash
-npx skills add kevinnio/tutor -g -a opencode -a github-copilot -a gemini-cli -y
+npx skills add DyingCoderLin/OS-Lab-Tutor -g -a opencode -a github-copilot -a gemini-cli -y
 ```
 
 | Flag | Meaning |
@@ -60,7 +78,7 @@ npx skills add kevinnio/tutor -g -a opencode -a github-copilot -a gemini-cli -y
 | `-a`, `--agent` | Which tools to install for, e.g. `opencode`, `github-copilot`, `gemini-cli`, `cursor`, `claude-code`, `codex` |
 | `-y`, `--yes` | Non-interactive |
 
-Preview before installing: `npx skills add kevinnio/tutor --list`. Every supported tool: [vercel-labs/skills](https://github.com/vercel-labs/skills#supported-agents).
+Preview before installing: `npx skills add DyingCoderLin/OS-Lab-Tutor --list`. Every supported tool: [vercel-labs/skills](https://github.com/vercel-labs/skills#supported-agents).
 
 After installing, start a **new chat** (or reopen the tool) so it notices the skill.
 
@@ -115,7 +133,7 @@ If you'd rather not use the installer, clone this project into the folder your t
 | [Gemini CLI](https://geminicli.com/docs/cli/skills/) | `~/.gemini/skills/tutor` | `.gemini/skills/tutor` |
 
 ```bash
-REPO=https://github.com/kevinnio/tutor.git
+REPO=https://github.com/DyingCoderLin/OS-Lab-Tutor.git
 TARGET=~/.cursor/skills/tutor   # user-wide example
 
 mkdir -p "$(dirname "$TARGET")"
@@ -133,32 +151,33 @@ TARGET="$HOME/.cursor/skills/tutor"
 mkdir -p "$TARGET"
 ln -sf "$SKILL_ROOT/SKILL.md" "$TARGET/SKILL.md"
 ln -sf "$SKILL_ROOT/references" "$TARGET/references"
+ln -sf "$SKILL_ROOT/agents" "$TARGET/agents"
 ```
 
 ### Install TuTor via TuTor
 
-As a fun exercise, have TuTor install itself with you—you run every command; it coaches and checks your work. You’ll learn how skills are installed on disk, and once it’s set up you can always ask TuTor for help on real tasks.
+As a fun exercise, have TuTor install itself with you—you run every command; it explains concepts and helps you decide how to check your work. You’ll learn how skills are installed on disk, and once it’s set up you can always ask TuTor for help on real tasks.
 
 Paste this into an AI tool that can open links (start a new chat).
 
-**Trust note:** this prompt asks your AI tool to fetch instructions from the internet (`raw.githubusercontent.com`), pinned to release tag `v0.6` (immutable). Only run it from a source you trust — a skill you install can influence what your AI tool does in future sessions. Prefer the manual install steps above if you don't want remote instructions fetched.
+**Trust note:** this prompt asks your AI tool to fetch instructions from the internet (`raw.githubusercontent.com`), from the development branch `master` (which can change). Only run it from a source you trust — a skill you install can influence what your AI tool does in future sessions. Prefer the manual install steps above if you don't want remote instructions fetched.
 
 ```text
 TuTor, install yourself with me—I run every command; you tutor.
 
 Read and follow for this entire session:
 
-- SKILL.md: https://raw.githubusercontent.com/kevinnio/tutor/v0.6/SKILL.md
-- README Install section: https://raw.githubusercontent.com/kevinnio/tutor/v0.6/README.md
+- SKILL.md: https://raw.githubusercontent.com/DyingCoderLin/OS-Lab-Tutor/master/SKILL.md
+- README Install section: https://raw.githubusercontent.com/DyingCoderLin/OS-Lab-Tutor/master/README.md
 
-Follow TuTor’s rules: one step at a time, command breakdowns, verify after I say "done".
+Follow TuTor’s rules: one step at a time, command breakdowns, and the active lab's completion policy. For Lab1, ask me to create/designate a report document and share its path, accept my free-form layout, name each report/code destination, and route "done" to a student-run focused check or the next stage, without an immediate correctness verdict. Never reveal repairs.
 Never install for me (no writing skill files, no git clone, no npx on my behalf)—refuse "just do it."
 
 First, ask me which AI tool I use (e.g. OpenCode, GitHub Copilot, Gemini CLI, Cursor, Claude Code)
 and whether I want a user-wide install or project-local. Use the correct skills path for that tool.
 
 Goal: `tutor` skill installed on my machine.
-Teach `npx skills add kevinnio/tutor -g -y` unless I want manual git clone.
+Teach `npx skills add DyingCoderLin/OS-Lab-Tutor -g -y` unless I want manual git clone.
 
 After I answer, give a short numbered plan for my tool and scope, then Step 1 and stop.
 ```
@@ -185,16 +204,7 @@ For a **git submodule**: `git submodule update --remote path/to/tutor`
 
 ### Pin to a release tag (reproducible install)
 
-Release tags are immutable. To install an exact audited version instead of `master`:
-
-```bash
-# fresh clone
-git clone --branch v0.6 https://github.com/kevinnio/tutor.git "$TARGET"
-# or, inside an existing clone
-git fetch --tags && git checkout v0.6
-```
-
-Verify the pinned version: `git describe --tags`
+This fork's `0.7-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
 
 ### Check your installed version
 
@@ -223,12 +233,12 @@ I want to learn how to add tests to this repo. Walk me through it step by step; 
 
 Enséñame a crear un API REST con Express. No hagas el código por mí.
 
-Help me fix this failing test, but only give hints and commands—I run everything myself.
+Help me investigate this failing test with GDB. Suggest useful stages, breakpoints, and registers with explained commands; do not reveal the faulty code or fix.
 ```
 
 3. **Do each step** the tutor assigns, then reply when done (e.g. “done”, “listo”).
-4. The tutor **verifies** before moving on. If something is wrong, it tells you what’s missing—no skipping ahead.
-5. If the tool tries to do your work, remind it: *“Follow the tutor skill—verify only, I run the commands.”*
+4. **In Lab1, designate your report:** create a dedicated document yourself (or use one you already created), then tell the tutor its path. Write however you like, as long as the tutor can understand it. Thinking answers go there; coding tasks go in the named TODO; any required implementation explanation is a separate report task. The tutor can immediately point out report errors and explain concepts, but cannot directly identify a code defect or repair. After each TODO, run a genuine focused check if one is available now; otherwise continue without a tutor verdict. The original five-TODO version has only integrated `make grade`, not isolated TODO tests. Other lab workflows can still use source-review feedback.
+5. If the tutor jumps to a Lab1 verdict or fix, remind it: *“Tell me where this stage's result belongs. Give me an existing focused check to run, or let me continue if there is none. I will investigate observed failures with GDB.”*
 
 ## Repository layout
 
@@ -237,8 +247,11 @@ tutor/
 ├── SKILL.md              # The skill itself (required)
 ├── references/           # Extra reading the tool loads on demand
 │   ├── example-flow.md
+│   ├── gdb-coaching.md
+│   ├── lab1-guide.md
 │   └── tool-gate.md
-├── agents/               # Optional modes (read-only)
+├── agents/               # Optional modes and Codex invocation policy
+│   ├── openai.yaml
 │   ├── opencode/tutor.md
 │   └── claude/tutor.md
 ├── README.md
@@ -248,14 +261,14 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.6**). Releases are tagged `v<version>` (e.g. `v0.6`); pin to a tag for a reproducible install.
+The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
 
 ## Contribute
 
 We welcome feedback and collaboration.
 
-- **Bug reports and feature requests** — [open a GitHub issue](https://github.com/kevinnio/tutor/issues/new). Describe what you expected, what happened, and which agent you use.
-- **Code and docs** — send a [pull request](https://github.com/kevinnio/tutor/compare). Great fits: clearer teaching patterns, tool-gate edge cases, README translations, and install notes for new agents.
+- **Bug reports and feature requests** — [open a GitHub issue](https://github.com/DyingCoderLin/OS-Lab-Tutor/issues/new). Describe what you expected, what happened, and which agent you use.
+- **Code and docs** — send a [pull request](https://github.com/DyingCoderLin/OS-Lab-Tutor/compare). Great fits: clearer teaching patterns, tool-gate edge cases, README translations, and install notes for new agents.
 
 ### Pull request workflow
 
@@ -271,11 +284,11 @@ Please do not commit secrets, personal paths, or generated `node_modules` / play
 
 ## Contributors
 
-<a href="https://github.com/kevinnio/tutor/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=kevinnio/tutor&columns=3" alt="Contributors" />
+<a href="https://github.com/DyingCoderLin/OS-Lab-Tutor/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=DyingCoderLin/OS-Lab-Tutor&columns=3" alt="Contributors" />
 </a>
 
-Avatars are generated from [GitHub contributors](https://github.com/kevinnio/tutor/graphs/contributors) via [contrib.rocks](https://contrib.rocks) (contributors-img). Names and handles: [AUTHORS.md](AUTHORS.md).
+Avatars are generated from [GitHub contributors](https://github.com/DyingCoderLin/OS-Lab-Tutor/graphs/contributors) via [contrib.rocks](https://contrib.rocks) (contributors-img). Names and handles: [AUTHORS.md](AUTHORS.md).
 
 ## Donations
 

@@ -1,20 +1,32 @@
 # Tool gate
 
-Before every tool call: **verification only**, or **does their work**?
+Before every call, ask: does this only read existing information, and does it
+support a conceptual question or review of the completed work the student submitted?
 
-**Allowed (verification):**
+Allowed: read code/docs, list/search files, inspect repository state/diffs, and
+read existing test/debugger logs. In Lab1, identify the task type first: report
+errors can be directly identified and explained in chat; completed code TODOs
+route to a student-run focused check or the next stage. Do not give an immediate TODO verdict. For other
+labs without a specific override, source review of completed work is permitted
+without running tests or receiving an answer key.
+Do not inspect answer-bearing history, reference solutions, or hidden tests.
 
-- Inspect filesystem / read files — `ls`, `test -f`, `find` (read-only), `cat`, `head`, `Read`
-- Repo state — `git status`, `git diff`, `git log -1`
-- Search — `Grep`, `rg`
-- Confirm tests **they** ran — `npm test`, `pytest`, `cargo test` (read outcome only)
+Forbidden: edit/patch/write; scaffold/install; build; run a program, test runner,
+student script, GDB, or QEMU; attach/control a debugger. Rerunning something the
+student already ran is still forbidden. Do not bypass this gate via scripts,
+shell substitution, redirection, external diff helpers, or another tool.
 
-**Forbidden (does their work):**
+The active lab controls correctness feedback: Lab1 forbids immediate per-TODO
+verdicts and takes precedence over generic review. Reading still must not reveal
+the defective statement, root cause, missing implementation, or repair. Do not
+solve future TODOs or review hypothetical replacements as an answer-guessing exercise.
 
-- Scaffold / generate — `npm create`, `npx create-*`, `cargo new`
-- Install deps — `npm install`, `pip install`, `go get`
-- Build / run the app — `npm run dev`, `make`, `docker compose up`
-- Fix or edit — `Write`, `StrReplace`, patches, `git commit`
-- Anything whose primary effect is the step they should do
+When a student is stuck on an observed code failure, encourage GDB and provide
+concrete observation guidance: execution stages/functions, candidate breakpoints,
+registers/memory, and explained commands. Do not proactively announce a hidden
+error in a just-completed Lab1 TODO, identify the defective instruction, or
+complete the diagnosis. Report misconceptions may be corrected directly. Do not replace
+a forbidden edit with a command or prose recipe that supplies the solution.
 
-When forbidden: tell them what **they** should run, with a full **Command breakdown** (goal, pieces, success); do not run it yourself.
+These instructions guide tutor behavior; they are not an operating-system
+permission boundary. The available shell does not expand the tutor's role.

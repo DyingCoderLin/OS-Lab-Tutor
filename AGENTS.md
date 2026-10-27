@@ -22,7 +22,31 @@ Instructions for AI coding agents working **on this repo** (not for end users le
 
 **Current version:** see `metadata.version` in `SKILL.md` (bump when behavior or compatibility meaningfully changes).
 
-**Tool-gate declaration:** `SKILL.md` frontmatter uses only Agent Skills standard fields — `compatibility` documents the read-only verification constraint; `allowed-tools` (experimental in the spec) pre-approves read-only verification tools so checks don't prompt where supported. There is no standard field to *deny* tools, so the tool gate is prose-enforced via `SKILL.md` + `references/tool-gate.md` (the agent must refuse forbidden commands). Do not add platform-specific frontmatter keys (`disallowed-tools`, `context`, `agent`, etc.) — keep the skill cross-platform.
+**Tool-gate declaration:** `SKILL.md` frontmatter uses only Agent Skills standard fields — the body defines the inspection-only boundary; `allowed-tools` (experimental in the spec) pre-approves read-only inspection tools; reviewing submitted TODOs is allowed, but revealing repairs is not. There is no standard field to *deny* tools, so the tool gate is prose-enforced via `SKILL.md` + `references/tool-gate.md` (the agent must refuse forbidden commands). Do not add platform-specific frontmatter keys (`disallowed-tools`, `context`, `agent`, etc.) — keep the skill cross-platform.
+
+## Lab-specific completion policies
+
+Keep `SKILL.md`, references, optional agent wrappers, and both READMEs consistent.
+ChCore Lab1 uses `references/lab1-guide.md`: identify the actual version, name
+report/code destinations at every stage, and route each completed TODO to a real
+applicable student-run focused check or continued progress, without an immediate
+correctness verdict. This overrides generic source review. Never mislabel a build,
+GDB observation, or whole-lab grade as an isolated TODO test. Other labs can keep
+generic source review without repairs. Report errors are different: directly
+identify the mistaken written statement/reasoning and explain the correct
+concept, without editing/ghostwriting or laundering code answers through report
+review. If students are stuck on code, provide concrete GDB stages/functions,
+breakpoint candidates, registers/memory, and explained commands. Observation
+guidance is allowed; directly revealing a code defect, cause, or fix is not.
+Students own debugger execution, localization, and repair.
+Lab1 submissions are exactly the authentic AI conversation, dedicated report,
+and modified Lab1 files. Each stage task writes either to the report or a code
+TODO; do not invent further mandatory artifacts.
+Students create/designate their own dedicated report document and share its
+path. Track that location, accept any readable free-form organization, and never
+create, write, reformat, or impose a template on the report. Question numbers in
+the guide identify topics, not required headings.
+Codex invocation remains explicit-only in `agents/openai.yaml`.
 
 ## Editing conventions
 
@@ -71,8 +95,8 @@ When bumping `metadata.version` in `SKILL.md`:
 
 1. Increment the version string in frontmatter.
 2. Update the “currently **X.Y**” (or equivalent) line in **both** READMEs.
-3. Update the pinned release tag in **both** READMEs’ “Install TuTor via TuTor” exercise (`v0.6` → `vX.Y`), and in the “Pin to a release tag” snippet if the example tag is referenced.
-4. Create a git tag `vX.Y` on the resulting commit and push it (`git tag vX.Y && git push origin vX.Y`). Tags are the immutable pins users install from.
+3. For development versions such as `0.7-dev`, mark both READMEs as unreleased and do not invent a release tag. Keep installation examples honest about the branch they use.
+4. Only when the user explicitly requests a release, create/push the actual release tag and update pinned examples in both READMEs. A version bump alone does not authorize commits, tags, or publishing.
 5. Mention the version in the commit message if the user asked for commits.
 
 ## Commits
@@ -84,7 +108,7 @@ Do not create commits unless the user explicitly requests them.
 ## Testing changes
 
 - Install the skill from this repo into one target path (e.g. `~/.cursor/skills/tutor` via clone or symlink).
-- Run a short “teach me X, don’t do it for me” session and confirm verify-only behavior.
+- Run a short “teach me X, don’t do it for me” session and confirm Lab1 stage/report/TODO destinations, focused-check-or-continue routing without immediate verdicts, conceptual hints without repairs, and student-run GDB guidance.
 - For doc-only changes, skim both READMEs for broken links and mismatched version numbers.
 - CI (`.github/workflows/security.yml`) runs on every PR: gitleaks gates on leaked secrets; SkillSpector uploads static findings to the Security tab as advisory. Treat a new HIGH/CRITICAL finding as a blocker even though the job stays green.
 
