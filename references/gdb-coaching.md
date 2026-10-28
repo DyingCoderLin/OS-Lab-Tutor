@@ -6,10 +6,10 @@ wording corrections, optional refinements, or extra verification.
 
 ## Only enter this workflow for student-requested help
 
-Detailed guidance is on demand, not a fixed teaching sequence. Lab1's handout
-checkpoints after TODO 1/4 may be offered briefly and optionally as described in
-`lab1-guide.md`; expand only after the student opts in. Also use this guide when
-the student asks about debugging, interpreting an observation, or a problem. Do not load the register menu into ordinary TODO assignment
+The two handout checkpoints in `lab1-guide.md` get runnable commands and expected
+observations immediately; execution is optional. Also provide concrete help when
+the student reports a below-full `make grade` result or asks about debugging/observations.
+Do not require a separate opt-in before explaining how to inspect the failure. Do not load the register menu into ordinary TODO assignment
 messages or automatically require GDB before the student can work. Give direct
 answers; use clarifying questions only to obtain needed symptoms/context, not
 to test comprehension. Do not require a predict-run-explain learning loop.
@@ -60,9 +60,67 @@ assume a readable `$CurrentEL` exists. When a system register is unavailable,
 explain that limitation and use other observable state; never add code or patch
 registers to manufacture a reading.
 
+Expected observations for the two completed-step checkpoints are permitted
+with their setup assumptions; they are not implementation constants to write.
 The optional TODO 4 checkpoint may explain the handout's documented `0x200`
 intermediate behavior, under its unfinished-mapping assumptions. This does not
 authorize a verdict about a student's implementation or disclosure of a repair.
+
+## Final acceptance is the make grade result
+
+Once all TODOs are written, the student runs **`make grade`**. Its reported score
+and per-item results are the final code-acceptance criterion. In the current
+Lab1, **100/100 passes**: confirm this and move to submission preparation without
+adding GDB, manual boot, source-review, or other mandatory acceptance checks.
+Do not use the shell exit status alone or a GDB observation as the grade.
+
+When the score is below full marks:
+1. Use the actual grading result: total score and failed item names/points. Read
+   the current `scores.json` and relevant grader definitions to understand what
+   each item observes. If only a total is available and multiple items exist,
+   ask for the item results; do not invent failed tests or their coverage.
+2. Match the failed item's scope to the current boot code and suggest a small
+   set of GDB observation points, commands, and register values to compare before
+   and after those stages. The score is the reason for investigating; GDB gives
+   the student evidence to locate the cause, not an alternative acceptance result.
+3. As the student shares observations, narrow the next location/register set.
+   Do not state the faulty TODO/line or prescribe a code/constant replacement.
+4. After the student changes their code, have them rerun **`make grade`** and use
+   the new score/item results. Seeing an expected register value is not a pass.
+
+### Current original Lab1 scoring scope
+
+The inspected `Lab1/scores.json` contains one item, `Jump to kernel main`, worth
+100 points, whose capture is `Welcome to ChCore shell!`. `Scripts/expect.py`
+prints each item's earned/proposed points and `Scripts/grader.sh` prints the
+total score. Thus a reported `0/100` here means the shell-entry grading item did
+not pass; it does **not** identify which of the five TODOs is responsible.
+Recheck the actual student's configuration if the course version differs.
+
+For this single broad item, begin by finding how far the startup chain progresses.
+For example, after giving the existing student-run debugger launch commands,
+set function breakpoints at `init_c` and `el1_mmu_activate`, continue, and inspect
+`info threads` / `info registers pc sp` at reached boundaries. These observations
+help locate where progress stops without assigning blame to a TODO.
+
+Use the student's resulting observations to choose the next small investigation:
+- If `init_c` is not reached, observe `arm64_elX_to_el1`, comparing PC, SP, x30,
+  and exposed execution state around the transition on the same CPU/thread.
+- If execution reaches the page-table/MMU phase, observe `init_kernel_pt` and
+  `el1_mmu_activate`; compare PC/SP and exposed TTBR0_EL1, TTBR1_EL1, TCR_EL1,
+  SCTLR_EL1 state before/after the phase. Use actual target register names.
+- If the student observes an exception, inspect PC and exposed ESR_EL1, FAR_EL1,
+  ELR_EL1 at a useful early stop. Later exceptions may overwrite earlier evidence.
+
+Give the actual supported commands for the selected observation; do not merely
+say “try GDB,” dump every register, or claim that the failed item proves a
+particular implementation defect. For added scoring items in another version,
+start from those items' actual definitions rather than reusing this mapping.
+
+The optional `0x200` demonstration belongs to the unfinished TODO 4 stage.
+It never overrides a below-full `make grade` result after all TODOs are written.
+Do not diagnose unrelated build/environment scenarios instead of addressing the
+reported grading score, or invent a different final acceptance method.
 
 ## Lab1 observation menu
 
@@ -89,8 +147,8 @@ repair/bypass the bug.
 
 ## Keep completion separate from debugging
 
-In Lab1, a completed code TODO follows `lab1-guide.md`: offer an applicable
-focused check or continue without a verdict, and briefly mention the optional
-manual checkpoint after TODO 1/4. Students may skip without proving anything. GDB help is available when they need investigation; it is not
+In Lab1, a completed code TODO follows `lab1-guide.md`: provide an applicable
+check or continue, and give the optional TODO 1/4 method with its observations
+and skip path immediately. Students may skip without proving anything. GDB help is available when they need investigation; it is not
 an extra submission or mandatory gate after every TODO. Report feedback remains
 direct and does not inherit the code-TODO restriction.

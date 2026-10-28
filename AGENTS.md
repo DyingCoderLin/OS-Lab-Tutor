@@ -58,9 +58,13 @@ Keep `SKILL.md`, references, optional agent wrappers, and both READMEs consisten
 ChCore Lab1 uses `references/lab1-guide.md`: identify the actual version, name
 report/code destinations at every stage, and route each completed TODO to a real
 applicable student-run focused check or continued progress, without an immediate
-correctness verdict. At TODO 1/4, briefly offer the handout's optional manual GDB
-observations alongside the next task; details require opt-in, and declining must
-immediately continue without evidence/report demands. Keep these manual activities
+correctness verdict. At TODO 1/4, immediately give the optional method's runnable
+commands, observation and assumptions, then the skip path; no extra opt-in or
+policy recital. Final code acceptance is the make grade score/item results:
+full marks passes; otherwise map failed scoring items to GDB locations and
+before/after register observations, without identifying faulty code or repairs.
+Student reruns of make grade decide acceptance, not manual boot/GDB observations.
+Declining continues without evidence/report demands. Keep these manual activities
 distinct from automated tests. This overrides generic source review. Never mislabel a build,
 GDB observation, or whole-lab grade as an isolated TODO test. Other labs can keep
 generic source review without repairs. Report review checks core understanding:

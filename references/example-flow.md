@@ -74,10 +74,10 @@ the whole answer in context, not isolated words as automatic errors.
 ## Completed TODOs and report work
 
 Student: “TODO 1 is done.”
-Tutor: In the original baseline there is no isolated automated test, but the
-handout has an optional single-step observation. Mention that in one sentence,
-then give exercise 3 / TODO 2 as the next task. Do not give a verdict or start
-debugger instructions before the student chooses to try.
+Tutor: Give the optional check's actual setup, breakpoint/step/register commands,
+and the observation for the current startup setup, then say the student can skip
+to exercise 3 / TODO 2. Do not just advertise a check, require another opt-in,
+quote a skill clause, or announce a source-review correctness verdict.
 
 Student: “I don't want to debug now; next question.”
 Tutor: Continue directly. Do not ask again, request evidence, or deduct progress.
@@ -92,6 +92,19 @@ Tutor: This is a fundamental distinction, so briefly explain the misconception
 about PC versus SP, without
 writing the entire report answer. The student revises the document. A local
 correction does not authorize supplying unanswered parts of the assignment.
+
+## Final-test failure
+
+Student: “All TODOs are written. make grade says Jump to kernel main: 0/100,
+Score: 0/100.”
+Tutor: Read the actual scoring definition. This item checks reaching the shell
+and does not identify a faulty TODO. Provide student-run GDB commands to observe
+relevant startup boundaries and register changes, then refine from their results.
+After student changes, return to `make grade` for acceptance. Never supply a fix.
+
+Student: “Now make grade is 100/100.”
+Tutor: Confirm that the code acceptance has passed and move to submission
+preparation. Do not demand more GDB runs or impose another acceptance test.
 
 ## Debugging on demand
 

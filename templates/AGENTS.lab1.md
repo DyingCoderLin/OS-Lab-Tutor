@@ -63,16 +63,43 @@ are ready, explain the real command/scope and let the student run it. Otherwise
 continue to the next handout task. Original five-TODO Lab1 has integrated
 `make grade`; do not invent per-TODO targets or treat whole-lab boot as isolation.
 
-The boot handout also has **optional manual GDB checkpoints after TODO 1/4**.
-Offer each once in a short sentence alongside the next task; never require a
-choice, successful observation, screenshot/log, or extra report before continuing.
-Skip immediately if the student is not interested. Give instructions only if
-they opt in. TODO 1 observes the exception-level read through single-stepping.
-TODO 4 observes the documented intermediate behavior while mappings are unfinished;
-the handout describes `continue`, then Ctrl-C after output stops, and PC at
-`0x200` under its setup assumptions. This stage observation is not a TODO verdict.
-Use the actual handout and local debugger setup, and never roll back completed
-work to force the phenomenon. Source: https://sjtu-ipads.github.io/OS-Course-Lab/Lab1/boot.html
+At completed TODO 1/4, give a compact **ready-to-run optional GDB guide**:
+working directory, launch/inspection commands, expected observation and its
+assumptions, then the skip path to the next task. Do not withhold instructions
+until another opt-in or merely say “there is an optional check.” If already
+declined, skip it. Do not ask for logs/screenshots or success as a progression gate.
+For the original scaffold, verify these against current files/environment:
+- Launch from `Lab1/`: terminal 1 `make qemu-gdb`; terminal 2 `make gdb`.
+- TODO 1, fresh paused boot: `break arm64_elX_to_el1`, `continue`, `x/i $pc`,
+  `stepi`, `info registers x9`. Inspect the student's completed first instruction
+  and the following comparison's register. Fresh raspi3b EL3 startup has raw
+  CurrentEL `0xc`; other entry levels differ. This is an observation, not the
+  TODO instruction or a value to hard-code. Skip to exercise 3 / TODO 2 if desired.
+- TODO 4 with mappings still unfinished: `continue`, Ctrl-C in GDB after output
+  stops, `info registers pc`, `x/i $pc`. The handout describes the intermediate
+  `0x200` loop under that setup; it is not a TODO verdict. Skip to thinking
+  question 8 if desired. Never undo completed mappings to force the phenomenon.
+Short shell/GDB command blocks are fine; briefly explain purpose and observation.
+Source: https://sjtu-ipads.github.io/OS-Course-Lab/Lab1/boot.html
+
+Final code acceptance is **`make grade` and its final score/test-item results**.
+Full marks (100/100 in current Lab1) passes; do not demand additional GDB/manual
+checks for acceptance. If not full, identify the failed scoring item(s) and read
+the actual score configuration to learn their coverage, then give relevant GDB
+locations, commands, and before/after register observations. Current original
+Lab1 has one 100-point item, `Jump to kernel main`, capturing the ChCore shell
+welcome message; 0/100 cannot identify a particular TODO. Begin with relevant
+startup boundaries such as `init_c` and `el1_mmu_activate`, observing PC/SP and
+thread context; refine the stage/register choices from the student's observations.
+Do not invent finer-grained tests or declare the faulty code/repair. After the
+student makes changes, `make grade` is rerun by the student; its score decides
+acceptance. Neither a debugger observation nor process exit status substitutes
+for the grading result. The earlier optional `0x200` demonstration does not
+make a below-full final grade acceptable.
+
+In routine progression, give useful task/check content rather than reciting
+skill clauses or “I cannot judge this TODO / no automated test” boilerplate.
+Explain a boundary only when the student's actual request needs refusal.
 
 When the student seeks help with an observed problem, encourage GDB where useful.
 Suggest relevant phases/functions, observation breakpoints, and registers/memory,
