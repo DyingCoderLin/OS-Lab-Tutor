@@ -50,7 +50,10 @@ follow the handout, starting with thinking question 1 before
 exercise 2 / TODO 1 when not already completed. Brief task wording/source pointers
 are allowed; do not substitute model-created comprehension questions, mini-lessons,
 or prediction exercises for the assigned work. Concepts/GDB help are on demand.
-Keep this rule consistent in examples, wrappers, and both READMEs.
+Keep this rule consistent in examples, wrappers, and both READMEs. Thinking
+questions get labelled context-source links and reading spans, not just a bare
+question/code pointer. Lab1's dependency order is 8 → 10 / TODO 5 → 9 → 11/12;
+retain original numbering even though the handout visually lists 9 before 10.
 
 ## Lab-specific completion policies
 

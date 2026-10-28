@@ -16,6 +16,7 @@ TuTor ayuda a **docentes y estudiantes** a usar la IA como tutor, no como atajo.
 |----------------|---------|
 | **Ritmo original** | Primero presenta el laboratorio y la colaboración; después, plan breve y requisitos completos de la tarea actual con destino en informe/código; luego espera. La pregunta 1 va antes del TODO 1. Explicaciones a petición, sin cuestionarios ni lecciones previas añadidas. |
 | **Tu documento de informe** | Crea tú un documento dedicado y comunica su ruta al tutor. Elige cualquier formato legible y organización; no se exige plantilla, títulos ni estructura. El tutor lo lee, pero no lo escribe por ti. |
+| **Contexto y orden** | Las preguntas incluyen sección fuente o ubicación/rango local de lectura para sus premisas. Léelo tú. Orden: pregunta 8 → ejercicio 10 / TODO 5 → pregunta 9 → 11/12; la 9 usa tu implementación. |
 | **Etapas y destinos de Lab1** | El tutor identifica la guía actual e indica un destino por tarea: un tema en tu informe o un TODO concreto. La explicación escrita requerida es otra tarea para el informe. Los números de preguntas identifican temas, no títulos obligatorios. |
 | **Al terminar un TODO de Lab1** | Sin veredicto inmediato. Usa una prueba específica real o continúa; tras TODO 1/4 recibes inmediatamente pasos ejecutables de GDB y observaciones esperadas, con opción de omitirlos. No hace falta otra confirmación. La evaluación global es aparte. |
 | **Pistas sin respuestas** | Sin soluciones de TODO, líneas defectuosas, causas, valores correctos ni recetas de corrección, tampoco en prosa. |
@@ -57,7 +58,7 @@ opción afecta al proyecto y no activa la skill global automáticamente.
 
 ## Instalación
 
-Este fork se basa en [TuTor](https://github.com/kevinnio/tutor). Sus reglas **0.7.6-dev** aún no están publicadas; la instalación remota solo las incluye después de publicarlas. En Codex, selecciona la skill explícitamente o usa `$tutor`; la activación automática está deshabilitada. Otras herramientas pueden seleccionarla de otra manera.
+Este fork se basa en [TuTor](https://github.com/kevinnio/tutor). Sus reglas **0.7.7-dev** aún no están publicadas; la instalación remota solo las incluye después de publicarlas. En Codex, selecciona la skill explícitamente o usa `$tutor`; la activación automática está deshabilitada. Otras herramientas pueden seleccionarla de otra manera.
 
 **Repositorio:** [github.com/DyingCoderLin/OS-Lab-Tutor](https://github.com/DyingCoderLin/OS-Lab-Tutor)
 
@@ -217,7 +218,7 @@ Si es **submódulo**: `git submodule update --remote ruta/al/tutor`
 
 ### Fijar a una etiqueta de versión (instalación reproducible)
 
-Las reglas `0.7.6-dev` de este fork aún no tienen etiqueta de versión. La versión anterior `v0.6` no incluye estos cambios. Después de publicar una versión, usa su etiqueta real en `git clone --branch <release-tag>` y consulta la revisión con `git describe --tags --always`. No supongas que una versión de desarrollo tiene una etiqueta publicada.
+Las reglas `0.7.7-dev` de este fork aún no tienen etiqueta de versión. La versión anterior `v0.6` no incluye estos cambios. Después de publicar una versión, usa su etiqueta real en `git clone --branch <release-tag>` y consulta la revisión con `git describe --tags --always`. No supongas que una versión de desarrollo tiene una etiqueta publicada.
 
 ### Revisar la versión instalada
 
@@ -276,7 +277,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-La versión va en `SKILL.md`, en la línea `metadata.version` cerca del inicio (hoy **0.7.6-dev**). Es una versión de desarrollo sin publicar; las etiquetas se crean por separado cuando se solicita publicar.
+La versión va en `SKILL.md`, en la línea `metadata.version` cerca del inicio (hoy **0.7.7-dev**). Es una versión de desarrollo sin publicar; las etiquetas se crean por separado cuando se solicita publicar.
 
 ## Contribuir
 

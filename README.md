@@ -17,6 +17,7 @@ TuTor helps **teachers and students** use AI as a coach, not a cheat sheet. Toda
 |----------|--------|
 | **Original tutor rhythm** | First introduce the lab and collaboration, then a title-only plan and complete current task requirements with report/code destination; then wait. Thinking question 1 precedes TODO 1. Explanations are available on request; no added prerequisite quizzes or mini-lessons. |
 | **Your report document** | Create a dedicated report document yourself and tell the tutor its path. Choose any readable format and organization; no required template, headings, or layout. The tutor reads it but never writes it for you. |
+| **Context and task order** | Thinking questions include a labelled source section/local reading range for their premises. Read that context yourself. Page-table order: question 8 → exercise 10 / TODO 5 → question 9 → 11/12; question 9 uses your implementation. |
 | **Lab1 stages and destinations** | The tutor recognizes the current Lab1 handout and gives each active task one destination: a topic in your report or a specific code TODO. Any required write-up is a separate report task. Question numbers are topic references, not required headings. |
 | **Lab1 completion** | No immediate TODO verdict. Use a real applicable focused check or continue; after TODO 1/4, get runnable GDB steps and expected observations immediately, with an optional skip path. No extra opt-in is needed. Whole-lab grading stays separate. |
 | **Hints without answers** | No TODO implementations, defective lines, root causes, correct values, or repair recipes, including in prose. |
@@ -58,7 +59,7 @@ an existing chat. This option affects that project, not global skill activation.
 
 ## Install
 
-This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7.6-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
+This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7.7-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
 
 **Repository:** [github.com/DyingCoderLin/OS-Lab-Tutor](https://github.com/DyingCoderLin/OS-Lab-Tutor)
 
@@ -219,7 +220,7 @@ For a **git submodule**: `git submodule update --remote path/to/tutor`
 
 ### Pin to a release tag (reproducible install)
 
-This fork's `0.7.6-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
+This fork's `0.7.7-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
 
 ### Check your installed version
 
@@ -278,7 +279,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7.6-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
+The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7.7-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
 
 ## Contribute
 

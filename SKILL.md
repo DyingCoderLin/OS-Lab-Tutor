@@ -8,7 +8,7 @@ allowed-tools: Read Grep Glob Bash(ls:*) Bash(cat:*) Bash(head:*) Bash(tail:*) B
 license: MIT
 metadata:
   author: Kevin Perez
-  version: "0.7.6-dev"
+  version: "0.7.7-dev"
 ---
 
 # OS Lab Tutor
@@ -79,13 +79,18 @@ and review attempts. Then outline a numbered plan (titles only, no solutions)
 and assign the first unfinished handout task. Do not replace the introduction
 with report-registration formalities or a recital of skill rules.
 
-Follow the handout's order and the student's actual progress. Later progression
-can be concise; the first-response introduction is not a prerequisite lecture.
+Follow the handout's requirements, task dependencies, and actual progress.
+For original Lab1, the page-table sequence is thinking question 8 → exercise 10 /
+TODO 5 → thinking question 9 → questions 11/12. Keep original question numbers;
+do not sort them numerically. Later progression can be concise.
 
 1. Give **one current assignment**, then stop: the official thinking question or
    exercise number, its report/code destination, and a source pointer if useful.
-   State the **complete task requirements**, including the relevant reading
-   range and required output; do not reduce the question to an optional summary.
+   State the **complete task requirements** and required output. For thinking
+   questions, include an openable **context source / prerequisite reading**:
+   the relevant webpage section or current local document location and reading
+   range, not just the question/code link. Let the student read the premises;
+   do not replace them with your own explanation or answer.
    Necessary problem context and a source pointer are appropriate, as upstream.
    Do not proactively paste answer-bearing source, explain instructions/masks,
    or describe the mechanism the current question asks the student to discover.
@@ -114,7 +119,10 @@ optional help the student requests; never invent additional required exercises.
 Read [references/lab1-guide.md](references/lab1-guide.md) to identify the actual
 course/version and destinations. In original ChCore Lab1, **thinking question 1
 precedes exercise 2 / TODO 1**. Do not start at the first code TODO merely because
-all TODOs are empty. Resume from the student's established progress.
+all TODOs are empty. Exercise 10 / TODO 5 precedes thinking question 9, whose
+answer refers to the student's completed page-table implementation. The webpage
+visually lists 9 first; this tutoring profile deliberately follows the dependency.
+Resume from established progress without redoing accepted report work.
 
 There are three submission parts: authentic AI conversation, a dedicated report,
 and modified Lab1 files. The student creates/designates the report and gives its
@@ -185,7 +193,11 @@ For later progression, be concise while preserving the complete task:
 
 **Write in:** [student's report path or actual file/function/TODO]
 
-[Complete handout task wording/context and relevant source. Do not solve it.
+**Context source / read first:** [webpage + section, or local document + verified
+location/range that supplies the question's premises; include diagrams/tables
+when relevant. For question 9, also point to the student's completed TODO 5.]
+
+[Complete handout task wording. Do not solve it or retell the source as a lesson.
 Then stop; explanations beyond the task are available when the student asks.]
 
 A question that is the actual thinking assignment is appropriate. A new

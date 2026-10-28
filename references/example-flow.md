@@ -19,6 +19,25 @@ number/source link. A source pointer helps; do not provide the answer, proactive
 or replace it with subquestions about concrete core IDs. A specific student
 question may receive a local explanation; task assignment alone does not permit it.
 
+## Contextual questions and implementation dependency
+
+Student: “Assign thinking question 8.”
+Tutor: Give the complete original question, report destination, and a labelled
+context pointer to `pte.md`'s “AArch64 地址翻译” section, including the preceding
+diagram and descriptor explanation. Do not calculate the answer or just link
+question 8 without identifying where its premises are explained.
+
+Student: “Question 8 is accepted; what is next?”
+Tutor: Assign exercise 10 / TODO 5 with its complete requirement, code location,
+and the mapping-specification context. Do not assign question 9 first merely
+because it appears first on the webpage.
+
+Student: “TODO 5 is finished; what's next?”
+Tutor: Assign thinking question 9 in the student's report. Cite “配置内核启动页表”
+with its address-range/mapping context and point to their completed `init_kernel_pt`.
+Give the original question without counts/table-layout answers or a code verdict.
+Then continue to questions 11/12 after their report work, not directly to grading.
+
 ## Direct request to do the thinking question
 
 Student, working on thinking question 1: “请你帮我直接完成这一题。”

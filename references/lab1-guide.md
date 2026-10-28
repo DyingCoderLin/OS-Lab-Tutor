@@ -57,6 +57,46 @@ The handout's thinking question can itself be phrased as a question; that is the
 assigned work, not an extra comprehension gate. Specific student questions can
 receive useful explanations; do not turn each answer into another mini-quiz.
 
+## Cite context and follow dependencies
+
+For a thinking question, explicitly label its **出处 / 前置阅读**. Link to an
+actual webpage section or the current local document at a verified location,
+and say which nearby paragraphs/figure/table supply the premises. A link to
+the question alone, a code file alone, or a vague “read the handout” is not enough
+when it refers to “above,” “this mapping,” or earlier startup behavior. Keep the
+full original question, then let the student read the source; do not pre-explain
+its contents, copy a whole chapter, calculate the answer, or add a quiz.
+
+The following are context pointers to verify in the student's course checkout;
+generate full clickable local paths/line locations from that checkout, or use
+the corresponding page and section heading. Do not hard-code a user's paths.
+
+| Thinking question | Context source / what to read |
+| --- | --- |
+| 1 | `Pages/Lab1/boot.md`, “启动 CPU 0 号核,” its paragraph before the question; `_start` is the associated code source |
+| 4 | `Pages/Lab1/boot.md`, “跳转到第一行 C 代码,” the startup-stack discussion preceding question 4 |
+| 5 | Same boot section, the BSS/`clear_bss` paragraph between questions 4 and 5; relevant `init_c.c` as a code pointer |
+| 8 | `Pages/Lab1/pte.md`, “AArch64 地址翻译,” from the section start through the translation diagram and page-table/descriptor explanation before question 8 |
+| 9 | `Pages/Lab1/pte.md`, “配置内核启动页表,” especially the platform address-range table and mapping requirements before question 9; **the student's completed** `init_kernel_pt` / TODO 5 is also required context |
+| 11 | Same page-table section's low/high-address setup discussion and the supplied low-address mapping in `init_kernel_pt` |
+| 12 | `Pages/Lab1/pte.md`, question 12 and its nearby secondary-core context/hint; also the earlier “启动 CPU 0 号核” section and its startup-code pointer |
+
+Web equivalents are the [boot chapter](https://sjtu-ipads.github.io/OS-Course-Lab/Lab1/boot.html)
+and [page-table chapter](https://sjtu-ipads.github.io/OS-Course-Lab/Lab1/pte.html).
+Name the relevant heading and reading span alongside the link, rather than
+expecting the student to locate the question's missing premises themselves.
+
+**Dependency order:** after thinking question 8, assign **exercise 10 / TODO 5**
+first. Only after the student has completed that implementation assign **thinking
+question 9**, in the report, referring back to their implementation and the
+source mapping requirements. Then continue to questions 11 and 12. Preserve
+the published numbering even though the page displays question 9 before 10.
+Do not ask students to answer implementation-detail question 9 before doing 10,
+and do not jump from TODO 5 straight to final grading or question 11.
+Report feedback for question 9 must still not reveal a TODO 5 defect, supply the
+correct table layout/counts, or turn into a code repair. Accept core understanding
+under the report standard, and respect already-completed/accepted work.
+
 ## Exactly three submission parts
 
 For this course, the instructor specifies three parts: (1) the authentic AI
@@ -140,7 +180,7 @@ Example setup: “请你自己新建一份专门记录 Lab1 的报告文档，�
 
 ## Stage map
 
-| Stage, in handout order | Where to record the result | Completion/check routing |
+| Stage, in dependency order (original numbering retained) | Where to record the result | Completion/check routing |
 | --- | --- | --- |
 | RTFSC/build-system reading | No exercise submission required by this section; optional personal notes | Move to boot reading; do not invent a graded report question |
 | CPU startup, thinking question 1 | Designated report: reasoning for thinking question 1; read `init/start.S` | Accept if the core is understood; only fundamental errors need feedback, then continue |
@@ -149,8 +189,9 @@ Example setup: “请你自己新建一份专门记录 Lab1 的报告文档，�
 | Thinking questions 4 and 5, stack/BSS | Designated report: reasoning for the respective questions; read `init/start.S` and `init/init_c.c` | Accept core-correct report answers without polishing; no code TODO here, then continue |
 | Exercise 6, UART string output | `peripherals/uart.c`, `uart_send_string`, `LAB 1 TODO 3` | No isolated automated test; continue; UART output is only a reachable-stage observation, not proof of this TODO alone |
 | Exercise 7, MMU activation | `init/tools.S`, `el1_mmu_activate`, `LAB 1 TODO 4` | Provide the runnable optional checkpoint B below; skipping goes straight to the page-table questions |
-| Thinking questions 8 and 9, page-table reasoning | Designated report: reasoning for the respective questions | Check the requested central calculation/concept; accept adequate work without extra refinements |
-| Exercise 10, high-address page table | `init/mmu.c`, `init_kernel_pt`, `LAB 1 TODO 5` | No isolated automated test; finish remaining report questions, then offer whole-lab integration checking |
+| Thinking question 8, page-table reasoning | Report: the requested reasoning/calculation; cite “AArch64 地址翻译” and the preceding diagram/descriptor context | Accept core understanding, then assign exercise 10 / TODO 5, not question 9 yet |
+| Exercise 10, high-address page table | `init/mmu.c`, `init_kernel_pt`, `LAB 1 TODO 5`; cite “配置内核启动页表” and its mapping requirements | No immediate code verdict; next assign thinking question 9 based on this completed implementation |
+| Thinking question 9, implementation details | Report: reasoning about the student's completed exercise 10; cite its mapping context and their `init_kernel_pt` | Accept adequate core reasoning, then continue to thinking question 11 |
 | Thinking questions 11 and 12 | Report: reasoning for the respective questions | Accept core-correct answers; address only fundamental misconceptions |
 | Coding-exercise explanation, when required by the handout (a separate written task) | Report: the student's implementation explanation | Accept adequate core reasoning; no language polishing, code-defect disclosure, or prescribed edits |
 | All coding exercises ready for integration (not another writing destination) | The code TODO task set is ready for the student to check | Offer the real whole-lab check; do not create another submission document |
@@ -160,7 +201,8 @@ abbreviations in this table. Do not prescribe modifications outside the exercise
 
 At the beginning of each stage, say concisely in the student's language:
 **Current official task → Destination: report or code TODO → Stop and wait.**
-Present the complete current task with needed context and a source pointer.
+Present the complete current task and a labelled context/prerequisite-reading
+source, with a section/range pointing to its premises, not just the question.
 Do not solve it or add a prerequisite lesson, an extra quiz, or future solutions.
 The first response also includes a brief lab overview and collaboration.
 When work is submitted, report feedback and code-check routing follow the rules
