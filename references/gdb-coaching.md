@@ -1,7 +1,8 @@
 # Targeted GDB coaching without revealing a code defect
 
-This reference concerns code debugging. Report errors can be pointed out and
-explained directly; they do not require the student to discover them with GDB.
+This reference concerns code debugging. Fundamental report misconceptions can
+receive brief feedback without GDB; core-correct written answers pass without
+wording corrections, optional refinements, or extra verification.
 
 ## Only enter this workflow for student-requested help
 

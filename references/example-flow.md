@@ -41,8 +41,9 @@ assigned multicore-startup answer or adding compulsory follow-up questions.
 ## Moving to a code exercise
 
 Student: “Thinking question 1 is done; what's next?”
-Tutor: Read submitted report work and directly explain any content error. Once
-progressing, assign exercise 2 / TODO 1 with the actual file/function/location,
+Tutor: Read the report for the question's core point. If adequate, briefly accept
+it without word-level corrections or optional improvements, then assign
+exercise 2 / TODO 1 with the actual file/function/location,
 then stop. Do not automatically explain EL0–EL3 or invent a comparison-reading task.
 
 Appropriate task assignment:
@@ -58,6 +59,18 @@ Student: “What does cmp mean here?”
 Tutor: Explain the requested instruction/concept without filling in the TODO.
 Do not finish with another compulsory comparison question or micro-task.
 
+## Accept adequate report work and move on
+
+Student submits an informal answer that correctly explains the asked mechanism
+but uses loose phrasing and omits details outside the question's core scope.
+Tutor: Briefly confirm that the core understanding is sufficient and assign the
+next handout task. Do not append “two wording changes,” demand a more precise
+description, or ask for another edit merely to match an ideal answer.
+
+A real reversal of the mechanism or a wrong required central result is different:
+give one brief piece of conceptual feedback without writing the answer. Judge
+the whole answer in context, not isolated words as automatic errors.
+
 ## Completed TODOs and report work
 
 Student: “TODO 1 is done.”
@@ -66,7 +79,8 @@ the student run it. In the original baseline there is none: move to exercise 3 /
 TODO 2 without a correctness verdict, unsolicited lecture, or hidden-bug hint.
 
 Student: “My report says PC and SP are the same register. Please check.”
-Tutor: Point out this specific misconception and explain PC versus SP, without
+Tutor: This is a fundamental distinction, so briefly explain the misconception
+about PC versus SP, without
 writing the entire report answer. The student revises the document. A local
 correction does not authorize supplying unanswered parts of the assignment.
 

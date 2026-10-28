@@ -21,7 +21,7 @@ TuTor helps **teachers and students** use AI as a coach, not a cheat sheet. Toda
 | **Lab1 completion** | After each TODO, no immediate correctness verdict: you run an existing applicable focused check; if none exists, continue. Whole-lab grading is reserved for integration. Other labs retain their own review policy. |
 | **Hints without answers** | No TODO implementations, defective lines, root causes, correct values, or repair recipes, including in prose. |
 | **No assignment answers** | Requests to directly complete a thinking question, provide reference report text, or walk through the whole solution are refused. You can ask about a specific confusing instruction/concept. |
-| **Report feedback** | Submit your own reasoning first. The tutor identifies local errors and explains the relevant concept without writing a corrected/full answer or filling omissions. You revise the report yourself. |
+| **Report feedback** | Core understanding is enough: an adequate answer passes and you move on. No wording polish or optional improvements. Only fundamental errors or missing central requirements receive brief feedback; the tutor never writes the answer. |
 | **GDB coaching** | When you ask for debugging help, get relevant stages/functions, breakpoint candidates, registers/memory, and explained commands. You run, locate, and repair the problem; the tutor never names the code defect or fix. |
 | **Tool gate** | Read-only inspection supports your question; the tutor reviews submitted work but never edits files or runs builds, programs, tests, or debuggers. |
 | **Command teaching** | Every suggested command explains its goal, arguments, and the kind of evidence it yields; no solution-bearing expected output. |
@@ -39,8 +39,8 @@ Submit three parts: the authentic AI conversation record, your dedicated report
 document, and your modified Lab1 files containing the TODO implementations.
 Keep/export the real conversation using your tool's supported method. Stage tasks
 write to either the report or a code TODO; testing/debugging supports those tasks
-and does not add another mandatory submission. Report errors receive direct
-feedback; code TODOs keep the check-or-continue and no-defect-disclosure policy.
+and does not add another mandatory submission. Only fundamental report errors need brief
+feedback; adequate answers pass without polishing; code TODOs keep the check-or-continue and no-defect-disclosure policy.
 
 ## Project instructions for plain Lab1 prompts
 
@@ -58,7 +58,7 @@ an existing chat. This option affects that project, not global skill activation.
 
 ## Install
 
-This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7.3-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
+This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7.4-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
 
 **Repository:** [github.com/DyingCoderLin/OS-Lab-Tutor](https://github.com/DyingCoderLin/OS-Lab-Tutor)
 
@@ -219,7 +219,7 @@ For a **git submodule**: `git submodule update --remote path/to/tutor`
 
 ### Pin to a release tag (reproducible install)
 
-This fork's `0.7.3-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
+This fork's `0.7.4-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
 
 ### Check your installed version
 
@@ -252,7 +252,7 @@ Help me investigate this failing test with GDB. Suggest useful stages, breakpoin
 ```
 
 3. **Attempt the current handout task yourself.** Ask for help when needed, then reply when done. The tutor does not insert extra questions before you may start a TODO.
-4. **In Lab1, designate your report:** create a dedicated document yourself (or use one you already created), then tell the tutor its path. Write however you like, as long as the tutor can understand it. Thinking answers go there; coding tasks go in the named TODO; any required implementation explanation is a separate report task. The tutor can point out a specific error in your own substantive report attempt and explain that concept, but cannot write a full answer, fill missing reasoning, or directly identify a code defect or repair. After each TODO, run a genuine focused check if one is available now; otherwise continue without a tutor verdict. The original five-TODO version has only integrated `make grade`, not isolated TODO tests. Other lab workflows can still use source-review feedback.
+4. **In Lab1, designate your report:** create a dedicated document yourself (or use one you already created), then tell the tutor its path. Write however you like, as long as the tutor can understand it. Thinking answers go there; coding tasks go in the named TODO; any required implementation explanation is a separate report task. The tutor accepts core-correct report work without polishing and only flags fundamental errors, but cannot write a full answer, fill missing reasoning, or directly identify a code defect or repair. After each TODO, run a genuine focused check if one is available now; otherwise continue without a tutor verdict. The original five-TODO version has only integrated `make grade`, not isolated TODO tests. Other lab workflows can still use source-review feedback.
 5. If the tutor jumps to a Lab1 verdict or fix, remind it: *“Tell me where this stage's result belongs. Give me an existing focused check to run, or let me continue if there is none. I will investigate observed failures with GDB.”*
 
 ## Repository layout
@@ -278,7 +278,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7.3-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
+The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7.4-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
 
 ## Contribute
 

@@ -60,10 +60,12 @@ report/code destinations at every stage, and route each completed TODO to a real
 applicable student-run focused check or continued progress, without an immediate
 correctness verdict. This overrides generic source review. Never mislabel a build,
 GDB observation, or whole-lab grade as an isolated TODO test. Other labs can keep
-generic source review without repairs. Report errors are different: directly
-identify the mistaken written statement/reasoning and explain the correct
-concept, without editing/ghostwriting or laundering code answers through report
-review. If students are stuck on code, provide concrete GDB stages/functions,
+generic source review without repairs. Report review checks core understanding:
+accept an adequate answer and continue without polishing, optional refinements,
+or another revision request. Only a fundamental misconception, wrong central
+required result, or missing central requirement warrants brief feedback. Interpret
+loose wording in context. Do not edit/ghostwrite or launder code answers through
+report review. If students are stuck on code, provide concrete GDB stages/functions,
 breakpoint candidates, registers/memory, and explained commands. Observation
 guidance is allowed; directly revealing a code defect, cause, or fix is not.
 Students own debugger execution, localization, and repair.

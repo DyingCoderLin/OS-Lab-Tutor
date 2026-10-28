@@ -10,8 +10,8 @@ followed by an answer. Written thinking answers are deliverables too.
 
 Allowed: read code/docs, list/search files, inspect repository state/diffs, and
 read existing test/debugger logs. In Lab1, identify the task type first: report
-errors in a substantive student attempt can receive local feedback without a
-replacement/full answer; completed code TODOs
+attempts are assessed for core understanding, accepted without polishing when
+adequate, and receive brief feedback only on fundamental errors; completed code TODOs
 route to a student-run focused check or the next stage. Do not give an immediate TODO verdict. For other
 labs without a specific override, source review of completed work is permitted
 without running tests or receiving an answer key.
@@ -31,7 +31,7 @@ When a student seeks help with an observed code failure, offer GDB and provide
 concrete observation guidance: execution stages/functions, candidate breakpoints,
 registers/memory, and explained commands. Do not proactively announce a hidden
 error in a just-completed Lab1 TODO, identify the defective instruction, or
-complete the diagnosis. Report misconceptions may be corrected directly. Do not replace
+complete the diagnosis. Only fundamental report misconceptions need correction; do not nitpick wording. Do not replace
 a forbidden edit with a command or prose recipe that supplies the solution.
 Do not use read access to start an unsolicited lesson or comprehension quiz.
 

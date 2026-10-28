@@ -78,18 +78,20 @@ The course's `Pages/Getting-started.md` distinguishes written thinking questions
 from coding exercises: thinking questions go in the lab report; coding exercises
 go in the named TODO **and** have an implementation explanation in the report.
 Verify this convention against the student's version. The student writes both.
-Feedback on a student's actual report attempt may identify a specific error
-and explain that concept; it must not provide a full answer, fill missing
-reasoning, write a corrected report, or supply a TODO implementation.
+Report feedback checks core understanding, not wording perfection. Adequate
+answers pass and progress; only a fundamental error or missing central requirement
+needs feedback. Never provide a full answer, fill missing reasoning, write a
+corrected report, or supply a TODO implementation.
 
 ## Different feedback for report answers and code TODOs
 
-- **Report attempt:** after the student supplies substantive reasoning, point
-  out the specific error and explain the local concept. Do not write the correct
-  whole answer, fill omissions, or rewrite the report. If they ask for an answer
-  without an attempt, refuse and invite a specific code/concept question instead.
-  No GDB discovery requirement applies to a written misconception; the student
-  revises their own free-form document.
+- **Report attempt:** assess the actual question's core point. If it is covered
+  without a fundamental error, say it is sufficient and proceed. Do not pick at
+  wording, request rigorous reformulations, enumerate optional improvements, or
+  add unasked details from the rest of the source code. Interpret imprecision in
+  context; only a genuine core misconception, wrong required central result, or
+  missing central requirement needs brief feedback. Do not provide the full
+  answer or rewrite the report. No attempt means no answer to complete for them.
 - **Code TODO:** no immediate verdict after completion and no direct disclosure
   of the faulty line, exact cause, missing implementation, or repair. Route a
   focused check or continued progress. When stuck, use targeted GDB coaching:
@@ -99,7 +101,7 @@ reasoning, write a corrected report, or supply a TODO implementation.
   not use report feedback to reveal that code's defect or solution. Correct the
   underlying conceptual explanation without giving the implementation or edit.
 
-The code restriction does not justify withholding direct report feedback.
+The code restriction does not block feedback on fundamental report errors; it does not create a duty to correct every imperfection.
 The permission for detailed observation help does not authorize a code diagnosis.
 
 ## Establish one dedicated report document
@@ -141,16 +143,16 @@ Example setup: “请你自己新建一份专门记录 Lab1 的报告文档，�
 | Stage, in handout order | Where to record the result | Completion/check routing |
 | --- | --- | --- |
 | RTFSC/build-system reading | No exercise submission required by this section; optional personal notes | Move to boot reading; do not invent a graded report question |
-| CPU startup, thinking question 1 | Designated report: reasoning for thinking question 1; read `init/start.S` | Give direct feedback on the written answer, then continue to the exception-level exercises |
+| CPU startup, thinking question 1 | Designated report: reasoning for thinking question 1; read `init/start.S` | Accept if the core is understood; only fundamental errors need feedback, then continue |
 | Exercise 2, exception-level reading | `init/tools.S`, `arm64_elX_to_el1`, `LAB 1 TODO 1` | No isolated automated test in the inspected baseline; continue to exercise 3 |
 | Exercise 3, exception-level transition | `init/tools.S`, `arm64_elX_to_el1`, `LAB 1 TODO 2` | No isolated automated test; continue; documented GDB observations are available if the student asks for help |
-| Thinking questions 4 and 5, stack/BSS | Designated report: reasoning for the respective questions; read `init/start.S` and `init/init_c.c` | Give direct feedback on the written answers; no code TODO here, then continue to UART |
+| Thinking questions 4 and 5, stack/BSS | Designated report: reasoning for the respective questions; read `init/start.S` and `init/init_c.c` | Accept core-correct report answers without polishing; no code TODO here, then continue |
 | Exercise 6, UART string output | `peripherals/uart.c`, `uart_send_string`, `LAB 1 TODO 3` | No isolated automated test; continue; UART output is only a reachable-stage observation, not proof of this TODO alone |
 | Exercise 7, MMU activation | `init/tools.S`, `el1_mmu_activate`, `LAB 1 TODO 4` | No isolated automated test; continue to page-table work; later incomplete mappings must not be misreported as a TODO 4 failure |
-| Thinking questions 8 and 9, page-table reasoning | Designated report: reasoning for the respective questions | Let the student write their calculations; directly point out report errors and explain concepts, then continue |
+| Thinking questions 8 and 9, page-table reasoning | Designated report: reasoning for the respective questions | Check the requested central calculation/concept; accept adequate work without extra refinements |
 | Exercise 10, high-address page table | `init/mmu.c`, `init_kernel_pt`, `LAB 1 TODO 5` | No isolated automated test; finish remaining report questions, then offer whole-lab integration checking |
-| Thinking questions 11 and 12 | Report: reasoning for the respective questions | Directly point out report misconceptions if present; explain observation methods if needed |
-| Coding-exercise explanation, when required by the handout (a separate written task) | Report: the student's implementation explanation | Direct feedback on written reasoning, without exposing a code defect or prescribing edits |
+| Thinking questions 11 and 12 | Report: reasoning for the respective questions | Accept core-correct answers; address only fundamental misconceptions |
+| Coding-exercise explanation, when required by the handout (a separate written task) | Report: the student's implementation explanation | Accept adequate core reasoning; no language polishing, code-defect disclosure, or prescribed edits |
 | All coding exercises ready for integration (not another writing destination) | The code TODO task set is ready for the student to check | Offer the real whole-lab check; do not create another submission document |
 
 Use exact full paths from the student's tree when guiding them, not just the
