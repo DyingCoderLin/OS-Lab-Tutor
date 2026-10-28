@@ -11,8 +11,8 @@ Instructions for AI coding agents working **on this repo** (not for end users le
 | `SKILL.md` | **Source of truth** for tutor behavior. YAML frontmatter (`name`, `description`, `metadata.version`) must stay valid for Cursor, Claude Code, OpenCode, and `.agents/skills`. |
 | `references/` | Long examples and rules loaded on demand (e.g. `example-flow.md`, `tool-gate.md`). Keep `SKILL.md` lean; add detail here. |
 | `agents/` | Agent-mode wrappers (`opencode/tutor.md`, `claude/tutor.md`). Frontmatter pins the harness tools to read-only and points the agent at the skill. A new harness means one more file, no generator; keep the wrapper bodies identical. |
-| `README.md` | User-facing docs (English): install, upgrade, usage, contribute. |
-| `README-es.md` | Same content as `README.md` in Spanish. Must stay aligned with the English README. |
+| `README.md` | Default user-facing docs (Chinese): purpose, features, and installation. |
+| `README-en.md` | English version of `README.md`; keep both versions aligned. |
 | `AGENTS.md` | This file — repo conventions for agents. |
 | `AUTHORS.md` | Contributor list — keep in sync with README Contributors section. |
 | `LICENSE` | MIT — keep in sync with README license sections. |
@@ -95,7 +95,7 @@ Codex invocation remains explicit-only in `agents/openai.yaml`.
 ## Editing conventions
 
 1. **Behavior changes** → edit `SKILL.md` and/or `references/`. Prefer `references/` for long walkthroughs or tables.
-2. **User-visible docs** → update `README.md` and `README-es.md` when relevant (see below).
+2. **User-visible docs** → update `README.md` and `README-en.md` when relevant (see below).
 3. **Minimal diffs** — match existing tone and structure; do not refactor unrelated files.
 4. **No secrets** — never commit `.env`, tokens, or personal machine paths as examples.
 5. **Do not commit** `playground/`, `.cursor/`, `.opencode/`, `.agents/` (see `.gitignore`).
@@ -110,9 +110,9 @@ The READMEs are read by students who may never have used an AI coding tool, an a
 - Keep the technical version when it is the point of the step (a flag name, a file to edit), and add one sentence saying what it is for.
 - Sections that only make sense to people already in the ecosystem belong under an "advanced" or "local development" heading, not in the install path.
 
-## Keep README and README-es in sync
+## Keep README and README-en in sync
 
-When you change something that affects how people **install, upgrade, use, or contribute** to TuTor, update **both** `README.md` and `README-es.md` in the same change.
+When you change something that affects how people **install, upgrade, use, or contribute** to TuTor, update **both** `README.md` and `README-en.md` in the same change.
 
 | Update both READMEs when… | Examples |
 |---------------------------|----------|
@@ -127,10 +127,10 @@ When you change something that affects how people **install, upgrade, use, or co
 | Only tutor runtime behavior in `SKILL.md` / `references/` | Wording of refusals, internal tool-gate edge cases |
 | Typos or clarity inside skill text with no user doc impact | — |
 
-**Spanish README rules:**
+**Chinese and English README rules:**
 
 - Translate prose; keep commands, paths, flags, and code **literal** (same as TuTor teaches learners).
-- Preserve the language switcher at the top: English README links to `README-es.md`; Spanish links to `README.md`.
+- Preserve the language switcher at the top: Chinese README links to `README-en.md`; English links to `README.md`.
 - Keep section structure parallel so diffs between languages stay easy to review.
 
 ## Version bumps
@@ -158,6 +158,6 @@ Do not create commits unless the user explicitly requests them.
 
 ## Links
 
-- English docs: [README.md](README.md)
-- Spanish docs: [README-es.md](README-es.md)
+- Chinese docs (default): [README.md](README.md)
+- English docs: [README-en.md](README-en.md)
 - Skill entrypoint: [SKILL.md](SKILL.md)
