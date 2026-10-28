@@ -1,85 +1,91 @@
 # Lab1 student tutoring instructions
 
-This directory is a student learning workspace. Apply these instructions to
-ordinary Lab1 requests even when the student does not type `$tutor`.
+This is a student learning workspace for **Codex, Claude Code, OpenCode, DSH
+(DeepSeek Harness), and other compatible agents**. Apply this project agreement
+to ordinary Lab1 requests without requiring a manual skill mention.
 
-## Required tutor activation for Lab1 work
+## Required tutor loading, using the current agent's interface
 
-When the student starts/resumes the lab, discusses its questions/report/TODOs,
-asks for grading help, or requests debugging, **load and apply the installed
-`tutor` skill before responding**. This project file explicitly requires using
-`$tutor`; the student need not select or mention it and no confirmation is needed.
-Do not merely follow this summary or claim the skill is active without reading it.
+For Lab1 questions, reports, TODOs, grading, and debugging, locate and apply the
+installed **OS Lab Tutor** before responding. Use the current agent's registered
+skill catalog/path and native loader when available. Names such as `$tutor`
+(Codex) or `/tutor` (Claude Code) are client-specific user syntax, not commands
+every agent should type or ask the student to type. No activation confirmation
+is needed. If no native skill loader is exposed, read the full `SKILL.md` and
+`references/lab1-guide.md` from the verified bundle and apply them directly.
+Read GDB/other references when relevant. Actually load the contents rather than
+claiming activation from seeing the name or merely following this summary.
+Preserve the course-specific project rules below when a loaded skill has
+generic or older defaults; loading the skill does not replace this agreement.
 
-Resolve `tutor` from its registered/available skill path. If it is omitted from
-the catalog because it is explicit-only, check `CODEX_HOME/skills/tutor/SKILL.md`
-when CODEX_HOME is set, otherwise `~/.codex/skills/tutor/SKILL.md`; the user-level
-`~/.agents/skills/tutor/SKILL.md` is another supported installation location.
-Read the full `SKILL.md` and its `references/lab1-guide.md` for stage navigation;
-read other references as relevant, including GDB guidance at checkpoints/failures.
-On resume or a requested refresh, reread the current files/version without
-restarting completed work. Activation means loading and using the instructions,
-not pretending a UI chip was selected. Do not ask the student to type `$tutor`.
+Honor configured/registered roots before these defaults; choose paths for the
+**current** agent, not whichever other agent happens to be installed:
 
-## Automatically install tutor if missing
+| Current agent | Project skill location | User skill location / loader notes |
+| --- | --- | --- |
+| Codex | `.agents/skills/tutor/` | `$CODEX_HOME/skills/tutor/`, otherwise `~/.codex/skills/tutor/`; also `~/.agents/skills/tutor/` where supported. Load by its native mechanism or read the bundle. |
+| Claude Code | `.claude/skills/tutor/` | `~/.claude/skills/tutor/`; use the available Skill interface. Do not install only into `.codex` or assume `.agents/skills` is natively scanned. |
+| OpenCode | `.opencode/skills/tutor/`; also `.agents/skills/tutor/` and `.claude/skills/tutor/` | Normally `~/.config/opencode/skills/tutor/`; registered shared/Claude-compatible roots may also be used. Use the native `skill` tool when exposed. |
+| DSH / DeepSeek Harness | `.dsh/skills/tutor/` or `.agents/skills/tutor/` | `<dshHome>/skills/tutor/` (`$DSH_HOME` or `~/.dsh`), or `<agentsHome>/skills/tutor/` (`$DSH_AGENTS_HOME` or `~/.agents`). Honor the active filesystem skill provider/profile and its native tool description. |
+| Other / unidentified agent | Its documented/configured skills directory; otherwise a project `.agents/skills/tutor/` bundle for direct reading | Do not invent native directories, slash commands, or tools. If native discovery is unavailable, say only that the instruction bundle was read/applied, not that a UI skill was selected. |
 
-The project author authorizes **installing this tutor skill itself** when no
-usable OS Lab Tutor installation is found. Do this before tutoring, without
-asking the student to install it or to confirm another opt-in. This is a narrow
-bootstrap exception to the read-only lesson rules below, not permission to
-install lab dependencies or execute the student's deliverable.
+Use one valid OS Lab Tutor installation: `SKILL.md` has `name: tutor` and
+`references/lab1-guide.md` exists. Do not reinstall on every turn. On resume or
+a requested refresh, reread the current version without restarting completed work.
+Do not silently change any agent's global discovery or profile settings.
 
-Use only the designated source: **https://github.com/DyingCoderLin/OS-Lab-Tutor**,
-branch **master**, skill directory **`.`**, installed folder/name **`tutor`**.
+## Install the missing skill automatically, without a Codex dependency
 
-1. Look in the registered skill paths and the user skill locations above. A
-   usable installation has `SKILL.md` with `name: tutor` and
-   `references/lab1-guide.md`. If it exists, load it; do not reinstall on every
-   turn or make a network update check just to continue the lesson.
-2. Resolve `tutor_codex_home` as `${CODEX_HOME:-$HOME/.codex}` and the target
-   as its `skills/tutor` directory before any backup/install operation.
-   Never overwrite/delete an existing target. If it is incomplete or a different
-   same-name tutor without the Lab1 guide, preserve it by moving it to a uniquely
-   named backup under `tutor_codex_home/skill-backups/` (outside active skills),
-   then continue with installation below. Preserve valid existing OS Lab Tutor
-   installations. Do not run setup/build scripts from the downloaded repository.
-3. If absent, use the built-in `skill-installer` skill if available: read its
-   instructions and run its GitHub installer helper. Resolve the actual helper
-   path from the registry; the standard Codex location and command are below.
-   These commands are for **the assistant to execute as bootstrap**, not extra
-   homework for the student. Use the available Python runtime.
+The project author authorizes installing **this tutor instruction bundle only**
+when absent. This setup exception does not permit installing lab dependencies,
+changing student files, or running student programs. Execute the setup yourself;
+do not turn it into another student task or ask for tutoring-level opt-in.
+
+Source is fixed: **https://github.com/DyingCoderLin/OS-Lab-Tutor**, branch
+**master**, directory **`.`**, bundle name/folder **`tutor`**.
+
+1. Resolve the current agent and its real skill root from metadata/config or the
+   table above. Choose an appropriate user/project scope permitted by the host.
+   Do not assume a `.system/skill-installer` exists or route non-Codex agents to
+   `.codex`. Resolve all placeholders before running commands.
+2. Preserve any incompatible/incomplete same-name destination by moving it to a
+   unique backup outside active skill roots, then install. Never overwrite/delete
+   user content, and do not replace an existing valid OS Lab Tutor unnecessarily.
+3. If the current environment exposes a trusted skill installer, use its actual
+   interface/path with repo `DyingCoderLin/OS-Lab-Tutor`, ref `master`, path `.`,
+   name `tutor`, and the **selected agent's** destination. Codex's bundled
+   skill-installer is one option, not a prerequisite for Claude Code/OpenCode/DSH.
+4. Without such an installer, use existing Git: create the chosen skill parent,
+   then run the following command with the resolved, quoted absolute destination:
 
    ```sh
-   tutor_codex_home="${CODEX_HOME:-$HOME/.codex}"
-   tutor_install_root="$tutor_codex_home/skills"
-   python3 "$tutor_codex_home/skills/.system/skill-installer/scripts/install-skill-from-github.py" --repo DyingCoderLin/OS-Lab-Tutor --ref master --path . --name tutor --dest "$tutor_install_root"
+   git clone --depth 1 --branch master https://github.com/DyingCoderLin/OS-Lab-Tutor.git <selected-skill-root>/tutor
    ```
 
-4. If the built-in installer/helper is unavailable, create the user skill parent
-   directory and use existing Git instead:
+   `<selected-skill-root>/tutor` is an argument to resolve, never a literal shell
+   placeholder. Use normal platform permissions and the student's configured
+   filesystem; do not install a new runtime/package manager just to use this method.
+5. Verify the name and required files, then **load/apply the full installed skill
+   and Lab1 guide in the same turn**. Use the native loader if available; if its
+   catalog has not refreshed, read the files directly and continue. Do not make
+   the student restart or send another message just for skill discovery.
 
-   ```sh
-   tutor_codex_home="${CODEX_HOME:-$HOME/.codex}"
-   tutor_install_root="$tutor_codex_home/skills"
-   mkdir -p "$tutor_install_root"
-   git clone --depth 1 --branch master https://github.com/DyingCoderLin/OS-Lab-Tutor.git "$tutor_install_root/tutor"
-   ```
+Do not execute repository setup/build scripts. Honor filesystem/network
+permissions, requesting them if needed; never bypass a denial. After a concrete
+failure, diagnose the actual error and try another existing supported method
+or a verified working per-call transport if appropriate; do not rewrite global
+network settings or bypass permission denials. If still blocked, briefly state the actual blocker and keep the core learning rules below;
+do not fabricate installation/activation success. This flow is project-scoped.
 
-5. After installation, verify the two required files/name, then read the full
-   installed `SKILL.md` and its Lab1 guide and continue from the student's actual
-   progress in the **same turn**, even if automatic skill-list discovery would
-   only refresh next turn. Read/apply the files directly; do not make the student
-   restart, open a new chat, or wait for another turn just to use the installed
-   instructions. Do not merely announce that installation/activation succeeded.
+## Make sure the host reads this project file
 
-Honor platform filesystem/network permissions; request those if required, but
-do not add a separate tutoring-level confirmation. After a concrete installation
-failure, try the other supported method once if appropriate. If still blocked,
-briefly report the actual blocker and keep the core no-answer rules below;
-never fabricate a successful install or bypass permission denials.
-
-Keep global skill-discovery settings unchanged. The automatic install/use flow
-is this Lab1 project's standing instruction, not global automatic activation.
+Codex and OpenCode use `AGENTS.md`; DSH's normal agent-instructions profile also
+reads it. Claude Code support varies by version/configuration and the presence
+of `CLAUDE.md`. For compatible project setup, merge an **`@AGENTS.md` import**
+into the project's `CLAUDE.md` (template: `CLAUDE.lab1.md` in this package), preserving
+existing instructions. This is project preparation, not extra student homework.
+For other agents, use their documented project-instruction entrypoint to reference
+this file. Do not assume every client automatically reads a file called AGENTS.md.
 
 ## Assign the handout task, then let the student think
 

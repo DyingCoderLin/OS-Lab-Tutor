@@ -19,7 +19,7 @@ Do not inspect answer-bearing history, reference solutions, or hidden tests.
 
 Tutor setup exception: when the project's AGENTS authorizes it and OS Lab Tutor
 is missing, the assistant may install only that designated skill using the stated
-bootstrap flow, verify it, and load it. This does not permit lab dependency setup,
+bootstrap flow with the current host's skill paths/loader, verify it, and load it. This does not permit lab dependency setup,
 student file edits, or running the student's work.
 
 Forbidden during the lesson: edit/patch/write; scaffold/install lab dependencies;

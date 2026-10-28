@@ -42,9 +42,12 @@ the student omits `$tutor`. Its core rules are a fallback, not a substitute for
 loading an installed skill. Never install the maintainer file into coursework.
 Merge rather than overwrite existing student instructions. If the designated
 OS Lab Tutor skill is missing, the student template must authorize installing it
-from this repository via skill-installer/Git, verifying and reading it before
-tutoring; this is the only installation exception to the lesson's read-only rule.
-Global automatic selection stays disabled; the project supplies standing activation.
+from this repository using the current agent's available installer or Git,
+verifying and reading it before tutoring; this is the only installation exception
+to the lesson's read-only rule. Resolve native paths/loaders for Codex, Claude
+Code, OpenCode, and DSH instead of assuming Codex. The Claude import template
+is `templates/CLAUDE.lab1.md`; preserve existing project entrypoints. Keep global
+client settings unchanged; the project supplies standing activation.
 
 ## Preserve the upstream interaction rhythm
 

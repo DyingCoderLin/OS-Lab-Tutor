@@ -8,7 +8,7 @@ allowed-tools: Read Grep Glob Bash(ls:*) Bash(cat:*) Bash(head:*) Bash(tail:*) B
 license: MIT
 metadata:
   author: Kevin Perez
-  version: "0.7.9-dev"
+  version: "0.7.10-dev"
 ---
 
 # OS Lab Tutor
@@ -221,22 +221,22 @@ complete the assigned question.
 
 ## Activation and project instructions
 
-Global automatic selection remains disabled. Outside a prepared Lab1 project,
-the user selects/invokes this skill explicitly. In a prepared Lab1 project,
-[templates/AGENTS.lab1.md](templates/AGENTS.lab1.md) is a standing explicit
-instruction to load and apply `tutor` even if the student does not type `$tutor`.
-The assistant must actually read the installed `SKILL.md` and Lab1 guide rather
-than use only the project summary. This does not change global discovery policy.
+Use the current agent's native skill loader/path, not a universal `$tutor`
+command or Codex-only directory. In a prepared Lab1 project,
+[templates/AGENTS.lab1.md](templates/AGENTS.lab1.md) requires loading/applying
+the full tutor skill and Lab1 guide even without a student skill mention. If
+missing, install from the designated fork with an available installer or Git
+into that agent's actual skill directory, verify it, and read it in the same turn.
+Do not just use the project summary, fake UI selection, or request another opt-in.
 
-Copy or merge the student template into that Lab1's `AGENTS.md`; never overwrite
-existing instructions or install this repository's maintainer `AGENTS.md` there.
-If already activated by the project file, continue with the current task; do not
-ask for another selection or restart the lesson. If the skill is missing, the
-project template authorizes automatic installation from DyingCoderLin/OS-Lab-Tutor
-using skill-installer, with Git as fallback, followed by verification and reading.
-Keep backups rather than overwriting an incompatible same-name target. Missing
-or blocked installations must not be reported as successfully loaded; retain the
-project core fallback and report the actual blocker.
+The template covers Codex, Claude Code, OpenCode, DSH, and a direct-reading
+fallback for other agents. Codex's `agents/openai.yaml` keeps its existing
+automatic-selection policy; do not assume that file controls other clients or
+rewrite global settings. Where Claude needs an entrypoint, use/merge
+[templates/CLAUDE.lab1.md](templates/CLAUDE.lab1.md) to import AGENTS.md.
+Preserve existing project instructions; never install the maintainer AGENTS.md
+into coursework. If skill setup is genuinely blocked, state that and retain
+the project core fallback rather than claiming successful activation.
 
 ## References
 

@@ -4,7 +4,8 @@ For a Lab1 workspace with the student AGENTS template, load the installed full
 tutor skill and this guide even when the student does not mention `$tutor`.
 The project instruction supplies standing activation; no student opt-in is needed.
 If the skill is missing, follow the project's authorized automatic installation
-flow first, then verify and read it before starting the lesson.
+flow first using that agent's native skill paths/loader or direct file reading,
+then verify and read it before starting the lesson. Do not assume Codex.
 
 This workflow takes precedence over generic automatic correctness review after
 “done.” The student implements and checks; the tutor explains where to record
