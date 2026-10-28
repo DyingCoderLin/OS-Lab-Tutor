@@ -17,7 +17,7 @@ TuTor ayuda a **docentes y estudiantes** a usar la IA como tutor, no como atajo.
 | **Ritmo original** | Primero presenta el laboratorio y la colaboración; después, plan breve y requisitos completos de la tarea actual con destino en informe/código; luego espera. La pregunta 1 va antes del TODO 1. Explicaciones a petición, sin cuestionarios ni lecciones previas añadidas. |
 | **Tu documento de informe** | Crea tú un documento dedicado y comunica su ruta al tutor. Elige cualquier formato legible y organización; no se exige plantilla, títulos ni estructura. El tutor lo lee, pero no lo escribe por ti. |
 | **Etapas y destinos de Lab1** | El tutor identifica la guía actual e indica un destino por tarea: un tema en tu informe o un TODO concreto. La explicación escrita requerida es otra tarea para el informe. Los números de preguntas identifican temas, no títulos obligatorios. |
-| **Al terminar un TODO de Lab1** | Sin veredicto inmediato: ejecutas una prueba específica existente y aplicable; si no existe, continúas. La evaluación global se reserva para integración. Otros laboratorios conservan su propia política. |
+| **Al terminar un TODO de Lab1** | Sin veredicto inmediato. Usa una prueba específica real o continúa; tras TODO 1/4 se ofrece brevemente la observación manual opcional con GDB de la guía. Puedes omitirla y avanzar. La evaluación global es aparte. |
 | **Pistas sin respuestas** | Sin soluciones de TODO, líneas defectuosas, causas, valores correctos ni recetas de corrección, tampoco en prosa. |
 | **Sin respuestas completas** | Se rechaza completar una pregunta, dar texto de referencia del informe o explicar toda la solución. Puedes preguntar por una instrucción o concepto concreto. |
 | **Comentarios del informe** | Basta entender la idea central: una respuesta adecuada se acepta y se continúa, sin pulir palabras ni añadir mejoras opcionales. Solo errores fundamentales o requisitos centrales ausentes reciben comentarios breves; el tutor no escribe la respuesta. |
@@ -57,7 +57,7 @@ opción afecta al proyecto y no activa la skill global automáticamente.
 
 ## Instalación
 
-Este fork se basa en [TuTor](https://github.com/kevinnio/tutor). Sus reglas **0.7.4-dev** aún no están publicadas; la instalación remota solo las incluye después de publicarlas. En Codex, selecciona la skill explícitamente o usa `$tutor`; la activación automática está deshabilitada. Otras herramientas pueden seleccionarla de otra manera.
+Este fork se basa en [TuTor](https://github.com/kevinnio/tutor). Sus reglas **0.7.5-dev** aún no están publicadas; la instalación remota solo las incluye después de publicarlas. En Codex, selecciona la skill explícitamente o usa `$tutor`; la activación automática está deshabilitada. Otras herramientas pueden seleccionarla de otra manera.
 
 **Repositorio:** [github.com/DyingCoderLin/OS-Lab-Tutor](https://github.com/DyingCoderLin/OS-Lab-Tutor)
 
@@ -217,7 +217,7 @@ Si es **submódulo**: `git submodule update --remote ruta/al/tutor`
 
 ### Fijar a una etiqueta de versión (instalación reproducible)
 
-Las reglas `0.7.4-dev` de este fork aún no tienen etiqueta de versión. La versión anterior `v0.6` no incluye estos cambios. Después de publicar una versión, usa su etiqueta real en `git clone --branch <release-tag>` y consulta la revisión con `git describe --tags --always`. No supongas que una versión de desarrollo tiene una etiqueta publicada.
+Las reglas `0.7.5-dev` de este fork aún no tienen etiqueta de versión. La versión anterior `v0.6` no incluye estos cambios. Después de publicar una versión, usa su etiqueta real en `git clone --branch <release-tag>` y consulta la revisión con `git describe --tags --always`. No supongas que una versión de desarrollo tiene una etiqueta publicada.
 
 ### Revisar la versión instalada
 
@@ -250,7 +250,7 @@ Help me investigate this failing test with GDB. Suggest useful stages, breakpoin
 ```
 
 3. **Intenta tú la tarea actual de la guía.** Pide ayuda cuando la necesites y avisa al terminar. El tutor no añade preguntas previas para permitirte comenzar un TODO.
-4. **En Lab1, designa tu informe:** crea tú un documento dedicado (o usa uno que ya creaste) y comunica su ruta al tutor. Escribe como quieras, siempre que el tutor lo entienda. Las respuestas teóricas van allí; las tareas de código van en su TODO; la explicación requerida es otra tarea para el informe. El tutor acepta el razonamiento central correcto sin pulir el texto y solo señala errores fundamentales, pero no escribe una respuesta completa, rellena razonamientos ausentes ni identifica un defecto o corrección del código. Tras cada TODO, ejecuta una prueba específica real si está disponible; si no, continúa sin veredicto del tutor. La versión original de cinco TODO solo tiene `make grade` global. Otros laboratorios pueden conservar revisión del código.
+4. **En Lab1, designa tu informe:** crea tú un documento dedicado (o usa uno que ya creaste) y comunica su ruta al tutor. Escribe como quieras, siempre que el tutor lo entienda. Las respuestas teóricas van allí; las tareas de código van en su TODO; la explicación requerida es otra tarea para el informe. El tutor acepta el razonamiento central correcto sin pulir el texto y solo señala errores fundamentales, pero no escribe una respuesta completa, rellena razonamientos ausentes ni identifica un defecto o corrección del código. Tras cada TODO, ejecuta una prueba específica real si está disponible; si no, continúa sin veredicto del tutor. La versión original tiene `make grade` global, sin pruebas automáticas aisladas, y observaciones manuales opcionales con GDB tras TODO 1/4. Omitirlas nunca bloquea la siguiente tarea. Otros laboratorios pueden conservar revisión del código.
 5. Si adelanta un veredicto o corrección en Lab1, recuérdale: *«Indica dónde registrar el resultado de esta etapa. Dame una prueba específica existente o déjame continuar si no existe. Yo investigaré los fallos observados con GDB.»*
 
 ## Estructura del repositorio
@@ -276,7 +276,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-La versión va en `SKILL.md`, en la línea `metadata.version` cerca del inicio (hoy **0.7.4-dev**). Es una versión de desarrollo sin publicar; las etiquetas se crean por separado cuando se solicita publicar.
+La versión va en `SKILL.md`, en la línea `metadata.version` cerca del inicio (hoy **0.7.5-dev**). Es una versión de desarrollo sin publicar; las etiquetas se crean por separado cuando se solicita publicar.
 
 ## Contribuir
 

@@ -34,6 +34,8 @@ error in a just-completed Lab1 TODO, identify the defective instruction, or
 complete the diagnosis. Only fundamental report misconceptions need correction; do not nitpick wording. Do not replace
 a forbidden edit with a command or prose recipe that supplies the solution.
 Do not use read access to start an unsolicited lesson or comprehension quiz.
+The brief optional checkpoint offers at Lab1 TODO 1/4 are allowed; detailed GDB
+instructions still wait for student opt-in, and declining never blocks progress.
 
 These instructions guide tutor behavior; they are not an operating-system
 permission boundary. The available shell does not expand the tutor's role.

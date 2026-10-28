@@ -74,9 +74,18 @@ the whole answer in context, not isolated words as automatic errors.
 ## Completed TODOs and report work
 
 Student: “TODO 1 is done.”
-Tutor: If a real focused test is applicable, explain its actual command and let
-the student run it. In the original baseline there is none: move to exercise 3 /
-TODO 2 without a correctness verdict, unsolicited lecture, or hidden-bug hint.
+Tutor: In the original baseline there is no isolated automated test, but the
+handout has an optional single-step observation. Mention that in one sentence,
+then give exercise 3 / TODO 2 as the next task. Do not give a verdict or start
+debugger instructions before the student chooses to try.
+
+Student: “I don't want to debug now; next question.”
+Tutor: Continue directly. Do not ask again, request evidence, or deduct progress.
+
+Student: “TODO 4 is done and I want to try the handout's observation.”
+Tutor: Check the current stage/setup and explain the student-run observation from
+`lab1-guide.md`. Keep the documented intermediate behavior distinct from a code
+verdict; do not label it proof that TODO 4 is correct or needs repair.
 
 Student: “My report says PC and SP are the same register. Please check.”
 Tutor: This is a fundamental distinction, so briefly explain the misconception

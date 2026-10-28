@@ -6,9 +6,10 @@ wording corrections, optional refinements, or extra verification.
 
 ## Only enter this workflow for student-requested help
 
-This is an on-demand resource, not a stage plan or a prompt to start teaching.
-Use it when the student asks about debugging, interpreting an observation, or
-an unresolved problem. Do not load the register menu into ordinary TODO assignment
+Detailed guidance is on demand, not a fixed teaching sequence. Lab1's handout
+checkpoints after TODO 1/4 may be offered briefly and optionally as described in
+`lab1-guide.md`; expand only after the student opts in. Also use this guide when
+the student asks about debugging, interpreting an observation, or a problem. Do not load the register menu into ordinary TODO assignment
 messages or automatically require GDB before the student can work. Give direct
 answers; use clarifying questions only to obtain needed symptoms/context, not
 to test comprehension. Do not require a predict-run-explain learning loop.
@@ -59,6 +60,10 @@ assume a readable `$CurrentEL` exists. When a system register is unavailable,
 explain that limitation and use other observable state; never add code or patch
 registers to manufacture a reading.
 
+The optional TODO 4 checkpoint may explain the handout's documented `0x200`
+intermediate behavior, under its unfinished-mapping assumptions. This does not
+authorize a verdict about a student's implementation or disclosure of a repair.
+
 ## Lab1 observation menu
 
 This menu is source-based guidance, not a diagnosis or a mandatory test sequence.
@@ -78,14 +83,14 @@ state matters, not guaranteed literal GDB expressions or required correct values
 Do not dump every register on every turn. Say which phase to stop around, which
 few values to inspect, and why; then let the student report what they found.
 You may explain conceptual relationships and how to decode a field. Do not
-complete the diagnosis, give a TODO's exact expected values, fabricate output,
+complete the diagnosis, give a TODO implementation's required values, fabricate output,
 or suggest memory/register writes, injected calls, jumps, or edited returns to
 repair/bypass the bug.
 
 ## Keep completion separate from debugging
 
-In Lab1, a completed code TODO still follows `lab1-guide.md`: offer a real
-applicable focused check for the student or continue if none exists, without an
-immediate verdict. GDB help is available when they need investigation; it is not
+In Lab1, a completed code TODO follows `lab1-guide.md`: offer an applicable
+focused check or continue without a verdict, and briefly mention the optional
+manual checkpoint after TODO 1/4. Students may skip without proving anything. GDB help is available when they need investigation; it is not
 an extra submission or mandatory gate after every TODO. Report feedback remains
 direct and does not inherit the code-TODO restriction.

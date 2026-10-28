@@ -18,7 +18,7 @@ TuTor helps **teachers and students** use AI as a coach, not a cheat sheet. Toda
 | **Original tutor rhythm** | First introduce the lab and collaboration, then a title-only plan and complete current task requirements with report/code destination; then wait. Thinking question 1 precedes TODO 1. Explanations are available on request; no added prerequisite quizzes or mini-lessons. |
 | **Your report document** | Create a dedicated report document yourself and tell the tutor its path. Choose any readable format and organization; no required template, headings, or layout. The tutor reads it but never writes it for you. |
 | **Lab1 stages and destinations** | The tutor recognizes the current Lab1 handout and gives each active task one destination: a topic in your report or a specific code TODO. Any required write-up is a separate report task. Question numbers are topic references, not required headings. |
-| **Lab1 completion** | After each TODO, no immediate correctness verdict: you run an existing applicable focused check; if none exists, continue. Whole-lab grading is reserved for integration. Other labs retain their own review policy. |
+| **Lab1 completion** | No immediate TODO verdict. Use a real applicable focused check or continue; after TODO 1/4, the tutor briefly offers the handout's optional manual GDB observation. You may skip immediately. Whole-lab grading stays separate. |
 | **Hints without answers** | No TODO implementations, defective lines, root causes, correct values, or repair recipes, including in prose. |
 | **No assignment answers** | Requests to directly complete a thinking question, provide reference report text, or walk through the whole solution are refused. You can ask about a specific confusing instruction/concept. |
 | **Report feedback** | Core understanding is enough: an adequate answer passes and you move on. No wording polish or optional improvements. Only fundamental errors or missing central requirements receive brief feedback; the tutor never writes the answer. |
@@ -58,7 +58,7 @@ an existing chat. This option affects that project, not global skill activation.
 
 ## Install
 
-This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7.4-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
+This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7.5-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
 
 **Repository:** [github.com/DyingCoderLin/OS-Lab-Tutor](https://github.com/DyingCoderLin/OS-Lab-Tutor)
 
@@ -219,7 +219,7 @@ For a **git submodule**: `git submodule update --remote path/to/tutor`
 
 ### Pin to a release tag (reproducible install)
 
-This fork's `0.7.4-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
+This fork's `0.7.5-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
 
 ### Check your installed version
 
@@ -252,7 +252,7 @@ Help me investigate this failing test with GDB. Suggest useful stages, breakpoin
 ```
 
 3. **Attempt the current handout task yourself.** Ask for help when needed, then reply when done. The tutor does not insert extra questions before you may start a TODO.
-4. **In Lab1, designate your report:** create a dedicated document yourself (or use one you already created), then tell the tutor its path. Write however you like, as long as the tutor can understand it. Thinking answers go there; coding tasks go in the named TODO; any required implementation explanation is a separate report task. The tutor accepts core-correct report work without polishing and only flags fundamental errors, but cannot write a full answer, fill missing reasoning, or directly identify a code defect or repair. After each TODO, run a genuine focused check if one is available now; otherwise continue without a tutor verdict. The original five-TODO version has only integrated `make grade`, not isolated TODO tests. Other lab workflows can still use source-review feedback.
+4. **In Lab1, designate your report:** create a dedicated document yourself (or use one you already created), then tell the tutor its path. Write however you like, as long as the tutor can understand it. Thinking answers go there; coding tasks go in the named TODO; any required implementation explanation is a separate report task. The tutor accepts core-correct report work without polishing and only flags fundamental errors, but cannot write a full answer, fill missing reasoning, or directly identify a code defect or repair. After each TODO, run a genuine focused check if one is available now; otherwise continue without a tutor verdict. The original five-TODO version has integrated `make grade` rather than isolated automated tests, plus optional manual GDB observations after TODO 1/4. Skipping those observations never blocks the next task. Other lab workflows can still use source-review feedback.
 5. If the tutor jumps to a Lab1 verdict or fix, remind it: *“Tell me where this stage's result belongs. Give me an existing focused check to run, or let me continue if there is none. I will investigate observed failures with GDB.”*
 
 ## Repository layout
@@ -278,7 +278,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7.4-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
+The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7.5-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
 
 ## Contribute
 

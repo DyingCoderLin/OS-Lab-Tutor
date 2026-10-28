@@ -144,11 +144,11 @@ Example setup: “请你自己新建一份专门记录 Lab1 的报告文档，�
 | --- | --- | --- |
 | RTFSC/build-system reading | No exercise submission required by this section; optional personal notes | Move to boot reading; do not invent a graded report question |
 | CPU startup, thinking question 1 | Designated report: reasoning for thinking question 1; read `init/start.S` | Accept if the core is understood; only fundamental errors need feedback, then continue |
-| Exercise 2, exception-level reading | `init/tools.S`, `arm64_elX_to_el1`, `LAB 1 TODO 1` | No isolated automated test in the inspected baseline; continue to exercise 3 |
+| Exercise 2, exception-level reading | `init/tools.S`, `arm64_elX_to_el1`, `LAB 1 TODO 1` | Briefly offer optional manual checkpoint A below; the student may immediately continue to exercise 3 |
 | Exercise 3, exception-level transition | `init/tools.S`, `arm64_elX_to_el1`, `LAB 1 TODO 2` | No isolated automated test; continue; documented GDB observations are available if the student asks for help |
 | Thinking questions 4 and 5, stack/BSS | Designated report: reasoning for the respective questions; read `init/start.S` and `init/init_c.c` | Accept core-correct report answers without polishing; no code TODO here, then continue |
 | Exercise 6, UART string output | `peripherals/uart.c`, `uart_send_string`, `LAB 1 TODO 3` | No isolated automated test; continue; UART output is only a reachable-stage observation, not proof of this TODO alone |
-| Exercise 7, MMU activation | `init/tools.S`, `el1_mmu_activate`, `LAB 1 TODO 4` | No isolated automated test; continue to page-table work; later incomplete mappings must not be misreported as a TODO 4 failure |
+| Exercise 7, MMU activation | `init/tools.S`, `el1_mmu_activate`, `LAB 1 TODO 4` | Briefly offer optional manual checkpoint B below; skipping goes straight to the page-table questions |
 | Thinking questions 8 and 9, page-table reasoning | Designated report: reasoning for the respective questions | Check the requested central calculation/concept; accept adequate work without extra refinements |
 | Exercise 10, high-address page table | `init/mmu.c`, `init_kernel_pt`, `LAB 1 TODO 5` | No isolated automated test; finish remaining report questions, then offer whole-lab integration checking |
 | Thinking questions 11 and 12 | Report: reasoning for the respective questions | Accept core-correct answers; address only fundamental misconceptions |
@@ -170,6 +170,47 @@ For example: “把你对思考题 4 的解释记到你指定的报告文档里�
 这一阶段没有需要填写的代码 TODO。” Use the actual `report_path` once provided.
 This identifies a destination/topic without prescribing a section or giving the answer.
 
+## Optional handout checkpoints after TODO 1 and TODO 4
+
+Source: [Lab1 boot handout](https://sjtu-ipads.github.io/OS-Course-Lab/Lab1/boot.html),
+the hint under exercise 2 and the final paragraph under “启用 MMU.” Recheck the
+student's version. These are manual observations, not isolated automated tests.
+
+**Invitation:** after each of these TODOs, mention the relevant optional activity
+once in one short sentence and give the next handout task in the same reply.
+Do not pause progression to demand a yes/no choice, launch a tutorial, or ask
+for a screenshot/log. If the student skips, continue immediately without repeated
+encouragement or a completion penalty. If they opt out of GDB generally, respect
+that until they ask for it. Neither checkpoint is a fourth submission artifact.
+
+**A — after TODO 1:** the handout suggests instruction-level GDB stepping to
+observe the exception-level read and interpret `CurrentEL` using its documented
+field meaning. On opt-in, help the student stop at `arm64_elX_to_el1`, inspect the
+current instruction, step their completed code, and inspect the result consumed
+by the following comparison. Use names from the current source, not a guessed
+system-register expression. Keep the observation local; it need not wait for
+TODO 2 or a successful boot. Do not give the missing assembly or required value.
+
+**B — after TODO 4, while page-table work is still unfinished:** the handout
+describes a translation fault and repeated execution at `0x200` with the exception
+vector base still zero. After the student opts in and connects GDB, they can
+`continue`, interrupt with Ctrl-C after output stops, and inspect PC (for example,
+`info registers pc` / `x/i $pc`) against the documented stage phenomenon.
+Explain commands only at opt-in. This publicly documented intermediate behavior
+is permitted context, not a diagnosis of a particular TODO error or proof of
+correctness. Do not insist on this result in a different setup or after mappings
+are finished, and never undo completed work just to reproduce it.
+
+Use the verified local setup entries (`make qemu-gdb`, then `make gdb` in another
+terminal, both from `Lab1/`) if setup is needed. Explain their effects and let the
+student run them. If setup/build issues prevent observation, skipping remains
+available; do not turn the optional activity into a mandatory repair exercise.
+
+Suggested brief offers (then state the next task's full requirements/location):
+
+- TODO 1: “讲义这里有一个可选的 GDB 单步观察；感兴趣可以试试，也可以直接继续练习题 3。”
+- TODO 4: “这里可以选择用 GDB 观察讲义描述的中间阶段现象；不想调试就直接进入思考题 8。”
+
 ## After each TODO: route checks, do not give a verdict
 
 1. Identify the completed TODO and the next stage. Read as needed to track the
@@ -180,9 +221,11 @@ This identifies a destination/topic without prescribing a section or giving the 
 3. If such a check exists, provide its exact command, working directory, purpose,
    meaningful arguments, and scope. The student runs it and reads the result.
    Never invent a selector/target or run it on their behalf.
-4. If no such check exists or dependencies are unfinished, say so and proceed
-   to the next stage. “Continue” means deferred checking, not “your TODO is correct.”
-   Do not demand a test transcript, tutor approval, or immediate GDB session.
+4. If no such automated check exists or dependencies are unfinished, continue
+   to the next stage. At TODO 1/4, include the brief optional manual-checkpoint
+   offer above unless declined; lack of automated tests does not erase those
+   handout observations. “Continue” is not a correctness verdict. Do not require
+   a test transcript, tutor approval, or immediate GDB session.
 5. Do not announce correct/incorrect/partial after each TODO, including through
    an unsolicited hint that reveals the tutor found a defect. If the student
    seeks help interpreting a failure or asks how to investigate, answer that
@@ -205,7 +248,8 @@ directory for the following commands is `Lab1/`.
 | `make qemu` | Builds and boots the current kernel. Observations depend on all executed earlier steps and may stop on unfinished later work; not an isolated TODO test. |
 | `make qemu-gdb`, then `make gdb` in another terminal | The first command builds and starts QEMU paused; the second starts the supplied GDB connection/symbol setup. Offer as separate student actions for stage observation or debugging, not as a pass/fail TODO test. Confirm local setup/environment first. |
 
-The inspected baseline has no per-TODO test target or test selector. Do not make
+The inspected baseline has no per-TODO automated target/selector, but does have
+the optional manual observations above. Do not make
 up `make test-todo1`, `make grade TODO=1`, or isolated scores. If a student's
 version adds genuine focused tests, use those after verifying their scope and
 dependencies; this inventory must not prevent using real new tests.

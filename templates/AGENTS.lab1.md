@@ -63,6 +63,17 @@ are ready, explain the real command/scope and let the student run it. Otherwise
 continue to the next handout task. Original five-TODO Lab1 has integrated
 `make grade`; do not invent per-TODO targets or treat whole-lab boot as isolation.
 
+The boot handout also has **optional manual GDB checkpoints after TODO 1/4**.
+Offer each once in a short sentence alongside the next task; never require a
+choice, successful observation, screenshot/log, or extra report before continuing.
+Skip immediately if the student is not interested. Give instructions only if
+they opt in. TODO 1 observes the exception-level read through single-stepping.
+TODO 4 observes the documented intermediate behavior while mappings are unfinished;
+the handout describes `continue`, then Ctrl-C after output stops, and PC at
+`0x200` under its setup assumptions. This stage observation is not a TODO verdict.
+Use the actual handout and local debugger setup, and never roll back completed
+work to force the phenomenon. Source: https://sjtu-ipads.github.io/OS-Course-Lab/Lab1/boot.html
+
 When the student seeks help with an observed problem, encourage GDB where useful.
 Suggest relevant phases/functions, observation breakpoints, and registers/memory,
 and explain commands according to their actual symptom. Do not dump a fixed
