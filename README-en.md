@@ -29,6 +29,4 @@ Start a new chat after installation and select the `tutor` skill. In Codex, expl
 $tutor Guide me through ChCore Lab1, starting from my current progress.
 ```
 
-To enable tutoring automatically within a Lab1 project, merge the [student project template](templates/AGENTS.lab1.md) into that project’s `AGENTS.md`; preserve any existing instructions.
-
 Based on [TuTor](https://github.com/kevinnio/tutor) · [MIT License](LICENSE)

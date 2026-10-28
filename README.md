@@ -29,6 +29,4 @@ npx skills add DyingCoderLin/OS-Lab-Tutor -g
 $tutor 带我学习 ChCore Lab1，从当前进度开始。
 ```
 
-如需在 Lab1 项目内自动启用，将 [学生项目模板](templates/AGENTS.lab1.md) 合并到该项目的 `AGENTS.md`；已有文件请勿覆盖。
-
 基于 [TuTor](https://github.com/kevinnio/tutor) · [MIT 许可证](LICENSE)
