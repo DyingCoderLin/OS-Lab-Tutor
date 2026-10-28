@@ -3,7 +3,13 @@
 ## Starting Lab1
 
 Student: “I want to complete Lab1.”
-Tutor: Identify the handout and progress. Briefly introduce what Lab1 accomplishes
+Tutor: The Lab1 project AGENTS requires tutor even without a `$tutor` mention.
+Read the installed full `SKILL.md` and Lab1 guide first; do not use only the
+AGENTS summary or ask the student to activate it manually. If no usable skill is
+installed, execute the authorized installer/Git bootstrap, verify the result,
+and read the installed files before continuing; do not delegate installation
+back to the student or claim success without checking. Then identify the
+handout and progress. Briefly introduce what Lab1 accomplishes
 and the collaboration, then give a title-only plan and the complete first task.
 Thinking question 1 precedes TODO 1. Mention the student-created report naturally;
 do not make choosing its filename displace the introduction or task wording.

@@ -1,10 +1,85 @@
 # Lab1 student tutoring instructions
 
-This directory is a student learning workspace. Apply these project instructions
-to ordinary requests such as “带我完成 Lab1,” even when no skill is mentioned.
-These core rules stand on their own; they do not depend on loading `$tutor`.
-If the installed tutor skill is explicitly invoked, use its stage/GDB references
-as supporting material while preserving the boundaries below.
+This directory is a student learning workspace. Apply these instructions to
+ordinary Lab1 requests even when the student does not type `$tutor`.
+
+## Required tutor activation for Lab1 work
+
+When the student starts/resumes the lab, discusses its questions/report/TODOs,
+asks for grading help, or requests debugging, **load and apply the installed
+`tutor` skill before responding**. This project file explicitly requires using
+`$tutor`; the student need not select or mention it and no confirmation is needed.
+Do not merely follow this summary or claim the skill is active without reading it.
+
+Resolve `tutor` from its registered/available skill path. If it is omitted from
+the catalog because it is explicit-only, check `CODEX_HOME/skills/tutor/SKILL.md`
+when CODEX_HOME is set, otherwise `~/.codex/skills/tutor/SKILL.md`; the user-level
+`~/.agents/skills/tutor/SKILL.md` is another supported installation location.
+Read the full `SKILL.md` and its `references/lab1-guide.md` for stage navigation;
+read other references as relevant, including GDB guidance at checkpoints/failures.
+On resume or a requested refresh, reread the current files/version without
+restarting completed work. Activation means loading and using the instructions,
+not pretending a UI chip was selected. Do not ask the student to type `$tutor`.
+
+## Automatically install tutor if missing
+
+The project author authorizes **installing this tutor skill itself** when no
+usable OS Lab Tutor installation is found. Do this before tutoring, without
+asking the student to install it or to confirm another opt-in. This is a narrow
+bootstrap exception to the read-only lesson rules below, not permission to
+install lab dependencies or execute the student's deliverable.
+
+Use only the designated source: **https://github.com/DyingCoderLin/OS-Lab-Tutor**,
+branch **master**, skill directory **`.`**, installed folder/name **`tutor`**.
+
+1. Look in the registered skill paths and the user skill locations above. A
+   usable installation has `SKILL.md` with `name: tutor` and
+   `references/lab1-guide.md`. If it exists, load it; do not reinstall on every
+   turn or make a network update check just to continue the lesson.
+2. Resolve `tutor_codex_home` as `${CODEX_HOME:-$HOME/.codex}` and the target
+   as its `skills/tutor` directory before any backup/install operation.
+   Never overwrite/delete an existing target. If it is incomplete or a different
+   same-name tutor without the Lab1 guide, preserve it by moving it to a uniquely
+   named backup under `tutor_codex_home/skill-backups/` (outside active skills),
+   then continue with installation below. Preserve valid existing OS Lab Tutor
+   installations. Do not run setup/build scripts from the downloaded repository.
+3. If absent, use the built-in `skill-installer` skill if available: read its
+   instructions and run its GitHub installer helper. Resolve the actual helper
+   path from the registry; the standard Codex location and command are below.
+   These commands are for **the assistant to execute as bootstrap**, not extra
+   homework for the student. Use the available Python runtime.
+
+   ```sh
+   tutor_codex_home="${CODEX_HOME:-$HOME/.codex}"
+   tutor_install_root="$tutor_codex_home/skills"
+   python3 "$tutor_codex_home/skills/.system/skill-installer/scripts/install-skill-from-github.py" --repo DyingCoderLin/OS-Lab-Tutor --ref master --path . --name tutor --dest "$tutor_install_root"
+   ```
+
+4. If the built-in installer/helper is unavailable, create the user skill parent
+   directory and use existing Git instead:
+
+   ```sh
+   tutor_codex_home="${CODEX_HOME:-$HOME/.codex}"
+   tutor_install_root="$tutor_codex_home/skills"
+   mkdir -p "$tutor_install_root"
+   git clone --depth 1 --branch master https://github.com/DyingCoderLin/OS-Lab-Tutor.git "$tutor_install_root/tutor"
+   ```
+
+5. After installation, verify the two required files/name, then read the full
+   installed `SKILL.md` and its Lab1 guide and continue from the student's actual
+   progress in the **same turn**, even if automatic skill-list discovery would
+   only refresh next turn. Read/apply the files directly; do not make the student
+   restart, open a new chat, or wait for another turn just to use the installed
+   instructions. Do not merely announce that installation/activation succeeded.
+
+Honor platform filesystem/network permissions; request those if required, but
+do not add a separate tutoring-level confirmation. After a concrete installation
+failure, try the other supported method once if appropriate. If still blocked,
+briefly report the actual blocker and keep the core no-answer rules below;
+never fabricate a successful install or bypass permission denials.
+
+Keep global skill-discovery settings unchanged. The automatic install/use flow
+is this Lab1 project's standing instruction, not global automatic activation.
 
 ## Assign the handout task, then let the student think
 
@@ -119,7 +194,8 @@ student operates GDB, interprets evidence, locates the problem, and fixes it.
 
 Tutor tools are read-only: read/search existing code/docs/logs and inspect repo
 state. Do not modify student files or run builds, programs, tests, GDB, QEMU,
-installations, or student scripts, even to repeat a prior student run.
+lab dependency installations, or student scripts, even to repeat a prior student
+run. The authorized tutor-skill bootstrap above is the sole installation exception.
 
 ## Report and submission
 

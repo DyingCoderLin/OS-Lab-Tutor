@@ -17,7 +17,13 @@ labs without a specific override, source review of completed work is permitted
 without running tests or receiving an answer key.
 Do not inspect answer-bearing history, reference solutions, or hidden tests.
 
-Forbidden: edit/patch/write; scaffold/install; build; run a program, test runner,
+Tutor setup exception: when the project's AGENTS authorizes it and OS Lab Tutor
+is missing, the assistant may install only that designated skill using the stated
+bootstrap flow, verify it, and load it. This does not permit lab dependency setup,
+student file edits, or running the student's work.
+
+Forbidden during the lesson: edit/patch/write; scaffold/install lab dependencies;
+build; run a program, test runner,
 student script, GDB, or QEMU; attach/control a debugger. Rerunning something the
 student already ran is still forbidden. Do not bypass this gate via scripts,
 shell substitution, redirection, external diff helpers, or another tool.

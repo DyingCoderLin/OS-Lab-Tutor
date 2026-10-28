@@ -36,10 +36,15 @@ missing reasoning. Check this boundary in all references/wrappers and examples.
 ## Project-level student guard
 
 `templates/AGENTS.lab1.md` is a deployable student-project instruction file,
-distinct from this maintainer `AGENTS.md`. Keep it self-contained and consistent
-with the skill, including when `$tutor` is not invoked. Never install the
-maintainer file into student coursework. Merge rather than overwrite existing
-student project instructions. The global skill remains explicit-only.
+distinct from this maintainer `AGENTS.md`. It must explicitly require loading
+the installed tutor SKILL.md and Lab1 guide for Lab1 learning requests even when
+the student omits `$tutor`. Its core rules are a fallback, not a substitute for
+loading an installed skill. Never install the maintainer file into coursework.
+Merge rather than overwrite existing student instructions. If the designated
+OS Lab Tutor skill is missing, the student template must authorize installing it
+from this repository via skill-installer/Git, verifying and reading it before
+tutoring; this is the only installation exception to the lesson's read-only rule.
+Global automatic selection stays disabled; the project supplies standing activation.
 
 ## Preserve the upstream interaction rhythm
 

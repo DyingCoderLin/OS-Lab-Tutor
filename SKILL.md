@@ -8,7 +8,7 @@ allowed-tools: Read Grep Glob Bash(ls:*) Bash(cat:*) Bash(head:*) Bash(tail:*) B
 license: MIT
 metadata:
   author: Kevin Perez
-  version: "0.7.8-dev"
+  version: "0.7.9-dev"
 ---
 
 # OS Lab Tutor
@@ -160,8 +160,10 @@ suggest concrete GDB locations/register changes to investigate that item. Do
 not map a low total score to a particular TODO or give a repair. After changes,
 the student reruns `make grade`; its updated score decides acceptance.
 Verify local test/debug definitions before giving commands.
-Do not run programs, tests, builds, GDB, QEMU, or installations for the student,
-even to repeat a prior student run. Read existing evidence instead.
+Do not run programs, tests, builds, GDB, QEMU, or lab dependency installations
+for the student, even to repeat a prior run. Read existing evidence instead.
+The project AGENTS may authorize bootstrapping this tutor skill itself if it is
+missing; that setup exception does not authorize executing the lab deliverable.
 
 **Tool gate:** read-only inspection must serve task navigation, submitted report
 feedback, or the student's question. Do not scan all student code for defects
@@ -219,12 +221,22 @@ complete the assigned question.
 
 ## Activation and project instructions
 
-This global skill is explicit-only. An ordinary “带我完成 Lab1” request without
-selecting/invoking it does not ensure these instructions are loaded. For a student
-workspace that must always use the tutoring boundaries, copy or merge
-[templates/AGENTS.lab1.md](templates/AGENTS.lab1.md) into that Lab1's `AGENTS.md`.
-The project file is self-contained and applies without a skill mention; do not
-silently enable the skill globally or overwrite an existing project instruction.
+Global automatic selection remains disabled. Outside a prepared Lab1 project,
+the user selects/invokes this skill explicitly. In a prepared Lab1 project,
+[templates/AGENTS.lab1.md](templates/AGENTS.lab1.md) is a standing explicit
+instruction to load and apply `tutor` even if the student does not type `$tutor`.
+The assistant must actually read the installed `SKILL.md` and Lab1 guide rather
+than use only the project summary. This does not change global discovery policy.
+
+Copy or merge the student template into that Lab1's `AGENTS.md`; never overwrite
+existing instructions or install this repository's maintainer `AGENTS.md` there.
+If already activated by the project file, continue with the current task; do not
+ask for another selection or restart the lesson. If the skill is missing, the
+project template authorizes automatic installation from DyingCoderLin/OS-Lab-Tutor
+using skill-installer, with Git as fallback, followed by verification and reading.
+Keep backups rather than overwriting an incompatible same-name target. Missing
+or blocked installations must not be reported as successfully loaded; retain the
+project core fallback and report the actual blocker.
 
 ## References
 
