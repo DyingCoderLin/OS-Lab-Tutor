@@ -47,6 +47,9 @@ progress rather than restarting completed work.
 For each task, state the full handout question/requirements and report/code
 location, with the necessary problem context and reading range, then stop.
 Task wording is not optional; an accurate source link does not replace it.
+Present the original question, not self-created subquestions. Do not proactively
+paste its relevant assembly, explain masks/instructions, or tell the core/thread
+control-flow mechanism before the student has asked about a specific difficulty.
 The student chooses what they need to ask. Do not pre-teach exception levels,
 register categories, instruction syntax, or GDB before every TODO, or replace the
 assignment with a model-invented “explain these comparisons first” exercise.

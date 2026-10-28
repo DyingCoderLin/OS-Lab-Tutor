@@ -41,9 +41,23 @@ las pruebas y la depuración ayudan a esas tareas y no añaden otra entrega
 obligatoria. Los errores del informe reciben comentarios directos; los TODO
 mantienen la política de prueba específica o continuación sin revelar defectos.
 
+## Instrucciones del proyecto sin mencionar la skill
+
+En Codex, la skill global es manual: selecciónala o escribe `$tutor`; pedir ayuda
+con Lab1 por sí solo no garantiza que se cargue.
+
+Para aplicar siempre estas reglas en un proyecto estudiantil, copia
+[templates/AGENTS.lab1.md](templates/AGENTS.lab1.md) como `AGENTS.md` dentro de
+ese Lab1, o combina su contenido con las instrucciones existentes. No sobrescribas
+un archivo existente ni uses el `AGENTS.md` de mantenimiento de este repositorio.
+La plantilla es autónoma y conserva los límites de informe/código sin invocar
+la skill. Abre Codex en ese directorio; tras instalar/cambiar las instrucciones,
+reinicia la sesión o pide releerlas explícitamente en el chat existente. Esta
+opción afecta al proyecto y no activa la skill global automáticamente.
+
 ## Instalación
 
-Este fork se basa en [TuTor](https://github.com/kevinnio/tutor). Sus reglas **0.7.2-dev** aún no están publicadas; la instalación remota solo las incluye después de publicarlas. En Codex, selecciona la skill explícitamente o usa `$tutor`; la activación automática está deshabilitada. Otras herramientas pueden seleccionarla de otra manera.
+Este fork se basa en [TuTor](https://github.com/kevinnio/tutor). Sus reglas **0.7.3-dev** aún no están publicadas; la instalación remota solo las incluye después de publicarlas. En Codex, selecciona la skill explícitamente o usa `$tutor`; la activación automática está deshabilitada. Otras herramientas pueden seleccionarla de otra manera.
 
 **Repositorio:** [github.com/DyingCoderLin/OS-Lab-Tutor](https://github.com/DyingCoderLin/OS-Lab-Tutor)
 
@@ -203,7 +217,7 @@ Si es **submódulo**: `git submodule update --remote ruta/al/tutor`
 
 ### Fijar a una etiqueta de versión (instalación reproducible)
 
-Las reglas `0.7.2-dev` de este fork aún no tienen etiqueta de versión. La versión anterior `v0.6` no incluye estos cambios. Después de publicar una versión, usa su etiqueta real en `git clone --branch <release-tag>` y consulta la revisión con `git describe --tags --always`. No supongas que una versión de desarrollo tiene una etiqueta publicada.
+Las reglas `0.7.3-dev` de este fork aún no tienen etiqueta de versión. La versión anterior `v0.6` no incluye estos cambios. Después de publicar una versión, usa su etiqueta real en `git clone --branch <release-tag>` y consulta la revisión con `git describe --tags --always`. No supongas que una versión de desarrollo tiene una etiqueta publicada.
 
 ### Revisar la versión instalada
 
@@ -253,6 +267,8 @@ tutor/
 │   ├── openai.yaml
 │   ├── opencode/tutor.md
 │   └── claude/tutor.md
+├── templates/
+│   └── AGENTS.lab1.md
 ├── README.md
 ├── README-es.md
 ├── AGENTS.md             # Guía para agentes que editan este repo
@@ -260,7 +276,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-La versión va en `SKILL.md`, en la línea `metadata.version` cerca del inicio (hoy **0.7.2-dev**). Es una versión de desarrollo sin publicar; las etiquetas se crean por separado cuando se solicita publicar.
+La versión va en `SKILL.md`, en la línea `metadata.version` cerca del inicio (hoy **0.7.3-dev**). Es una versión de desarrollo sin publicar; las etiquetas se crean por separado cuando se solicita publicar.
 
 ## Contribuir
 

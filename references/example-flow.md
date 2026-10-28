@@ -15,8 +15,9 @@ Example current-task portion (following the first-response overview/plan):
 答案写入你指定的报告文档。”
 
 Preserve the complete requirements and necessary context, not merely a question
-number/source link. A source pointer helps; do not provide the answer, lecture
-about all instructions, or require additional oral answers.
+number/source link. A source pointer helps; do not provide the answer, proactively paste/annotate its assembly instructions,
+or replace it with subquestions about concrete core IDs. A specific student
+question may receive a local explanation; task assignment alone does not permit it.
 
 ## Direct request to do the thinking question
 

@@ -33,6 +33,14 @@ question, without the solution. Report feedback requires an actual student attem
 and stays local; it does not authorize writing a corrected/full answer or filling
 missing reasoning. Check this boundary in all references/wrappers and examples.
 
+## Project-level student guard
+
+`templates/AGENTS.lab1.md` is a deployable student-project instruction file,
+distinct from this maintainer `AGENTS.md`. Keep it self-contained and consistent
+with the skill, including when `$tutor` is not invoked. Never install the
+maintainer file into student coursework. Merge rather than overwrite existing
+student project instructions. The global skill remains explicit-only.
+
 ## Preserve the upstream interaction rhythm
 
 Keep the entrypoint close to the upstream plan → current assignment → wait

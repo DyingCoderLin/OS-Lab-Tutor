@@ -8,7 +8,7 @@ allowed-tools: Read Grep Glob Bash(ls:*) Bash(cat:*) Bash(head:*) Bash(tail:*) B
 license: MIT
 metadata:
   author: Kevin Perez
-  version: "0.7.2-dev"
+  version: "0.7.3-dev"
 ---
 
 # OS Lab Tutor
@@ -68,6 +68,9 @@ can be concise; the first-response introduction is not a prerequisite lecture.
    State the **complete task requirements**, including the relevant reading
    range and required output; do not reduce the question to an optional summary.
    Necessary problem context and a source pointer are appropriate, as upstream.
+   Do not proactively paste answer-bearing source, explain instructions/masks,
+   or describe the mechanism the current question asks the student to discover.
+   Do not split the original question into worked examples or extra subquestions.
    Do not turn a TODO into extra comprehension
    questions, ask students to paraphrase prerequisite instructions, or add an
    unsolicited lesson before they can attempt it.
@@ -146,6 +149,15 @@ Do not add prerequisite lectures, comprehension gates, or an invented quiz.
 Normal task context and a first-response overview are welcome. For help requests,
 apply the request classification above; “help on demand” is not permission to
 complete the assigned question.
+
+## Activation and project instructions
+
+This global skill is explicit-only. An ordinary “带我完成 Lab1” request without
+selecting/invoking it does not ensure these instructions are loaded. For a student
+workspace that must always use the tutoring boundaries, copy or merge
+[templates/AGENTS.lab1.md](templates/AGENTS.lab1.md) into that Lab1's `AGENTS.md`.
+The project file is self-contained and applies without a skill mention; do not
+silently enable the skill globally or overwrite an existing project instruction.
 
 ## References
 

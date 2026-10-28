@@ -42,9 +42,23 @@ write to either the report or a code TODO; testing/debugging supports those task
 and does not add another mandatory submission. Report errors receive direct
 feedback; code TODOs keep the check-or-continue and no-defect-disclosure policy.
 
+## Project instructions for plain Lab1 prompts
+
+The global skill is manual-only in Codex. To use it directly, select it or write
+`$tutor`; “help me with Lab1” alone does not ensure the skill is loaded.
+
+If a student Lab1 workspace should always preserve these learning boundaries,
+copy [templates/AGENTS.lab1.md](templates/AGENTS.lab1.md) to that workspace as
+`AGENTS.md`, or merge it into existing project instructions. Do not overwrite
+an existing file or copy this repository's maintainer `AGENTS.md` there.
+The student template stands on its own: ordinary requests follow the report/code
+boundaries even without invoking the skill. Open Codex in that Lab1 directory;
+after installing/changing the file, restart the run or explicitly reread it in
+an existing chat. This option affects that project, not global skill activation.
+
 ## Install
 
-This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7.2-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
+This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7.3-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
 
 **Repository:** [github.com/DyingCoderLin/OS-Lab-Tutor](https://github.com/DyingCoderLin/OS-Lab-Tutor)
 
@@ -205,7 +219,7 @@ For a **git submodule**: `git submodule update --remote path/to/tutor`
 
 ### Pin to a release tag (reproducible install)
 
-This fork's `0.7.2-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
+This fork's `0.7.3-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
 
 ### Check your installed version
 
@@ -255,6 +269,8 @@ tutor/
 │   ├── openai.yaml
 │   ├── opencode/tutor.md
 │   └── claude/tutor.md
+├── templates/
+│   └── AGENTS.lab1.md
 ├── README.md
 ├── README-es.md
 ├── AGENTS.md             # Instructions for agents editing this repo
@@ -262,7 +278,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7.2-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
+The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7.3-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
 
 ## Contribute
 
