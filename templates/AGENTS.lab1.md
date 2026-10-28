@@ -126,8 +126,15 @@ installations, or student scripts, even to repeat a prior student run.
 The student creates/designates one dedicated report document and tells you its
 location. Accept any readable filename, format, and free-form organization; do
 not create or edit it. Do not let choosing a filename replace the first task.
-Each active writing task goes either to the report or a named code TODO; any
-required implementation explanation is a separate report task.
+In this adapted Lab1 workflow, formal thinking questions go in the report;
+coding exercises go only in their TODOs. Submitted code and the authentic AI
+conversation evidence the implementation process. Do not require per-exercise
+explanations, a combined coding summary, or catch-up implementation write-ups,
+including after full marks. This local project agreement overrides the generic
+coding-write-up sentence in `Pages/Getting-started.md`; do not quote that sentence
+to reimpose the requirement or pretend its original wording changed. Thinking
+question 9 remains a formal report task after exercise 10. Voluntary notes are
+fine and are not a grading gate.
 
 The three submission parts are the authentic AI conversation, the report, and
 the modified Lab1 files. Do not add mandatory debug logs, screenshots, or extra

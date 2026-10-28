@@ -109,15 +109,20 @@ Stage guidance has only two writing destinations: **report** or **code TODO**.
 Reading, testing, GDB observation, and saving the conversation support these
 tasks; they are not additional required submissions. Do not add separate debug
 logs, screenshots, checklists, or evidence documents as mandatory deliverables.
-If the handout requires both an implementation and a write-up, describe them as
-two separate tasks with one destination each, not a third “both” task category.
+Coding exercises need no additional report write-up in this adapted project.
+Code and authentic conversation already record their implementation process.
 
 ## Tell the student where each result goes
 
-The course's `Pages/Getting-started.md` distinguishes written thinking questions
-from coding exercises: thinking questions go in the lab report; coding exercises
-go in the named TODO **and** have an implementation explanation in the report.
-Verify this convention against the student's version. The student writes both.
+In this adapted Lab1 workflow, formal thinking questions go in the report;
+coding exercises go only in their TODOs. Submitted code and the authentic AI
+conversation evidence the implementation process. Do not require per-exercise
+explanations, a combined coding summary, or catch-up implementation write-ups,
+including after full marks. This local project agreement overrides the generic
+coding-write-up sentence in `Pages/Getting-started.md`; do not quote that sentence
+to reimpose the requirement or pretend its original wording changed. Thinking
+question 9 remains a formal report task after exercise 10. Voluntary notes are
+fine and are not a grading gate.
 Report feedback checks core understanding, not wording perfection. Adequate
 answers pass and progress; only a fundamental error or missing central requirement
 needs feedback. Never provide a full answer, fill missing reasoning, write a
@@ -193,7 +198,6 @@ Example setup: “请你自己新建一份专门记录 Lab1 的报告文档，�
 | Exercise 10, high-address page table | `init/mmu.c`, `init_kernel_pt`, `LAB 1 TODO 5`; cite “配置内核启动页表” and its mapping requirements | No immediate code verdict; next assign thinking question 9 based on this completed implementation |
 | Thinking question 9, implementation details | Report: reasoning about the student's completed exercise 10; cite its mapping context and their `init_kernel_pt` | Accept adequate core reasoning, then continue to thinking question 11 |
 | Thinking questions 11 and 12 | Report: reasoning for the respective questions | Accept core-correct answers; address only fundamental misconceptions |
-| Coding-exercise explanation, when required by the handout (a separate written task) | Report: the student's implementation explanation | Accept adequate core reasoning; no language polishing, code-defect disclosure, or prescribed edits |
 | All coding exercises ready for integration (not another writing destination) | The code TODO task set is ready for the student to check | Offer the real whole-lab check; do not create another submission document |
 
 Use exact full paths from the student's tree when guiding them, not just the
@@ -207,7 +211,8 @@ Do not solve it or add a prerequisite lesson, an extra quiz, or future solutions
 The first response also includes a brief lab overview and collaboration.
 When work is submitted, report feedback and code-check routing follow the rules
 below; they are not additional teaching steps to insert when assigning the task.
-Mention any required implementation write-up as a separate report task.
+Do not add an implementation write-up after a coding exercise or at the end;
+formal thinking questions remain report tasks under the stage map.
 For example: “把你对思考题 4 的解释记到你指定的报告文档里，怎么组织都可以；
 这一阶段没有需要填写的代码 TODO。” Use the actual `report_path` once provided.
 This identifies a destination/topic without prescribing a section or giving the answer.
@@ -344,7 +349,7 @@ with unfinished TODOs is not evidence that the just-finished TODO is wrong.
 
 ## Source anchors to recheck
 
-- `Pages/Getting-started.md`: report versus coding deliverables.
+- `Pages/Getting-started.md`: exercise-type definitions; the local no-extra-coding-write-up agreement overrides its generic implementation-report sentence.
 - `Pages/Lab1.md` and `Pages/Lab1/RTFSC.md`: stage order and reading-only section.
 - `Pages/Lab1/boot.md`: questions 1/4/5, exercises 2/3/6/7, early GDB observations.
 - `Pages/Lab1/pte.md`: questions 8/9/11/12, exercise 10, final integrated grading.

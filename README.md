@@ -18,7 +18,7 @@ TuTor helps **teachers and students** use AI as a coach, not a cheat sheet. Toda
 | **Original tutor rhythm** | First introduce the lab and collaboration, then a title-only plan and complete current task requirements with report/code destination; then wait. Thinking question 1 precedes TODO 1. Explanations are available on request; no added prerequisite quizzes or mini-lessons. |
 | **Your report document** | Create a dedicated report document yourself and tell the tutor its path. Choose any readable format and organization; no required template, headings, or layout. The tutor reads it but never writes it for you. |
 | **Context and task order** | Thinking questions include a labelled source section/local reading range for their premises. Read that context yourself. Page-table order: question 8 → exercise 10 / TODO 5 → question 9 → 11/12; question 9 uses your implementation. |
-| **Lab1 stages and destinations** | The tutor recognizes the current Lab1 handout and gives each active task one destination: a topic in your report or a specific code TODO. Any required write-up is a separate report task. Question numbers are topic references, not required headings. |
+| **Lab1 stages and destinations** | The tutor recognizes the current Lab1 handout and gives each active task one destination: a topic in your report or a specific code TODO. Formal thinking answers go in the report; code and conversation record coding work without extra implementation write-ups. Question numbers are topic references, not required headings. |
 | **Lab1 completion** | No immediate TODO verdict. Use a real applicable focused check or continue; after TODO 1/4, get runnable GDB steps and expected observations immediately, with an optional skip path. No extra opt-in is needed. Whole-lab grading stays separate. |
 | **Hints without answers** | No TODO implementations, defective lines, root causes, correct values, or repair recipes, including in prose. |
 | **No assignment answers** | Requests to directly complete a thinking question, provide reference report text, or walk through the whole solution are refused. You can ask about a specific confusing instruction/concept. |
@@ -59,7 +59,7 @@ an existing chat. This option affects that project, not global skill activation.
 
 ## Install
 
-This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7.7-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
+This fork is based on [TuTor](https://github.com/kevinnio/tutor). Its **0.7.8-dev** rules are unreleased; remote installs include them only after these changes are published. In Codex, explicitly select the skill or invoke `$tutor`; automatic invocation is disabled. Other tools may select skills differently.
 
 **Repository:** [github.com/DyingCoderLin/OS-Lab-Tutor](https://github.com/DyingCoderLin/OS-Lab-Tutor)
 
@@ -220,7 +220,7 @@ For a **git submodule**: `git submodule update --remote path/to/tutor`
 
 ### Pin to a release tag (reproducible install)
 
-This fork's `0.7.7-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
+This fork's `0.7.8-dev` rules do not yet have a release tag. The old `v0.6` version lacks these changes. After a release is published, use its actual tag in `git clone --branch <release-tag>` and inspect the revision with `git describe --tags --always`. Do not assume a development version has a published tag.
 
 ### Check your installed version
 
@@ -253,7 +253,7 @@ Help me investigate this failing test with GDB. Suggest useful stages, breakpoin
 ```
 
 3. **Attempt the current handout task yourself.** Ask for help when needed, then reply when done. The tutor does not insert extra questions before you may start a TODO.
-4. **In Lab1, designate your report:** create a dedicated document yourself (or use one you already created), then tell the tutor its path. Write however you like, as long as the tutor can understand it. Thinking answers go there; coding tasks go in the named TODO; any required implementation explanation is a separate report task. The tutor accepts core-correct report work without polishing and only flags fundamental errors, but cannot write a full answer, fill missing reasoning, or directly identify a code defect or repair. After each TODO, run a genuine focused check if one is available now; otherwise continue without a tutor verdict. The original five-TODO version has integrated `make grade` rather than isolated automated tests, plus optional manual GDB observations after TODO 1/4. The tutor gives the actual commands and observations up front; executing them is optional. Final acceptance is the make grade score: full marks passes; otherwise get GDB locations/register changes based on failed scoring items, revise your code, and rerun make grade. No additional acceptance checks are imposed. Other lab workflows can still use source-review feedback.
+4. **In Lab1, designate your report:** create a dedicated document yourself (or use one you already created), then tell the tutor its path. Write however you like, as long as the tutor can understand it. Thinking answers go there; coding tasks go only in the named TODO. Code and the authentic conversation record their implementation process, so no separate or combined coding write-up is required. This adapted agreement supersedes the generic Getting-started sentence; formal question 9 still belongs in the report. The tutor accepts core-correct report work without polishing and only flags fundamental errors, but cannot write a full answer, fill missing reasoning, or directly identify a code defect or repair. After each TODO, run a genuine focused check if one is available now; otherwise continue without a tutor verdict. The original five-TODO version has integrated `make grade` rather than isolated automated tests, plus optional manual GDB observations after TODO 1/4. The tutor gives the actual commands and observations up front; executing them is optional. Final acceptance is the make grade score: full marks passes; otherwise get GDB locations/register changes based on failed scoring items, revise your code, and rerun make grade. No additional acceptance checks are imposed. Other lab workflows can still use source-review feedback.
 5. If the tutor jumps to a Lab1 verdict or fix, remind it: *“Tell me where this stage's result belongs. Give me an existing focused check to run, or let me continue if there is none. I will investigate observed failures with GDB.”*
 
 ## Repository layout
@@ -279,7 +279,7 @@ tutor/
 └── LICENSE               # MIT
 ```
 
-The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7.7-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
+The version lives in `SKILL.md`, in the `metadata.version` line near the top (currently **0.7.8-dev**). This is an unreleased development version; release tags are created separately when publishing is requested.
 
 ## Contribute
 

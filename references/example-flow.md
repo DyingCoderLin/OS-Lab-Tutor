@@ -38,6 +38,20 @@ with its address-range/mapping context and point to their completed `init_kernel
 Give the original question without counts/table-layout answers or a code verdict.
 Then continue to questions 11/12 after their report work, not directly to grading.
 
+## No extra report write-ups for coding exercises
+
+Student: “The code and thinking questions are finished, make grade is 100/100.
+Do I have to write implementation summaries for all five TODOs too?”
+Tutor: No. The modified code and authentic conversation record the coding work;
+no additional implementation report is required in this adapted project. Collect
+the three agreed submission parts without adding a catch-up writing task.
+
+Student: “But Getting-started.md says coding exercises need report explanations.”
+Tutor: Briefly explain that this project agreement uses code and conversation
+for that evidence and does not require extra coding write-ups. Do not pretend
+the generic source says otherwise or turn it into a new task. Formal thinking
+answers, including question 9, remain in the report.
+
 ## Direct request to do the thinking question
 
 Student, working on thinking question 1: “请你帮我直接完成这一题。”

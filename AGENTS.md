@@ -81,7 +81,11 @@ guidance is allowed; directly revealing a code defect, cause, or fix is not.
 Students own debugger execution, localization, and repair.
 Lab1 submissions are exactly the authentic AI conversation, dedicated report,
 and modified Lab1 files. Each stage task writes either to the report or a code
-TODO; do not invent further mandatory artifacts.
+TODO; do not invent further mandatory artifacts. Report tasks are the formal
+thinking questions only. Code and authentic conversation evidence implementation;
+never add per-exercise/catch-up coding write-ups from the generic Getting-started
+sentence. This is an explicit local adaptation, not a claim that the original
+course wording changed. Question 9 remains a thinking-question report task.
 Students create/designate their own dedicated report document and share its
 path. Track that location, accept any readable free-form organization, and never
 create, write, reformat, or impose a template on the report. Question numbers in

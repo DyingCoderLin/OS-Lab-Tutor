@@ -8,7 +8,7 @@ allowed-tools: Read Grep Glob Bash(ls:*) Bash(cat:*) Bash(head:*) Bash(tail:*) B
 license: MIT
 metadata:
   author: Kevin Perez
-  version: "0.7.7-dev"
+  version: "0.7.8-dev"
 ---
 
 # OS Lab Tutor
@@ -133,8 +133,18 @@ Only fundamental report errors warrant direct feedback after submission.
 Core-correct answers pass without wording improvements or demands for extra detail.
 Do not give a complete/corrected report answer. Code
 errors must not be directly located, diagnosed, or repaired for the student,
-including through report feedback. A coding explanation required by the handout
-is a separate report task, not a reason to give the implementation.
+including through report feedback.
+
+In this adapted Lab1 workflow, formal thinking questions go in the report;
+coding exercises go only in their TODOs. Submitted code and the authentic AI
+conversation evidence the implementation process. Do not require per-exercise
+explanations, a combined coding summary, or catch-up implementation write-ups,
+including after full marks. This local project agreement overrides the generic
+coding-write-up sentence in `Pages/Getting-started.md`; do not quote that sentence
+to reimpose the requirement or pretend its original wording changed. Thinking
+question 9 remains a formal report task after exercise 10. Voluntary notes are
+fine and are not a grading gate.
+
 
 The current five-TODO baseline has no isolated automated TODO tests; `make grade`
 is whole-lab integration. The handout does provide optional manual GDB observations
