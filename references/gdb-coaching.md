@@ -4,6 +4,13 @@ This reference concerns code debugging. Fundamental report misconceptions can
 receive brief feedback without GDB; core-correct written answers pass without
 wording corrections, optional refinements, or extra verification.
 
+For Lab2, read `lab2-guide.md` for its task map and scoring. Tutor-run builds
+and tests are permitted there, while debugger execution remains with the
+student. Use the matching lab's acceptance target and failed item names.
+A requested Lab2 TODO-function implementation plan follows its guide and does
+not require entering GDB first. That prose guidance does not authorize a
+specific defect diagnosis, repair or finished implementation.
+
 ## Only enter this workflow for student-requested help
 
 The two handout checkpoints in `lab1-guide.md` get runnable commands and expected

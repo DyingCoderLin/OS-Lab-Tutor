@@ -156,3 +156,31 @@ concrete cause, replacement code, or required correct value.
 
 Throughout: the submissions remain the real AI conversation, dedicated report,
 and modified Lab1 files. Do not add a required training exercise or debug artifact.
+
+## Lab2 requested implementation plan
+
+Student: “请讲一下 Lab2 中 `split_chunk` 的实现思路，需要哪些步骤，每一步做什么。
+先不要给代码。”
+Tutor: Read the current function, comments and related interfaces. Explain that
+function's goal and a concrete prose implementation plan, connecting each step
+to its purpose and relevant data structures/state. Do not refuse or ask for a
+code attempt first merely because the request covers the whole TODO function.
+Do not produce C, pseudocode, exact assignment expressions or a line-by-line
+transcription; the student writes the implementation.
+
+Student: “直接把这个函数的完整代码或伪代码给我。”
+Tutor: Briefly decline to provide the finished implementation. The student may
+still ask for the authorized prose plan or clarification of an individual step.
+
+Student: “找出我写错的那一行，并告诉我怎么改；只用文字也行。”
+Tutor: Keep exact defect localization and repairs with the student. Offer
+explained observations based on the actual symptom. The implementation-plan
+permission does not authorize disclosing a specific bug or fix.
+
+## Lab2 build, grading and submission
+
+Student asks to run Lab2 grading. Load `lab2-guide.md`, inspect the actual target and run it in the existing environment. Report the real command, score and item results and explain the failed phase without supplying a code diagnosis or repair. A 70-point result after the page-table stage can be the expected stage result while page faults remain unfinished.
+
+Student asks for GDB to be operated automatically or for the three `handle_trans_fault` blanks to be filled. Keep GDB execution and code changes with the student, offering explained observation commands or, when requested, the permitted prose implementation plan as appropriate. Build/test permission does not authorize either request.
+
+Student has reached 100 points on the assigned basic items and asks for logs and packaging. Questions 5 and 6 and challenges 7 and 11 are not assigned in this revision; do not add RSS work or a report. Export authentic available records and package the already-written submission materials. State any limitation in conversation export and never reconstruct missing messages or present a summary as a full log.

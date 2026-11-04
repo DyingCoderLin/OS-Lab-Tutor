@@ -10,7 +10,7 @@ Instructions for AI coding agents working **on this repo** (not for end users le
 |----------------|---------|
 | `SKILL.md` | **Source of truth** for tutor behavior. YAML frontmatter (`name`, `description`, `metadata.version`) must stay valid for Cursor, Claude Code, OpenCode, and `.agents/skills`. |
 | `references/` | Long examples and rules loaded on demand (e.g. `example-flow.md`, `tool-gate.md`). Keep `SKILL.md` lean; add detail here. |
-| `agents/` | Agent-mode wrappers (`opencode/tutor.md`, `claude/tutor.md`). Frontmatter pins the harness tools to read-only and points the agent at the skill. A new harness means one more file, no generator; keep the wrapper bodies identical. |
+| `agents/` | Agent-mode wrappers (`opencode/tutor.md`, `claude/tutor.md`). Frontmatter exposes inspection and permitted Lab2 command tools, governed by the active lab profile. A new harness means one more file, no generator; keep the wrapper bodies identical. |
 | `README.md` | Default user-facing docs (Chinese): purpose, features, and installation. |
 | `README-en.md` | English version of `README.md`; keep both versions aligned. |
 | `AGENTS.md` | This file — repo conventions for agents. |
@@ -22,7 +22,7 @@ Instructions for AI coding agents working **on this repo** (not for end users le
 
 **Current version:** see `metadata.version` in `SKILL.md` (bump when behavior or compatibility meaningfully changes).
 
-**Tool-gate declaration:** `SKILL.md` frontmatter uses only Agent Skills standard fields — the body defines the inspection-only boundary; `allowed-tools` (experimental in the spec) pre-approves read-only inspection tools; reviewing submitted TODOs is allowed, but revealing repairs is not. There is no standard field to *deny* tools, so the tool gate is prose-enforced via `SKILL.md` + `references/tool-gate.md` (the agent must refuse forbidden commands). Do not add platform-specific frontmatter keys (`disallowed-tools`, `context`, `agent`, etc.) — keep the skill cross-platform.
+**Tool-gate declaration:** `SKILL.md` uses standard fields and the existing experimental `allowed-tools` list. Its body and `references/tool-gate.md` define lab-specific permission. Inspection tools and existing build/package commands can be exposed while Lab1 retains its inspection-only policy. Revealing code repairs remains forbidden. There is no standard field to deny tools, so enforce the active profile in prose. Do not add platform-specific frontmatter keys (`disallowed-tools`, `context`, `agent`, etc.).
 
 ## No full thinking/report answers
 
@@ -48,6 +48,32 @@ to the lesson's read-only rule. Resolve native paths/loaders for Codex, Claude
 Code, OpenCode, and DSH instead of assuming Codex. The Claude import template
 is `templates/CLAUDE.lab1.md`; preserve existing project entrypoints. Keep global
 client settings unchanged; the project supplies standing activation.
+
+## Lab2 profile maintenance
+
+Lab2 uses `references/lab2-guide.md`, `templates/AGENTS.lab2.md` and
+`templates/CLAUDE.lab2.md`. Its limited execution exception permits existing
+builds/tests, output explanation, authentic log export and submission
+packaging. It also permits requested TODO-function implementation ideas,
+algorithmic steps and each step's purpose in prose, grounded in current functions
+and interfaces. Keep this exception explicit across the shared defaults, guide,
+student entrypoint, tool gate, wrappers and both READMEs. It does not authorize
+finished code, pseudocode, statement-by-statement transcription, thinking/report
+answers or a diagnosis/repair of the student's code. Do not refuse an allowed
+whole-function plan or require an attempt/quiz first. Source/report edits,
+dependency setup, direct code diagnosis and debugger operation retain the Lab1
+boundaries. Preserve Lab1's existing
+profile. Wrapper command availability is governed by the active profile.
+
+The current Lab2 scope is exercises 1, 4 and 10: `split_chunk`,
+`merge_chunk`, `query_in_pgtbl`, and the three blanks in `handle_trans_fault`.
+Exercise 9 (`find_vmr_for_va`) is provided. Exercises 2, 3 and 8 and the other exercise-4 functions
+are provided. Questions 5 and 6 and challenges 7 and 11 are not assigned.
+Completion is 100 basic points; legacy RSS grading items do not add a student
+requirement. Submit modified code and authentic conversation, with no report.
+Keep the 45-minute classroom goal concise without adding quizzes, written
+checks or a time guarantee. Verify this scope against the actual handout
+before future revisions.
 
 ## Preserve the upstream interaction rhythm
 
