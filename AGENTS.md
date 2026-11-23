@@ -10,7 +10,7 @@ Instructions for AI coding agents working **on this repo** (not for end users le
 |----------------|---------|
 | `SKILL.md` | **Source of truth** for tutor behavior. YAML frontmatter (`name`, `description`, `metadata.version`) must stay valid for Cursor, Claude Code, OpenCode, and `.agents/skills`. |
 | `references/` | Long examples and rules loaded on demand (e.g. `example-flow.md`, `tool-gate.md`). Keep `SKILL.md` lean; add detail here. |
-| `agents/` | Agent-mode wrappers (`opencode/tutor.md`, `claude/tutor.md`). Frontmatter exposes inspection and permitted Lab2 command tools, governed by the active lab profile. A new harness means one more file, no generator; keep the wrapper bodies identical. |
+| `agents/` | Agent-mode wrappers (`opencode/tutor.md`, `claude/tutor.md`). Frontmatter exposes inspection and permitted Lab2/Lab3 command tools, governed by the active lab profile. A new harness means one more file, no generator; keep the wrapper bodies identical. |
 | `README.md` | Default user-facing docs (Chinese): purpose, features, and installation. |
 | `README-en.md` | English version of `README.md`; keep both versions aligned. |
 | `AGENTS.md` | This file — repo conventions for agents. |
@@ -74,6 +74,10 @@ requirement. Submit modified code and authentic conversation, with no report.
 Keep the 45-minute classroom goal concise without adding quizzes, written
 checks or a time guarantee. Verify this scope against the actual handout
 before future revisions.
+
+## Lab3 profile maintenance
+
+Use `references/lab3-guide.md` and the matching `templates/AGENTS.lab3.md` and `templates/CLAUDE.lab3.md`. Keep the six TODOs and five scoring items aligned with the current Lab3 handout and student project. Lab3 shares the Lab2 implementation-guidance and execution permissions.
 
 ## Preserve the upstream interaction rhythm
 
