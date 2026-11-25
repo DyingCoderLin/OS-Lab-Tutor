@@ -107,15 +107,17 @@ and the code TODO where the student writes the result. Follow
 the current handout in `../Pages/Lab3/`, beginning with the code walkthrough
 in `RTFSC.md`.
 
-Assign the six marked TODOs in handout order. Each row identifies one blank.
+Assign the eight marked TODOs in handout order. Each row identifies one blank.
 All source paths are relative to `Lab3/`.
 
 | Exercise | Source and symbol | Student work | Handout |
 | --- | --- | --- | --- |
-| 1 | `kernel/object/cap_group.c` · `sys_create_cap_group` | Initialize the new capability group from user arguments and handle initialization failure. | `../Pages/Lab3/thread.md` |
-| 2 | `kernel/object/thread.c` · `create_root_thread` | Translate the ELF segment's read, write and execute flags into virtual memory mapping permissions. | `../Pages/Lab3/thread.md` |
-| 3 | `kernel/arch/aarch64/sched/context.c` · `init_thread_ctx` | Set the initial stack, entry address and processor state for the thread type. | `../Pages/Lab3/thread.md` |
+| 2 | `kernel/object/thread.c` · `create_root_thread` | Read the segment offset, virtual address, file size and memory size and check the size relationship. | `../Pages/Lab3/thread.md` |
+| 2 | `kernel/object/thread.c` · `create_root_thread` | Create a memory object for the segment. | `../Pages/Lab3/thread.md` |
+| 2 | `kernel/object/thread.c` · `create_root_thread` | Copy the file-backed bytes into the segment memory object. | `../Pages/Lab3/thread.md` |
+| 2 | `kernel/object/thread.c` · `create_root_thread` | Translate ELF flags into virtual memory mapping permissions. | `../Pages/Lab3/thread.md` |
 | 5 | `kernel/arch/aarch64/irq/irq_entry.S` · `el1_vector` | Populate the 16 exception vector entries in architectural order. | `../Pages/Lab3/fault.md` |
+| 5 | `kernel/arch/aarch64/irq/irq_entry.S` · `sync_el1h` | Dispatch the EL1 synchronous exception to the C handler and update the saved return address. | `../Pages/Lab3/fault.md` |
 | 6 | `kernel/arch/aarch64/irq/irq_entry.S` · `exception_enter` | Allocate the context frame and save general-purpose registers x0 through x29. | `../Pages/Lab3/syscall.md` |
 | 6 | `kernel/arch/aarch64/irq/irq_entry.S` · `exception_exit` | Restore x0 through x29 and release the context frame. | `../Pages/Lab3/syscall.md` |
 
@@ -190,8 +192,7 @@ are worth 20 points each:
 | Printf | `Welcome to ChCore shell!` | 20 |
 | Userland App | `Hello ChCore!` | 20 |
 
-Cap Create Pretest checks the root capability group; it can pass while the
-exercise 1 TODO in `sys_create_cap_group` is unfinished. Exercise 2 has no
+Cap Create Pretest checks root capability group creation before ELF loading. Exercise 2 has no
 separate checkpoint. Printf checks shell output and Userland App checks the output of `hello_world.bin`. These are stages of the integrated tests, not
 isolated per-TODO targets. A later unfinished stage may fail.
 

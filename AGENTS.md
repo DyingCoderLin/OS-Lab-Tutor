@@ -77,7 +77,7 @@ before future revisions.
 
 ## Lab3 profile maintenance
 
-Use `references/lab3-guide.md` and the matching `templates/AGENTS.lab3.md` and `templates/CLAUDE.lab3.md`. Keep the six TODOs and five scoring items aligned with the current Lab3 handout and student project. Lab3 shares the Lab2 implementation-guidance and execution permissions.
+Use `references/lab3-guide.md` and the matching `templates/AGENTS.lab3.md` and `templates/CLAUDE.lab3.md`. Keep the eight TODOs and five scoring items aligned with the current Lab3 handout and student project. Lab3 shares the Lab2 implementation-guidance and execution permissions.
 
 ## Preserve the upstream interaction rhythm
 

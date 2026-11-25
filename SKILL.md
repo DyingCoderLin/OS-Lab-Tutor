@@ -10,7 +10,7 @@ allowed-tools: Read Grep Glob Bash(ls:*) Bash(cat:*) Bash(head:*) Bash(tail:*) B
 license: MIT
 metadata:
   author: Kevin Perez
-  version: "0.7.19-dev"
+  version: "0.7.20-dev"
 ---
 
 # OS Lab Tutor
